@@ -9,7 +9,7 @@
   <h3 align="center">
     Atelier
   </h3>
-  <p align="center"> 
+  <p align="center">
         Product Description Goes HERE
     <br />
     <a href="https://github.com/Stack-to-the-Future/atelier"><strong>Explore the docs »</strong></a>
@@ -132,8 +132,8 @@ npm install npm@latest -g
 
 ## Usage
 
-- How to 
-- Use 
+- How to
+- Use
 - Atelier
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -142,9 +142,9 @@ npm install npm@latest -g
 
 ## Roadmap
 
-- [x] Include displaying of products 
+- [x] Include displaying of products
 - [ ] Implementing sorting functions
-- [ ] Something else 
+- [ ] Something else
 
 See the [open issues](https://github.com/Stack-to-the-Future/atelier/issues) for a
 full list of proposed features (and known issues).
@@ -166,7 +166,7 @@ full list of proposed features (and known issues).
 Feel free to join in! Whether its fixing bugs, improving documentation, or
 simply spreading the word! Please see
 [Contributing Guidelines](/CONTRIBUTING.md) for further guidance. If you require
-assistance please don't hesitate to reach out! 
+assistance please don't hesitate to reach out!
 
 <!-- LICENSE -->
 
@@ -188,9 +188,9 @@ information.
 
 <h3 align='center'> Faycal</h3>
 <h4 align='center'>
-  <a href="https://twitter.com/">Twitter</a> |
-  <a href="https://linkedin.com/in/">Linkedin</a> |
-  <a href="">My Portoflio</a>
+  <!-- <a href="https://twitter.com/">Twitter</a> | -->
+  <a href="https://www.linkedin.com/in/FaycalKarasiRwigema">Linkedin</a> |
+  <a href="https://github.com/1Oulala">GITHUB</a>
 </h4>
 
 <h3 align='center'> Greg</h3>
