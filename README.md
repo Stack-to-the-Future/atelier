@@ -181,9 +181,8 @@ information.
 
 <h3 align='center'> Thomas</h3>
 <h4 align='center'>
-  <a href="https://twitter.com/">Twitter</a> |
-  <a href="https://linkedin.com/in/">Linkedin</a> |
-  <a href="">Portoflio</a>
+  <a href="https://www.linkedin.com/in/rett-harbert-9639921ba/">Linkedin</a> |
+  <a href="https://www.thomasharbert.com/">Portoflio</a>
 </h4>
 
 <h3 align='center'> Faycal</h3>
