@@ -187,9 +187,9 @@ information.
 
 <h3 align='center'> Faycal</h3>
 <h4 align='center'>
-  <a href="https://twitter.com/">Twitter</a> |
-  <a href="https://linkedin.com/in/">Linkedin</a> |
-  <a href="">My Portoflio</a>
+  <!-- <a href="https://twitter.com/">Twitter</a> | -->
+  <a href="https://www.linkedin.com/in/FaycalKarasiRwigema">Linkedin</a> |
+  <a href="https://github.com/1Oulala">GITHUB</a>
 </h4>
 
 <h3 align='center'> Greg</h3>
