@@ -84,7 +84,7 @@
 
 ### Built With
 
-![next.js](https://img.shields.io/badge/nextjs-%23000000.svg?style=for-the-badge&logo=next.js)
+![next.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
 
 ![Firebase](https://img.shields.io/badge/firebase-%23232323.svg?style=for-the-badge&logo=firebase&logoColor)
 
@@ -182,28 +182,28 @@ information.
 <h3 align='center'> Thomas</h3>
 <h4 align='center'>
   <a href="https://twitter.com/">Twitter</a> |
-  <a href="https://linkedin.com/in/">Linkedin</a>
+  <a href="https://linkedin.com/in/">Linkedin</a> |
   <a href="">Portoflio</a>
 </h4>
 
 <h3 align='center'> Faycal</h3>
 <h4 align='center'>
   <a href="https://twitter.com/">Twitter</a> |
-  <a href="https://linkedin.com/in/">Linkedin</a>
+  <a href="https://linkedin.com/in/">Linkedin</a> |
   <a href="">My Portoflio</a>
 </h4>
 
 <h3 align='center'> Greg</h3>
 <h4 align='center'>
   <a href="https://twitter.com/">Twitter</a> |
-  <a href="https://linkedin.com/in/">Linkedin</a>
+  <a href="https://linkedin.com/in/">Linkedin</a> |
   <a href="">My Portoflio</a>
 </h4>
 
 <h3 align='center'> Ming Ng</h3>
 <h4 align='center'>
   <a href="https://twitter.com/MingLeeNg1">Twitter</a> |
-  <a href="https://linkedin.com/in/MingLeeNg">Linkedin</a>
+  <a href="https://linkedin.com/in/MingLeeNg">Linkedin</a> |
   <a href="https://minglee.me">My Portoflio</a>
 </h4>
 
