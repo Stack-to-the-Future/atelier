@@ -203,7 +203,7 @@ information.
 <h4 align='center'>
   <a href="https://github.com/RedconOne">GitHub</a> |
   <a href="https://linkedin.com/in/MingLeeNg">Linkedin</a> |
-  <a href="https://minglee.me">My Portoflio</a>
+  <a href="https://minglee.me">Portoflio</a>
 </h4>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
