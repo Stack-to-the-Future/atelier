@@ -189,19 +189,19 @@ information.
 <h4 align='center'>
   <!-- <a href="https://twitter.com/">Twitter</a> | -->
   <a href="https://www.linkedin.com/in/FaycalKarasiRwigema">Linkedin</a> |
-  <a href="https://github.com/1Oulala">GITHUB</a>
+  <a href="https://github.com/1Oulala">GitHub</a>
 </h4>
 
 <h3 align='center'> Greg</h3>
 <h4 align='center'>
   <a href="https://twitter.com/dwell_greg">Twitter</a> |
   <a href="https://www.linkedin.com/in/gregory-jenkins-910623118/">Linkedin</a> |
-  <a href="">My Portoflio</a>
+  <!-- <a href="">My Portoflio</a> -->
 </h4>
 
-<h3 align='center'> Ming Ng</h3>
+<h3 align='center'> Ming Lee Ng</h3>
 <h4 align='center'>
-  <a href="https://twitter.com/MingLeeNg1">Twitter</a> |
+  <a href="https://github.com/RedconOne">GitHub</a> |
   <a href="https://linkedin.com/in/MingLeeNg">Linkedin</a> |
   <a href="https://minglee.me">My Portoflio</a>
 </h4>
