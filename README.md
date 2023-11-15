@@ -185,7 +185,7 @@ information.
   <a href="https://www.thomasharbert.com/">Portoflio</a>
 </h4>
 
-<h3 align='center'> Faycal</h3>
+<h3 align='center'> Fayçal K. Rwigema</h3>
 <h4 align='center'>
   <!-- <a href="https://twitter.com/">Twitter</a> | -->
   <a href="https://www.linkedin.com/in/FaycalKarasiRwigema">Linkedin</a> |
