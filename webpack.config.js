@@ -1,5 +1,6 @@
 const path = require('path');
-require('dotenv').config();
+const webpack = require('webpack');
+require('dotenv').config({ path: './.env' });
 
 /* This tells webpack to take index.js from entry. Then check for all file extensions in resolve.
 After that apply all the rules in module.rules and produce the output and place it in main.js */
@@ -76,4 +77,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
+  ],
 };
