@@ -181,7 +181,7 @@ information.
 
 <h3 align='center'> Thomas</h3>
 <h4 align='center'>
-  <a href="https://www.linkedin.com/in/rett-harbert-9639921ba/">Linkedin</a> |
+  <a href="https://www.linkedin.com/in/rett-harbert">Linkedin</a> |
   <a href="https://www.thomasharbert.com/">Portoflio</a>
 </h4>
 
