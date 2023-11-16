@@ -1,14 +1,14 @@
-# Code of Conduct 
+# Code of Conduct
 
 ## Members
 1. Thomas
-1. Greg 
+1. Greg
 1. Faycal
-1. Ming 
+1. Ming
 
 ## Roles + Responsibilities
 - TBD
-- Team Lead (Tech Lead) ? 
+- Team Lead (Tech Lead) ?
 
 ## How will you be communicating with each other?
 
@@ -38,7 +38,7 @@ No work on Thanksgiving.
 ## How will the team make decisions?
 - Vote (tie broken via coin flip)
 
-## How will the team handle conflict? 
+## How will the team handle conflict?
 - Team meeting to discuss in a professional environment
 - For technical disagreements refer to industry best practices
 
@@ -47,17 +47,17 @@ No work on Thanksgiving.
 - Every person will have 5 minutes per meeting to explain progress/hangups
 
 ## How will DEI be part of the team culture?
-- Keep things professional. No racism, no sexism. 
+- Keep things professional. No racism, no sexism.
 
 ## How will respect be shown/given to each member?
 - Foster an environment where everyone feels respected.
 - Avoid words like "obviously" etc
 - Focus on solutions not problems.
-- Treat everyone equally. 
+- Treat everyone equally.
 - Growth mindset.
 - Be positive.
 
-## How will the team support each other? 
-- Team members will be brought back up to speed during morning meetings 
+## How will the team support each other?
+- Team members will be brought back up to speed during morning meetings
 - If a team member mentions experiencing difficulties others can brainstorm ideas
 - If a team member fails to progress for 2 days, a meeting will be held to discuss options.
