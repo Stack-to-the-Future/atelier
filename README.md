@@ -16,7 +16,7 @@
     <br />
     <br />
     <!-- TODO: After deployed add link HERE   -->
-    <a href="">View Live</a>
+    <!-- <a href="">View Live</a> -->
     |
     <a href="https://github.com/Stack-to-the-Future/atelier/issues">Report Bug</a>
     |
