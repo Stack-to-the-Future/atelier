@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 /* This tells webpack to take index.js from entry. Then check for all file extensions in resolve.
 After that apply all the rules in module.rules and produce the output and place it in main.js */
@@ -32,7 +33,7 @@ module.exports = {
     /** "port"
          * port of dev server
         */
-    port: '8080',
+    port: process.env.PORT,
     /** "static"
          * This property tells Webpack what static file it should serve
         */
