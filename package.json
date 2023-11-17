@@ -4,8 +4,9 @@
   "description": "Front-End Capstone",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest --env=jsdom --coverage --collectCoverageFrom='./client/**'",
+    "test": "npx jest --env=jsdom --coverage --collectCoverageFrom='/client/**'",
     "build": "npx webpack",
+    "lint": "eslint . --ignore-path .eslintignore --ext .jsx --ext .js",
     "start": "npx webpack-dev-server"
   },
   "repository": {
