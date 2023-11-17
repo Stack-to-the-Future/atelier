@@ -84,11 +84,12 @@
 
 ### Built With
 
-![next.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
-
-![Firebase](https://img.shields.io/badge/firebase-%23232323.svg?style=for-the-badge&logo=firebase&logoColor)
-
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%233949AB.svg?style=for-the-badge&logo=tailwind-css)
+![node.js](https://img.shields.io/badge/node-%23000000.svg?style=for-the-badge&logo=node.js)
+![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)
+![Webpack](https://img.shields.io/badge/webpack-%23000000.svg?style=for-the-badge&logo=webpack)
+![Babel](https://img.shields.io/badge/babel-%23000000.svg?style=for-the-badge&logo=babel)
+![axios](https://img.shields.io/badge/axios-%23000000.svg?style=for-the-badge&logo=axios)
+![jest](https://img.shields.io/badge/jest-%23000000.svg?style=for-the-badge&logo=jest)
 
 <p align="right">
   (<a href="#readme-top">back to top</a>)
@@ -97,7 +98,7 @@
 ## Getting Started
 
 <p>
-    General instructions HERE
+    Instructions to setup Atelier on your local machine below.
 </p>
 
 ### Prerequisites
@@ -110,31 +111,34 @@ npm install npm@latest -g
 
 ### Installation
 
-1. Sign up for your own non-relational document database at
-   [Firebase](https://firebase.google.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/Stack-to-the-Future/atelier.git
    ```
-3. Install NPM packages
+1. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your port, database string, and API keys in `config.js` or `.env` file
+1. Enter your port, API URL, and Github Token in `.env` file
    ```sh
     PORT = 8080 (or port of your choosing)
-    DB_STRING = `your database URI`
+    URL = (your database URI)
+    TOKEN = (your github token)
    ```
-5. Run in development environment
+1. Run build command.
    ```sh
-   npm run dev
+   npm run build
+   ```
+1. Run in development environment
+   ```sh
+   npm run start
    ```
 
 ## Usage
 
-- How to
-- Use
-- Atelier
+Atelier is runs on the designated port and opens a webpage as soon as the npm run start command is utilized. It can also be accessed utilizing localhost:PORT directly in the browser.
+
+npm run test will run test suites properly.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -195,7 +199,7 @@ information.
 <h3 align='center'> Greg</h3>
 <h4 align='center'>
   <a href="https://twitter.com/dwell_greg">Twitter</a> |
-  <a href="https://www.linkedin.com/in/gregory-jenkins-910623118/">Linkedin</a> |
+  <a href="https://www.linkedin.com/in/gregory-jenkins-910623118/">Linkedin</a>
   <!-- <a href="">My Portoflio</a> -->
 </h4>
 
