@@ -136,7 +136,7 @@ npm install npm@latest -g
 
 ## Usage
 
-Atelier is runs on the designated port and opens a webpage as soon as the npm run start command is utilized. It can also be accessed utilizing localhost:PORT directly in the browser.
+Atelier is run on the designated port and opens a webpage as soon as the npm run start command is utilized. It can also be accessed utilizing localhost:PORT directly in the browser.
 
 npm run test will run test suites properly.
 
