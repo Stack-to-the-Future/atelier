@@ -7,16 +7,16 @@ import RatingsAndReviews from './RatingsAndReviews.jsx';
 // import Styles from '../dist/styles.css';
 
 // URL and headers
-// const baseUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products';
-// const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
+const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
 // chosen product ID
-const productID = 40346;
+// const productID = 40346;
+const url = process.env.URL;
 
 // initial GET request that helped us view data
-// axios.get(baseUrl, headers)
-//   .then((response) => console.log(response))
-//   .catch((err) => console.error(err));
+axios.get(url, headers)
+  .then((response) => console.log(response.data))
+  .catch((err) => console.error(err));
 
 const App = () => (<div>
   Hello Everyone!
