@@ -4,7 +4,7 @@ import QuestionsList from './QandASubFolder/QuestionsList.jsx';
 // const id = 40346;
 
 const QandA = () => (
-    <div>
+    <div id='quanda'>
       <h3>
         QUESTIONS AND ANSWERS
       </h3>
