@@ -75,6 +75,10 @@ module.exports = {
         exclude: /node_modules/, // folder to be excluded
         use: 'babel-loader', // loader which we are going to use
       },
+      {
+        test: /\.css$/i, // kind of file extension this rule looks for
+        use: ['style-loader', 'css-loader'], // loader being used (its for react component css)
+      },
     ],
   },
   plugins: [
