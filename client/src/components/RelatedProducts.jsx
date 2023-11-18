@@ -4,7 +4,7 @@ import RelatedProductsList from './RelatedProductsSubFolder/RelatedProductsList.
 import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 
 const RelatedProducts = () => (
-    <div>
+    <div id='relpro'>
       <RelatedProductsList />
         <br/>
         <OutfitList />
