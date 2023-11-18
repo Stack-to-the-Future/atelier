@@ -4,8 +4,9 @@
   "description": "Front-End Capstone",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest --env=jsdom --coverage --collectCoverageFrom='./client/**'",
+    "test": "npx jest --env=jsdom --coverage --collectCoverageFrom='/client/**'",
     "build": "npx webpack",
+    "lint": "eslint . --ignore-path .eslintignore --ext .jsx --ext .js",
     "start": "npx webpack-dev-server"
   },
   "repository": {
@@ -41,6 +42,8 @@
   "dependencies": {
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

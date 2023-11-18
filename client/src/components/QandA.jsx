@@ -1,10 +1,14 @@
 import React from 'react';
+import QuestionsList from './QandASubFolder/QuestionsList.jsx';
+
+// const id = 40346;
 
 const QandA = () => (
     <div>
-      <h1>
-        Here is the Q and A!
-      </h1>
+      <h3>
+        QUESTIONS AND ANSWERS
+      </h3>
+      <QuestionsList />
     </div>
 );
 
