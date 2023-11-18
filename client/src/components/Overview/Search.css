@@ -1,0 +1,16 @@
+#overview-search-main {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#overview-search-logo {
+  display: flex;
+  align-items: center;
+}
+
+#overview-search-searchbar {
+  display: flex;
+  align-items: center;
+}
