@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import Overview from './Overview.jsx';
 import RelatedProducts from './RelatedProducts.jsx';
