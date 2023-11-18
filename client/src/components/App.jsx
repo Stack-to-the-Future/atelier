@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
 import Overview from './Overview.jsx';
@@ -11,7 +12,7 @@ const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
 // chosen product ID
 // const productID = 40346;
-const url = process.env.URL;
+const url = `${process.env.URL}`;
 
 // initial GET request that helped us view data
 axios.get(url, headers)
