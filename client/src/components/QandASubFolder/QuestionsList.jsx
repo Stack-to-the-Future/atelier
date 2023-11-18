@@ -14,7 +14,7 @@ const QuestionsList = () => {
   // const actualProductID = 40346;
 
   useEffect(() => {
-    axios.get(`${process.env.URL}qa/questions/?product_id=${tempProductID}`, headers)
+    axios.get(`${process.env.URL}/qa/questions/?product_id=${tempProductID}`, headers)
       .then((response) => setQuestions(response.data.results))
       .catch((err) => console.error(err));
   }, []);
