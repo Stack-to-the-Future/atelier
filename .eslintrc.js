@@ -25,5 +25,8 @@ module.exports = {
   },
   rules: {
     'no-console': 0,
+    'react/prop-types': 0,
+    'no-alert': 'off',
   },
+  plugins: ['react', 'jsx-a11y', 'import'],
 };
