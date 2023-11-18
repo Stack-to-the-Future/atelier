@@ -7,10 +7,9 @@ const Question = ({ question }) => {
   const [answers, setAnswers] = useState([]);
 
   // STILL TO DO:
-  // SORT QUESTIONS BY HELPFULNESS
-  // ONLY LOAD TWO AT A TIME??
+  // ONLY LOAD TWO ANSWERS AT A TIME??
 
-  // triggers helpful state and sends PUT req
+  // hanldes the 'helpful' click for each question
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
   const helpURL = `${process.env.URL}/qa/questions/${question.question_id}/helpful`;
   const helpfulClick = (e) => {
@@ -31,6 +30,8 @@ const Question = ({ question }) => {
   };
 
   // useEffect to get the related answers
+  // at the moment I'm getting all the answers, I only need two until the
+  // 'Load More Answers' button is clicked!
   const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers`;
   useEffect(() => {
     axios.get(answersURL, headers)
