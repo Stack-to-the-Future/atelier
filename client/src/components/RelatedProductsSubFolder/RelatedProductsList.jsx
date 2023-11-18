@@ -56,4 +56,5 @@ const RelatedProductsList = () => {
     </div>
   );
 };
+// <Carousel products={produts} action={() => {}} />
 export default RelatedProductsList;
