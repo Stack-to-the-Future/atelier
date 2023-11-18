@@ -4,12 +4,11 @@ import Overview from './Overview.jsx';
 import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
 import RatingsAndReviews from './RatingsAndReviews.jsx';
-// import Styles from '../dist/styles.css';
+import './App.css';
 
 // chosen product ID -- 40346
 
-const App = () => (<div>
-  Hello Everyone!
+const App = () => (<div id="app">
   <Overview />
   <RelatedProducts />
   <QandA />
