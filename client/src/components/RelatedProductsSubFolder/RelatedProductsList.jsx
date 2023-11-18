@@ -5,6 +5,7 @@ import Card from './Card.jsx';
 const RelatedProductsList = () => {
   const [products, setProducts] = useState([]);
   // const [product, setProduct] = useState({});
+  const [photo, setPhoto] = useState('');
   const [relatedProductsId, setRelatedProductsId] = useState([]);
   // const [category, setCategory] = useState('');
   // const [name, setName] = useState('');
@@ -26,6 +27,14 @@ const RelatedProductsList = () => {
         setRelatedProductsId(data.data);
       })
       .catch((err) => console.log(err));
+    // get related items styles details
+    // axios.get(`${process.env.URL}/products/${product.id}/styles`, options)
+    axios.get(`${process.env.URL}/products/40346/styles`, options)
+      .then((data) => {
+        console.log(data.data.results[0].photos[0].thumbnail_url);
+        setPhoto(data.data.results[0].photos[0].thumbnail_url);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -37,7 +46,7 @@ const RelatedProductsList = () => {
             products.filter((p) => relatedProductsId.includes(p.id))
               .map((product, index) => (
                 <li key={index}>
-                  <Card product={product} relatedProductsId={relatedProductsId} />
+                  <Card product={product} relatedProductsId={relatedProductsId} photo={photo}/>
                   </li>
               ))
           }
@@ -47,5 +56,4 @@ const RelatedProductsList = () => {
     </div>
   );
 };
-//                  // category={category} name={name} price={price} ID={ID} />
 export default RelatedProductsList;
