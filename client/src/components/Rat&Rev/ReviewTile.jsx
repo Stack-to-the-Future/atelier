@@ -1,9 +1,7 @@
 import React from 'react';
 
-const ReviewTile = ({review}) => {
-  return (<div>
+const ReviewTile = ({ review }) => (<div>
     {review.summary}
-  </div>)
-}
+  </div>);
 
 export default ReviewTile;
