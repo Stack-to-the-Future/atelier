@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Answer from './Answer.jsx';
 
 const Question = ({ question }) => {
   const [isHelpful, setIsHelpful] = useState(false);
-  // const [answer, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   // STILL TO DO:
   // SORT QUESTIONS BY HELPFULNESS
@@ -29,11 +30,13 @@ const Question = ({ question }) => {
     alert('modal to be added');
   };
 
-  // const answersURL = ``;
   // useEffect to get the related answers
-  // useEffect(() => {
-  //   axios.get()
-  // });
+  const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers`;
+  useEffect(() => {
+    axios.get(answersURL, headers)
+      .then((response) => setAnswers(response.data.results))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div>
@@ -46,13 +49,9 @@ const Question = ({ question }) => {
         </span>
         </span>
       </span>
+          {answers.length > 0 ? answers.map((answer) => <Answer key={answer.answer_id} answer={answer}/>) : ''}
       <div>
-        <h4>
-          Answers go here!
-        </h4>
-        <div>
-          <button>Load More Answers</button>
-        </div>
+        <button>Load More Answers</button>
       </div>
     </div>
   );

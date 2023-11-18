@@ -19,12 +19,18 @@ const QuestionsList = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  // console.log('questions: ', questions);
   return (
     <div>
-      {questions.length > 0 ? questions.map((question) => <Question key={question.question_id} question={question}/>) : ''}
+      <div>
+        {questions.length > 0 ? questions.map((question) => <Question key={question.question_id} question={question}/>) : ''}
+      </div>
+      <div>
+        <span>
+          <button>MORE ANSWERED QUESTIONS</button>
+          <button>ADD A QUESTION +</button>
+        </span>
+      </div>
     </div>
-    <span><button>MORE ANSWERED QUESTIONS</button><button>ADD A QUESTION +</button></span>
   );
 };
 
