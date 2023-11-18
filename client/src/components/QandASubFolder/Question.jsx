@@ -5,10 +5,13 @@ const Question = ({ question }) => {
   const [isHelpful, setIsHelpful] = useState(false);
   // const [answer, setAnswers] = useState([]);
 
-  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
-  const helpURL = `${process.env.URL}/qa/questions/${question.question_id}/helpful`;
+  // STILL TO DO:
+  // SORT QUESTIONS BY HELPFULNESS
+  // ONLY LOAD TWO AT A TIME??
 
   // triggers helpful state and sends PUT req
+  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
+  const helpURL = `${process.env.URL}/qa/questions/${question.question_id}/helpful`;
   const helpfulClick = (e) => {
     e.preventDefault();
     if (isHelpful) {

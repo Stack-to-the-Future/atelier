@@ -24,6 +24,7 @@ const QuestionsList = () => {
     <div>
       {questions.length > 0 ? questions.map((question) => <Question key={question.question_id} question={question}/>) : ''}
     </div>
+    <span><button>MORE ANSWERED QUESTIONS</button><button>ADD A QUESTION +</button></span>
   );
 };
 
