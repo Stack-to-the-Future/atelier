@@ -5,7 +5,7 @@ import AddToCart from './AddToCart.jsx';
 import './ProductInformation.css';
 
 const ProductInformation = ({ product }) => <div id='overview-productinfo-main'>
-  <Stars num={3.75}/>
+  <Stars rating={3.75}/>
   <div>{product.category}</div>
   <h1>{product.name}</h1>
   <div>{product.default_price}</div>
