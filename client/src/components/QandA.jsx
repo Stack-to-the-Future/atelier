@@ -2,7 +2,6 @@ import React from 'react';
 import QuestionsList from './QandASubFolder/QuestionsList.jsx';
 import AddQuestion from './QandASubFolder/AddQuestionModal.jsx';
 import AddAnswer from './QandASubFolder/AddAnswerModal.jsx';
-// import causes the Jest suite to fail...
 import './App.css';
 
 // const id = 40346;
