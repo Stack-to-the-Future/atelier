@@ -8,7 +8,7 @@ const QuestionsList = () => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   // TO DO:
-  // GET PROPER NUMBER OF QUESTION ON INITIAL API CALL
+  // GET PROPER NUMBER OF QUESTIONS ON INITIAL API CALL
 
   // this is a temp value to work from = there are questions and answers associated with this id
   const tempProductID = 40348;

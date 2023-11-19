@@ -10,6 +10,10 @@ import './App.css';
 // at the moment, I've just added the forms at the bottom of the widget
 // they will need to access certain data, etc.
 
+// MODAL IDEA:
+// switch statement for rendering -- render based on state 'addQuestion' 'addAnswer' etc...
+// useState('') -- initializing the state of the modal -- standard
+
 const QandA = () => (
     <div id='quanda'>
       <h3>
