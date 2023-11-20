@@ -3,9 +3,9 @@ import React, {} from 'react';
 import RelatedProductsList from './RelatedProductsSubFolder/RelatedProductsList.jsx';
 import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 
-const RelatedProducts = () => (
+const RelatedProducts = ({ products }) => (
     <div id='relpro'>
-      <RelatedProductsList />
+      <RelatedProductsList products={products}/>
         <br/>
         <OutfitList />
     </div>
