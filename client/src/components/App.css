@@ -38,8 +38,8 @@ table {
 
 
 #app {
-  width: 95%;
-  margin-left: 2.5%;
+  width: 66%;
+  margin-left: 17%;
   border: 1px solid white;
   display: flex;
   flex-direction: column;
