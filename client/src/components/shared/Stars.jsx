@@ -27,7 +27,6 @@ const Stars = ({ rating }) => {
       } else {
         result.push(handleFraction(remaining));
         remaining = 0;
-
       }
     }
 
@@ -42,6 +41,3 @@ const Stars = ({ rating }) => {
 };
 
 export default Stars;
-
-
-

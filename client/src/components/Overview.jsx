@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Search from "./Overview/Search.jsx";
-import Announcement from "./Overview/Announcement.jsx";
-import ImageGallery from "./Overview/ImageGallery.jsx";
-import ProductInformation from "./Overview/ProductInformation.jsx";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Search from './Overview/Search.jsx';
+import Announcement from './Overview/Announcement.jsx';
+import ImageGallery from './Overview/ImageGallery.jsx';
+import ProductInformation from './Overview/ProductInformation.jsx';
+import './App.css';
 
 const Overview = () => {
   const [styles, setStyles] = useState([]);
@@ -13,7 +13,7 @@ const Overview = () => {
   const getProduct = () => {
     const url = `${process.env.URL}/products/40346`;
     axios({
-      method: "GET",
+      method: 'GET',
       url,
       headers: {
         Authorization: process.env.TOKEN,
@@ -26,7 +26,7 @@ const Overview = () => {
   const getStyles = () => {
     const url = `${process.env.URL}/products/40346/styles`;
     axios({
-      method: "GET",
+      method: 'GET',
       url,
       headers: {
         Authorization: process.env.TOKEN,

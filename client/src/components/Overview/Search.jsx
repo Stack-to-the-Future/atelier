@@ -1,8 +1,8 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHandSpock } from "@fortawesome/free-regular-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import "./Overview.css";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandSpock } from '@fortawesome/free-regular-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import './Overview.css';
 
 const Search = () => (
   <div id="overview-search-main">

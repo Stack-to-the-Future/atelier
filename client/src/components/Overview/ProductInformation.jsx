@@ -1,8 +1,8 @@
-import React from "react";
-import Stars from "../shared/Stars.jsx";
-import StyleSelector from "./StyleSelector.jsx";
-import AddToCart from "./AddToCart.jsx";
-import "./Overview.css";
+import React from 'react';
+import Stars from '../shared/Stars.jsx';
+import StyleSelector from './StyleSelector.jsx';
+import AddToCart from './AddToCart.jsx';
+import './Overview.css';
 
 const ProductInformation = ({ product }) => (
   <div id="overview-productinfo-main">
