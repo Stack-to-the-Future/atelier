@@ -27,6 +27,7 @@ const Stars = ({ rating }) => {
       } else {
         result.push(handleFraction(remaining));
         remaining = 0;
+
       }
     }
 
@@ -35,9 +36,12 @@ const Stars = ({ rating }) => {
 
   return (
     <div className='stars-container'>
-      {generateStars().map((num, idx) => <Star key={idx} fill={num}/>)}
+      {generateStars().map((num, idx) => <Star key={idx} fill={num} />)}
     </div>
   );
 };
 
 export default Stars;
+
+
+
