@@ -12,11 +12,10 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const getProducts = () => {
     const options = { headers: { Authorization: process.env.TOKEN } };
-    axios.get(`${process.env.URL}/products`, options)
-      .then((data) => {
-        const all = data.data;
-        setProducts([...all]);
-      });
+    axios.get(`${process.env.URL}/products`, options).then((data) => {
+      const all = data.data;
+      setProducts([...all]);
+    });
   };
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const App = () => {
       <RelatedProducts products={products} />
       <QandA />
       <RatingsAndReviews />
-</div>
+    </div>
   );
 };
 

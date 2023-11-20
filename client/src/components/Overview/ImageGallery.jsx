@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ImageGallery.css';
+import './Overview.css';
 
 const ImageGallery = ({ photos }) => {
   const [photoIdx, setPhotoIdx] = useState(0);
@@ -11,13 +11,11 @@ const ImageGallery = ({ photos }) => {
 
   return (
     <div id='overview-gallery-main'>
+      <button className='overview-gallery-btn' onClick={() => handleChangeImage(-1)}>LEFT BTN</button>
       {
         photos.length ? <img id='overview-gallery-img' src={photos[photoIdx].url} /> : ''
       }
-      <div className='overview-gallery-btn-group'>
-        <button className='overview-gallery-btn' onClick={() => handleChangeImage(-1)}>LEFT BTN</button>
-        <button className='overview-gallery-btn' onClick={() => handleChangeImage(1)}>RIGHT BTN</button>
-      </div>
+      <button className='overview-gallery-btn' onClick={() => handleChangeImage(1)}>RIGHT BTN</button>
     </div>
   );
 };
