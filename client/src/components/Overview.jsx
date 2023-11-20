@@ -42,16 +42,19 @@ const Overview = () => {
     getStyles();
   }, []);
 
-  return (<div id='overview-main'>
-    <Search />
-    <Announcement />
-    <div id='overview-central'>
-      {
-        styles.length ? <ImageGallery photos={styles[0].photos} /> : <div>Image Loading</div>
-      }
-      <ProductInformation product={product}/>
+  return (
+    <div id="overview-main">
+      <Search />
+      <Announcement />
+      <div id="overview-central">
+        {styles.length ? (
+          <ImageGallery photos={styles[0].photos} />
+        ) : (
+          <div>Image Loading</div>
+        )}
+        <ProductInformation product={product} styles={styles} />
+      </div>
     </div>
-  </div>
   );
 };
 
