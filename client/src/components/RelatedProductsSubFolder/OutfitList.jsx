@@ -1,8 +1,9 @@
 import React, {} from 'react';
+import './RelPro.css';
 
 const OutfitList = () => (
 // const [outFits, setOutFits] = useState([]);
-   <div>
+   <div id='rel-prod-outfit'>
       <h5>YOUR OUTFIT</h5>
       <ul>
         {
