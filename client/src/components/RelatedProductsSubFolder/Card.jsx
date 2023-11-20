@@ -1,7 +1,8 @@
-import React, {} from 'react';
+import React from 'react';
+import './RelPro.css';
 
 const Card = ({ product, photo }) => (
-    <button style={ {
+    <button className='card-button' style={ {
       marginLeft: 15, marginBottom: 15, backgroundColor: 'lightbrown', padding: 25,
     } }>⭐️
       <br/>
@@ -10,10 +11,10 @@ const Card = ({ product, photo }) => (
          width="100"
          height="150"
       />
-      <h3>CATEGORY</h3>
+      <br/>
       <h4>{product.category}</h4>
-      <h4>{product.name}</h4>
-      <h5>{product.description}</h5>
+      <br/>
+      <h4 className='prod-name'>{product.name}</h4>
       <h4>${product.default_price}</h4>
     </button>
 
