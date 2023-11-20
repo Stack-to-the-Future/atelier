@@ -3,7 +3,7 @@ import axios from 'axios';
 import Overview from './Overview.jsx';
 import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
-import RatingsAndReviews from './RatingsAndReviews.jsx';
+// import RatingsAndReviews from './RatingsAndReviews.jsx';
 import './App.css';
 
 // chosen product ID -- 40346
@@ -27,7 +27,7 @@ const App = () => {
       <Overview />
       <RelatedProducts products={products} />
       <QandA />
-      <RatingsAndReviews />
+      {/* <RatingsAndReviews /> */}
 </div>
   );
 };

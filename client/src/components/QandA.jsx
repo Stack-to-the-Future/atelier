@@ -1,7 +1,7 @@
 import React from 'react';
 import QuestionsList from './QandASubFolder/QuestionsList.jsx';
-// import AddQuestion from './QandASubFolder/AddQuestionModal.jsx';
-// import AddAnswer from './QandASubFolder/AddAnswerModal.jsx';
+import AddQuestion from './QandASubFolder/AddQuestionModal.jsx';
+import AddAnswer from './QandASubFolder/AddAnswerModal.jsx';
 import './App.css';
 
 // const id = 40346;
@@ -19,8 +19,8 @@ const QandA = () => (
         QUESTIONS AND ANSWERS
       </h3>
       <QuestionsList />
-      {/* <AddQuestion /> */}
-      {/* <AddAnswer /> */}
+      <AddQuestion />
+      <AddAnswer />
     </div>
 );
 

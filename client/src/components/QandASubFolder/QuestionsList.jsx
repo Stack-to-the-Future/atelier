@@ -21,8 +21,10 @@ const QuestionsList = () => {
   };
 
   // gets the inital batch of questions -- NEED TO MAKE SURE IT GRABS ONLY THE PROPER NUMBER
+  const questionCount = 400;
+  // const url = `${process.env.URL}/qa/questions/?product_id=${tempProductID}`;
   useEffect(() => {
-    axios.get(`${process.env.URL}/qa/questions/?product_id=${tempProductID}`, headers)
+    axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${tempProductID}`, headers)
       .then((response) => setQuestions(response.data.results))
       .catch((err) => console.error(err));
   }, []);
