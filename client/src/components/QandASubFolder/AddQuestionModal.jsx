@@ -12,8 +12,7 @@ const AddQuestion = () => {
       // at the moment hardcoded!!
       product_id: 40348,
     };
-    // console.log('body: ', body);
-    // at the moment this is hitting a 422 error, something with the body?
+    console.log('body: ', body);
     axios.post(`${process.env.URL}/qa/questions`, body, headers)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
