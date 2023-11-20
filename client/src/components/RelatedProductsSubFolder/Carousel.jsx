@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState /* useEffect */ } from 'react';
 import Card from './Card.jsx';
 
 const Carousel = ({ relatedProducts, photo }) => {
@@ -15,7 +15,7 @@ const Carousel = ({ relatedProducts, photo }) => {
     } else {
       setIndex(newIndex);
     }
-    // setIndex(newIndex < 0 ? relatedProducts.length - 1 : newIndex);
+
     let copy = relatedProducts.slice(index, index + length);
     if (copy.length < length) {
       copy = copy.concat(relatedProducts.slice(0, length - copy.length));
@@ -23,14 +23,9 @@ const Carousel = ({ relatedProducts, photo }) => {
     setDisplayed([...copy]);
   };
 
-  console.log(relatedProducts);
-  useEffect(() => {
-    scroll();
-  }, []);
-
   return (
     <>
-      <button onClick={() => scroll(-1)}><h4>◀︎BACK</h4></button>
+      <button onClick={() => scroll(-1)}><h4>◀︎ BACK</h4></button>
         <ul>
           {
             displayed.map((product, idx) => (
@@ -40,7 +35,7 @@ const Carousel = ({ relatedProducts, photo }) => {
             ))
           }
         </ul>
-        <button onClick={() => scroll(+1)}><h4>NEXT▶︎</h4></button>
+        <button onClick={() => scroll(+1)}><h4>NEXT ▶︎</h4></button>
     </>
   );
 };

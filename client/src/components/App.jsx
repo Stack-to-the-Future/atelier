@@ -16,7 +16,6 @@ const App = () => {
       .then((data) => {
         const all = data.data;
         setProducts([...all]);
-      // get related items
       });
   };
 
