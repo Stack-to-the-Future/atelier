@@ -27,8 +27,8 @@
 #overview-search-input {
   width: 50%;
   background-color: #525252;
-  border-bottom: 2px solid white;
   text-align: center;
+  border-bottom: 1px solid white;
 }
 
 /* ------------------------------------ ANNOUNCEMENTS------------------------------------------- */
@@ -88,7 +88,7 @@
 /* ------------------------------------ PRODUCT INFO ------------------------------------------- */
 
 #overview-productinfo-main {
-  width: 50%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -111,4 +111,42 @@
 
 .overview-product-price {
   font-size: 0.75rem;
+}
+
+.overview-stars-left {
+  width: 15%;
+}
+
+b {
+  font-weight: bold;
+}
+
+/* ------------------------------------ STYLES -------------------------------------------------*/
+
+.overview-styles-container {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-styles-images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.overview-styles-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: calc(20%);
+  aspect-ratio: 1 / 1;
+  margin-right: 4%;
+}
+
+.selected {
+  border: 2px solid gold;
+  width: calc(20% - 4px);
 }

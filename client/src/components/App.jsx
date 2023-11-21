@@ -8,7 +8,7 @@ import './App.css';
 
 // chosen product ID -- 40346
 
-const App = () => {
+function App() {
   const [products, setProducts] = useState([]);
   const getProducts = () => {
     const options = { headers: { Authorization: process.env.TOKEN } };
@@ -29,6 +29,6 @@ const App = () => {
       <RatingsAndReviews />
     </div>
   );
-};
+}
 
 export default App;
