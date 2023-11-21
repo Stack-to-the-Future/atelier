@@ -48,10 +48,15 @@ const Answer = ({ answer }) => {
       .catch((err) => console.error(err));
   };
 
+  // { /* <span className='answer-a'>A:</span> */ }
+
   return (
     <div>
       <span className="answer-body">
         { answer.body ? <p><span className='answer-a'>A:</span> {answer.body}</p> : ''}
+      </span>
+      <span className='answer-photos'>
+      {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} key={photo.id}/>)}
       </span>
       <div className='answer-footer'>
         by {answer.answerer_name}, {convertDate()} |
@@ -59,9 +64,6 @@ const Answer = ({ answer }) => {
          ({helpful ? answer.helpfulness + 1 : answer.helpfulness})</a> |
           <a className='inner-link' onClick={onReportClick}>{report ? 'Reported' : 'Report'}</a>
       </div>
-      <span className='answer-photos'>
-      {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} key={photo.id}/>)}
-      </span>
     </div>
   );
 };

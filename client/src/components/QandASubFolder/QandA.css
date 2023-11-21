@@ -1,9 +1,11 @@
 
 .quanda-header {
+  margin-top: 1rem;
   font-weight: 600;
   font-size: 1.1rem;
 }
 
+/* SEARCH */
 .question-search {
   width: 100%;
   border-color: black;
@@ -13,14 +15,15 @@
   margin: .5rem;
 }
 
-.photo-box {
-  display: inline-block;
+/* QUESTION LIST */
+.list-bottom-buttons{
+  padding: 1rem;
+  margin-right: 1rem;
+  border: 1px solid black;
+  margin-bottom: 2rem;
 }
 
-.answer-photo {
-  padding: 1rem;
-  width: 50px;
-}
+/* QUESTIONS */
 
 #question{
   margin: 1rem;
@@ -44,6 +47,7 @@
   text-decoration: underline;
 }
 
+/* ANSWERS */
 .answer-footer{
   font-weight: normal;
   font-size: .8rem;
@@ -60,12 +64,16 @@
   /* margin: 1rem; */
 }
 
+.photo-box {
+  display: inline-block;
+}
+
+.answer-photo {
+  padding: 2rem;
+  width: 150px;
+}
+
 .answer-button {
   padding: .4rem;
   font-weight: 500;
-}
-
-.list-bottom-buttons{
-  padding: 1rem;
-  margin-right: 1rem;
 }

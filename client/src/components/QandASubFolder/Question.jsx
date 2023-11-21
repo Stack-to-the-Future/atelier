@@ -64,14 +64,16 @@ const Question = ({ question }) => {
         </span>
         </span>
       </span>
+      <div>
           {answers.length > 0
             ? renderedAnswers.map((answer) => <Answer key={answer.answer_id} answer={answer}/>)
             : ''}
-      <div>
+      </div>
+      { answers.length > 0 ? <div>
       {answerCount < answers.length
         ? <button className='answer-button' onClick={onShowMoreAnswers}>LOAD MORE ANSWERS</button>
         : <button className='answer-button' onClick={onCollapseAnswers}>COLLAPSE ANSWERS</button>}
-      </div>
+      </div> : ''}
     </div>
   );
 };
