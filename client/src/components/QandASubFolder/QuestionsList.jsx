@@ -48,8 +48,10 @@ const QuestionsList = ({ searchTerm }) => {
       </div>
       <div>
         <span>
-        {numOfQuestions < questions.length ? <button onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button> : ''}
-          <button onClick={onAddQuestionClick}>ADD A QUESTION +</button>
+        {numOfQuestions < questions.length
+          ? <button className='list-bottom-buttons' onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
+          : ''}
+          <button className='list-bottom-buttons' onClick={onAddQuestionClick}>ADD A QUESTION +</button>
         </span>
       </div>
     </div>

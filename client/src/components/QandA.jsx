@@ -28,8 +28,8 @@ const QandA = () => {
 
   return (
     <div id='quanda'>
-      <h3>
-        QUESTIONS AND ANSWERS
+      <h3 className='quanda-header'>
+        QUESTIONS & ANSWERS
       </h3>
       <SearchQuestions onSearch={onSearch} />
       <QuestionsList searchTerm={searchTerm} />

@@ -1,4 +1,9 @@
 
+.quanda-header {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
 .question-search {
   width: 100%;
   border-color: black;
@@ -8,23 +13,59 @@
   margin: .5rem;
 }
 
+.photo-box {
+  display: inline-block;
+}
+
 .answer-photo {
-  width: 10rem;
+  padding: 1rem;
+  width: 50px;
 }
 
 #question{
   margin: 1rem;
 }
 
-/* .main-question {
-  font-weight: bold;
-  font-size: 1.3rem;
+.main-question {
+  display: inline;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 .question-interactions{
   font-weight: normal;
-  font-size: 1rem;
+  font-size: .8rem;
+  float: right;
+}
+
+.inner-link {
+  margin-left: .3rem;
+  margin-right: .3rem;
+  text-decoration: underline;
+}
+
+.answer-footer{
+  font-weight: normal;
+  font-size: .8rem;
+}
+
+.answer-a{
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .answer-body {
   padding: .7rem;
-} */
+  /* padding-bottom: 1rem; */
+  /* margin: 1rem; */
+}
+
+.answer-button {
+  padding: .4rem;
+  font-weight: 500;
+}
+
+.list-bottom-buttons{
+  padding: 1rem;
+  margin-right: 1rem;
+}

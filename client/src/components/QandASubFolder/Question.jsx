@@ -54,13 +54,13 @@ const Question = ({ question }) => {
     <div id='question'>
       <span>
         <span className="main-question">Q: {question.question_body}
-        <span className="question-interactions"> Helpful?
-        <a onClick={helpfulClick}>Yes(
+        <span className="question-interactions">     Helpful?
+        <a onClick={helpfulClick}><span className='inner-link'>Yes</span>(
           {isHelpful
             ? question.question_helpfulness + 1
             : question.question_helpfulness})
             </a>
-        <a onClick={addAnswerClick}>Add Answer</a>
+        <a onClick={addAnswerClick}> |<span className='inner-link'>Add Answer</span> </a>
         </span>
         </span>
       </span>
@@ -69,8 +69,8 @@ const Question = ({ question }) => {
             : ''}
       <div>
       {answerCount < answers.length
-        ? <button onClick={onShowMoreAnswers}>Load More Answers</button>
-        : <button onClick={onCollapseAnswers}>Collapse Answers</button>}
+        ? <button className='answer-button' onClick={onShowMoreAnswers}>LOAD MORE ANSWERS</button>
+        : <button className='answer-button' onClick={onCollapseAnswers}>COLLAPSE ANSWERS</button>}
       </div>
     </div>
   );

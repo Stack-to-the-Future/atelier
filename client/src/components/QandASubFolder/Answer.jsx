@@ -50,18 +50,17 @@ const Answer = ({ answer }) => {
 
   return (
     <div>
-      <div className="answer-body">
-        { answer.body ? <p>A: {answer.body}</p> : ''}
-      </div>
-      <span>
-        by {answer.answerer_name}, {convertDate()} |
-         Helpful? <a onClick={onHelpfulClick}>Yes
-         ({helpful ? answer.helpfulness + 1 : answer.helpfulness})</a> |
-          <a onClick={onReportClick}>{report ? 'Reported' : 'Report'}</a>
+      <span className="answer-body">
+        { answer.body ? <p><span className='answer-a'>A:</span> {answer.body}</p> : ''}
       </span>
+      <div className='answer-footer'>
+        by {answer.answerer_name}, {convertDate()} |
+         Helpful? <a onClick={onHelpfulClick}><span className='inner-link'>Yes</span>
+         ({helpful ? answer.helpfulness + 1 : answer.helpfulness})</a> |
+          <a className='inner-link' onClick={onReportClick}>{report ? 'Reported' : 'Report'}</a>
+      </div>
       <span className='answer-photos'>
       {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} key={photo.id}/>)}
-      {/* {answer.photos.map((photo) => console.log(photo.url))} */}
       </span>
     </div>
   );
