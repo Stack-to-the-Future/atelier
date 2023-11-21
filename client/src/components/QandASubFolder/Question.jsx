@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answer from './Answer.jsx';
+import './QandA.css';
 
 const Question = ({ question }) => {
   const [isHelpful, setIsHelpful] = useState(false);
   const [answers, setAnswers] = useState([]);
-
-  // STILL TO DO:
-  // ONLY LOAD TWO ANSWERS AT A TIME??
+  const [answerCount, setAnswerCount] = useState(2);
 
   // hanldes the 'helpful' click for each question
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
@@ -29,9 +28,7 @@ const Question = ({ question }) => {
     alert('modal to be added');
   };
 
-  // useEffect to get the related answers
-  // at the moment I'm getting all the answers, I only need two until the
-  // 'Load More Answers' button is clicked!
+  // useEffect to get the related answers - grabs all Answers and hits API once per question
   const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers`;
   useEffect(() => {
     axios.get(answersURL, headers)
@@ -39,20 +36,41 @@ const Question = ({ question }) => {
       .catch((err) => console.error(err));
   }, []);
 
+  // show more answers button that increments the answers to be rendred count by 2
+  const onShowMoreAnswers = (e) => {
+    e.preventDefault();
+    setAnswerCount(answerCount + 2);
+  };
+
+  const onCollapseAnswers = (e) => {
+    e.preventDefault();
+    setAnswerCount(0);
+  };
+
+  // establishes the answers that need to be rendered
+  const renderedAnswers = answers.slice(0, answerCount);
+
   return (
-    <div>
+    <div id='question'>
       <span>
         <span className="main-question">Q: {question.question_body}
         <span className="question-interactions"> Helpful?
         <a onClick={helpfulClick}>Yes(
-          {isHelpful ? question.question_helpfulness + 1 : question.question_helpfulness})</a>
+          {isHelpful
+            ? question.question_helpfulness + 1
+            : question.question_helpfulness})
+            </a>
         <a onClick={addAnswerClick}>Add Answer</a>
         </span>
         </span>
       </span>
-          {answers.length > 0 ? answers.map((answer) => <Answer key={answer.answer_id} answer={answer}/>) : ''}
+          {answers.length > 0
+            ? renderedAnswers.map((answer) => <Answer key={answer.answer_id} answer={answer}/>)
+            : ''}
       <div>
-        <button>Load More Answers</button>
+      {answerCount < answers.length
+        ? <button onClick={onShowMoreAnswers}>Load More Answers</button>
+        : <button onClick={onCollapseAnswers}>Collapse Answers</button>}
       </div>
     </div>
   );

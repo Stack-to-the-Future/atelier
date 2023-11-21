@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './QandA.css';
 
 const AddQuestion = () => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };

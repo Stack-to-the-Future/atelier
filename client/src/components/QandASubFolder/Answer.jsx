@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './QandA.css';
 
 const Answer = ({ answer }) => {
   const [report, setReport] = useState(false);
@@ -8,8 +9,7 @@ const Answer = ({ answer }) => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   // TO DO:
-  // PHOTOS??
-  // Seller sort of answers??
+  // Seller sort of answers?? -- IN BOLD
 
   // converts raw answer.date data into proper format: month, dd, yyyy
   const convertDate = () => {
@@ -58,6 +58,10 @@ const Answer = ({ answer }) => {
          Helpful? <a onClick={onHelpfulClick}>Yes
          ({helpful ? answer.helpfulness + 1 : answer.helpfulness})</a> |
           <a onClick={onReportClick}>{report ? 'Reported' : 'Report'}</a>
+      </span>
+      <span className='answer-photos'>
+      {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} key={photo.id}/>)}
+      {/* {answer.photos.map((photo) => console.log(photo.url))} */}
       </span>
     </div>
   );

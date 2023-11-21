@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import QuestionsList from './QandASubFolder/QuestionsList.jsx';
-import AddQuestion from './QandASubFolder/AddQuestionModal.jsx';
-import AddAnswer from './QandASubFolder/AddAnswerModal.jsx';
+import SearchQuestions from './QandASubFolder/SearchQuestions.jsx';
+// import AddQuestion from './QandASubFolder/AddQuestionModal.jsx';
+// import AddAnswer from './QandASubFolder/AddAnswerModal.jsx';
 import './App.css';
 
 // const id = 40346;
@@ -13,15 +14,29 @@ import './App.css';
 // switch statement for rendering -- render based on state 'addQuestion' 'addAnswer' etc...
 // useState('') -- initializing the state of the modal -- standard
 
-const QandA = () => (
+const QandA = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (e.target.value.length >= 3) {
+      setSearchTerm(e.target.value);
+    } else {
+      setSearchTerm('');
+    }
+  };
+
+  return (
     <div id='quanda'>
       <h3>
         QUESTIONS AND ANSWERS
       </h3>
-      <QuestionsList />
-      <AddQuestion />
-      <AddAnswer />
+      <SearchQuestions onSearch={onSearch} />
+      <QuestionsList searchTerm={searchTerm} />
+      {/* <AddQuestion /> */}
+      {/* <AddAnswer /> */}
     </div>
-);
+  );
+};
 
 export default QandA;
