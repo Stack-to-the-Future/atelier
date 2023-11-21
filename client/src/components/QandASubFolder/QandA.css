@@ -1,0 +1,30 @@
+
+.question-search {
+  width: 100%;
+  border-color: black;
+  border-style: solid;
+  border-width: .1rem;
+  padding: .5rem;
+  margin: .5rem;
+}
+
+.answer-photo {
+  width: 10rem;
+}
+
+#question{
+  margin: 1rem;
+}
+
+/* .main-question {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.question-interactions{
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.answer-body {
+  padding: .7rem;
+} */
