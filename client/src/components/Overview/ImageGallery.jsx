@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import VerticalCarousel from './VerticalCarousel.jsx';
 import './Overview.css';
 
 const ImageGallery = ({ photos }) => {
@@ -10,12 +13,29 @@ const ImageGallery = ({ photos }) => {
   };
 
   return (
-    <div id='overview-gallery-main'>
-      <button className='overview-gallery-btn' onClick={() => handleChangeImage(-1)}>LEFT BTN</button>
-      {
-        photos.length ? <img id='overview-gallery-img' src={photos[photoIdx].url} /> : ''
-      }
-      <button className='overview-gallery-btn' onClick={() => handleChangeImage(1)}>RIGHT BTN</button>
+    <div id="overview-gallery-main">
+      <VerticalCarousel
+        photos={photos}
+        photoIdx={photoIdx}
+        setPhotoIdx={setPhotoIdx}
+      />
+      <button
+        className="overview-gallery-btn left-btn"
+        onClick={() => handleChangeImage(-1)}
+      >
+        <FontAwesomeIcon icon={faArrowLeft} className="icon" />
+      </button>
+      {photos.length ? (
+        <img id="overview-gallery-img" src={photos[photoIdx].url} />
+      ) : (
+        ''
+      )}
+      <button
+        className="overview-gallery-btn right-btn"
+        onClick={() => handleChangeImage(1)}
+      >
+        <FontAwesomeIcon icon={faArrowRight} className="icon" />
+      </button>
     </div>
   );
 };
