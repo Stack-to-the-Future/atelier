@@ -9,6 +9,7 @@ import './App.css';
 const Overview = () => {
   const [styles, setStyles] = useState([]);
   const [product, setProduct] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState(0);
 
   const getProduct = () => {
     const url = `${process.env.URL}/products/40346`;
@@ -33,10 +34,11 @@ const Overview = () => {
       },
     })
       .then((response) => {
-        setStyles(response.data.results);
+        setStyles([...response.data.results]);
       })
       .catch((err) => console.error(err));
   };
+
   useEffect(() => {
     getProduct();
     getStyles();
@@ -48,11 +50,19 @@ const Overview = () => {
       <Announcement />
       <div id="overview-central">
         {styles.length ? (
-          <ImageGallery photos={styles[0].photos} />
+          <ImageGallery photos={styles[currentStyle].photos} />
         ) : (
           <div>Image Loading</div>
         )}
-        <ProductInformation product={product} styles={styles} />
+        <ProductInformation
+          product={product}
+          styles={styles}
+          currentStyle={currentStyle}
+          setCurrentStyle={(idx) => {
+            console.log('changing current style', idx);
+            setCurrentStyle(idx);
+          }}
+        />
       </div>
     </div>
   );
