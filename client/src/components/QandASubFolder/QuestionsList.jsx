@@ -4,6 +4,7 @@ import Question from './Question.jsx';
 
 const QuestionsList = () => {
   const [questions, setQuestions] = useState([]);
+  const [numOfQuestions, setNumOfQuestions] = useState(1);
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
@@ -21,7 +22,7 @@ const QuestionsList = () => {
   };
 
   // gets the inital batch of questions -- NEED TO MAKE SURE IT GRABS ONLY THE PROPER NUMBER
-  const questionCount = 400;
+  const questionCount = 1000;
   // const url = `${process.env.URL}/qa/questions/?product_id=${tempProductID}`;
   useEffect(() => {
     axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${tempProductID}`, headers)
@@ -29,10 +30,14 @@ const QuestionsList = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  // I need to incrementally increase the amount +2
+  let renderedQuestions = questions.slice(0, numOfQuestions);
+  console.log(renderedQuestions);
+
   return (
     <div>
       <div className="questionList-box">
-        {questions.length > 0 ? questions.map((question) => <Question key={question.question_id} question={question}/>) : ''}
+        {ren.length > 0 ? renderedQuestions.map((question) => <Question key={question.question_id} question={question}/>) : ''}
       </div>
       <div>
         <span>

@@ -33,11 +33,11 @@ const Question = ({ question }) => {
   // at the moment I'm getting all the answers, I only need two until the
   // 'Load More Answers' button is clicked!
   const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers`;
-  // useEffect(() => {
-  //   axios.get(answersURL, headers)
-  //     .then((response) => setAnswers(response.data.results))
-  //     .catch((err) => console.error(err));
-  // }, []);
+  useEffect(() => {
+    axios.get(answersURL, headers)
+      .then((response) => setAnswers(response.data.results))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div>
