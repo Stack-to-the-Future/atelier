@@ -34,8 +34,11 @@ const Stars = ({ rating }) => {
   };
 
   return (
-    <div className='stars-container'>
-      {generateStars().map((num, idx) => <Star key={idx} fill={num} />)}
+    <div className="stars-container">
+      {
+        // eslint-disable-next-line react/no-array-index-key
+      generateStars().map((num, idx) => <Star key={idx} fill={num} />)
+      }
     </div>
   );
 };

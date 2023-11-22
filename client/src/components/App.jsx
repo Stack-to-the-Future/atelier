@@ -10,7 +10,7 @@ import './App.css';
 
 // chosen product ID -- 40346
 
-function App() {
+const App = () => {
   const [products, setProducts] = useState([]);
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
@@ -28,16 +28,16 @@ function App() {
 
   return (
     <div id="app">
-    {modalStatus.name === 'question'
-      ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
-    {modalStatus.name === 'answer'
-      ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
+      {modalStatus.name === 'question'
+        ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
+      {modalStatus.name === 'answer'
+        ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
       <Overview />
       <RelatedProducts products={products} />
       <QandA setModalStatus={setModalStatus} />
       {/* <RatingsAndReviews /> */}
     </div>
   );
-}
+};
 
 export default App;

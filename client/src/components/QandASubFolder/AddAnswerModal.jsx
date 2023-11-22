@@ -34,24 +34,32 @@ const AddAnswer = ({ setModalStatus }) => {
           <div>
             <button className='modal-close' onClick={onModalClose}>X</button>
           </div>
-          <h3 className='modal-header'>
-            Submit Your Answer
-          </h3>
+            <h3 className='modal-header'>
+              Submit Your Answer
+            </h3>
             <form onSubmit={submitAnswer}>
-              <label>Your Answer (mandatory)</label>
-              <div>
-                <input type='text'></input>
-              </div>
-              <label>What is your nickname? (mandatory)</label>
-              <div>
-                <input type='text' placeholder='Example: jack543!'></input>
-              </div>
-              <label>Your email (mandatory)</label>
-              <div>
-                <input type='text' placeholder='Why did you like the product or not?'></input>
-              </div>
-              <button>Add Photos</button>
-              <button>Add Answer</button>
+              <label htmlFor="answer-body">
+          Your Answer (mandatory)
+                <div>
+                  <input type="text" />
+                </div>
+              </label>
+        <label htmlFor="answer-username">
+          What is your nickname? (mandatory)
+                <div>
+                  <input type="text" placeholder="Example: jack543!" />
+                </div>
+
+        </label>
+        <label htmlFor="answer-email">
+          Your email (mandatory)
+                <div>
+                  <input type="text" placeholder="Why did you like the product or not?" />
+                </div>
+
+        </label>
+        <button type="button">Add Photos</button>
+              <button type="button">Add Answer</button>
             </form>
         </div>
       </div>

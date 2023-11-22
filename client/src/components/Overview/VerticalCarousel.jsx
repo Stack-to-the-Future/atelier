@@ -4,13 +4,20 @@ import './Overview.css';
 const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => (
   <div id="overview-gallery-styles">
     {photos.map((photo, idx) => (
-      <img
-        src={photo.url}
-        key={idx}
+      <button
+        type="button"
+        key={`photo:${photo.url.slice(0, 3)}`}
         onClick={() => setPhotoIdx(idx)}
-        className={`overview-gallery-style ${idx === photoIdx ? 'overview-gallery-selected' : ''
-        }`}
-      />
+      >
+        <img
+          src={photo.url}
+          className={`overview-gallery-style ${idx === photoIdx ? 'overview-gallery-selected' : ''
+          }`}
+          alt={`style:${idx}`}
+        />
+
+      </button>
+
     ))}
   </div>
 );

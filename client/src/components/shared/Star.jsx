@@ -7,9 +7,9 @@ import './Common.css';
 // And display a star based on that prop
 // Today is not that day
 const Star = () => (
-    <div className='star-container' >
-        <FontAwesomeIcon icon={faStar} className='star-icon' />
-    </div>
+  <div className="star-container">
+    <FontAwesomeIcon icon={faStar} className="star-icon" />
+  </div>
 );
 
 export default Star;

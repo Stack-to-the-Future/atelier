@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Ratings = () => (<div>
+const Ratings = () => (
+  <div>
     Ratings (with stars)
-  </div>);
+  </div>
+);
 
 export default Ratings;

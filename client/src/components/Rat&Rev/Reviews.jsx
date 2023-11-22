@@ -1,10 +1,12 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 
-const Reviews = ({ reviews }) => (<div>
+const Reviews = ({ reviews }) => (
+  <div>
     {
-      reviews.map((review, idx) => <ReviewTile key={idx} review={review} />)
+      reviews.map((review) => <ReviewTile key={review.review_id} review={review} />)
     }
-  </div>);
+  </div>
+);
 
 export default Reviews;

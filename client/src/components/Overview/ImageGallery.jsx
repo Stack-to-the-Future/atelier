@@ -20,17 +20,19 @@ const ImageGallery = ({ photos }) => {
         setPhotoIdx={setPhotoIdx}
       />
       <button
+        type="button"
         className="overview-gallery-btn left-btn"
         onClick={() => handleChangeImage(-1)}
       >
         <FontAwesomeIcon icon={faArrowLeft} className="icon" />
       </button>
       {photos.length ? (
-        <img id="overview-gallery-img" src={photos[photoIdx].url} />
+        <img id="overview-gallery-img" src={photos[photoIdx].url} alt="Main Product" />
       ) : (
         ''
       )}
       <button
+        type="button"
         className="overview-gallery-btn right-btn"
         onClick={() => handleChangeImage(1)}
       >

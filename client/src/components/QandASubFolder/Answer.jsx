@@ -51,16 +51,37 @@ const Answer = ({ answer }) => {
   return (
     <div>
       <span className="answer-body">
-        { answer.body ? <p><span className='answer-a'>A:</span> {answer.body}</p> : ''}
+        { answer.body ? (
+          <p>
+            <span className="answer-a">A:</span>
+            {' '}
+            {answer.body}
+          </p>
+        ) : ''}
       </span>
-      <span className='answer-photos'>
-      {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} alt='answer photo' key={photo.id}/>)}
+      <span className="answer-photos">
+        {answer.photos.map((photo) => <img className="answer-photo" src={photo.url} alt="answer" key={photo.id} />)}
       </span>
-      <div className='answer-footer'>
-        by {answer.answerer_name}, {convertDate()} |
-         Helpful? <a onClick={onHelpfulClick}><span className='inner-link'>Yes</span>
-         ({helpful ? answer.helpfulness + 1 : answer.helpfulness})</a> |
-          <a className='inner-link' onClick={onReportClick}>{report ? 'Reported' : 'Report'}</a>
+      <div className="answer-footer">
+        by
+        {' '}
+        {answer.answerer_name}
+        ,
+        {' '}
+        {convertDate()}
+        {' '}
+        |
+        Helpful?
+        {' '}
+        <button type="button" onClick={onHelpfulClick}>
+          <span className="inner-link">Yes</span>
+          (
+          {helpful ? answer.helpfulness + 1 : answer.helpfulness}
+          )
+        </button>
+        {' '}
+        |
+        <button type="button" className="inner-link" onClick={onReportClick}>{report ? 'Reported' : 'Report'}</button>
       </div>
     </div>
   );
