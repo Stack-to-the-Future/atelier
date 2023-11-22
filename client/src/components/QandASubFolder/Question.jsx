@@ -25,8 +25,8 @@ const Question = ({ question, setModalStatus }) => {
   // triggers the modal for answers -- REFACTOR LATER (LIFT)
   const addAnswerClick = (e) => {
     e.preventDefault();
-    modal.style.display = 'block';
     setModalStatus({ name: 'answer' });
+    // alert('insert answer modal');
   };
 
   // useEffect to get the related answers - grabs all Answers and hits API once per question

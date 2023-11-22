@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './QandA.css';
+import './Modal.css';
 
 const AddAnswer = ({ setModalStatus }) => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
@@ -28,29 +28,33 @@ const AddAnswer = ({ setModalStatus }) => {
   };
 
   return (
-    <div id='modal'>
-    <div>
-      <button className='modal-close' onClick={onModalClose}>X</button>
-    </div>
-    <h3>
-      Submit Your Answer
-    </h3>
-      <form onSubmit={submitAnswer}>
-        <label>Your Answer (mandatory)</label>
-        <div>
-          <input type='text'></input>
+    <div id='modal' onClick={() => setModalStatus({ name: '' })}>
+      <div className='overlay'>
+        <div className='modal-content'>
+          <div>
+            <button className='modal-close' onClick={onModalClose}>X</button>
+          </div>
+          <h3 className='modal-header'>
+            Submit Your Answer
+          </h3>
+            <form onSubmit={submitAnswer}>
+              <label>Your Answer (mandatory)</label>
+              <div>
+                <input type='text'></input>
+              </div>
+              <label>What is your nickname? (mandatory)</label>
+              <div>
+                <input type='text' placeholder='Example: jack543!'></input>
+              </div>
+              <label>Your email (mandatory)</label>
+              <div>
+                <input type='text' placeholder='Why did you like the product or not?'></input>
+              </div>
+              <button>Add Photos</button>
+              <button>Add Answer</button>
+            </form>
         </div>
-        <label>What is your nickname? (mandatory)</label>
-        <div>
-          <input type='text' placeholder='Example: jack543!'></input>
-        </div>
-        <label>Your email (mandatory)</label>
-        <div>
-          <input type='text' placeholder='Why did you like the product or not?'></input>
-        </div>
-        <button>Add Photos</button>
-        <button>Add Answer</button>
-      </form>
+      </div>
     </div>
   );
 };

@@ -26,27 +26,15 @@ function App() {
     getProducts();
   }, []);
 
-  // switch (modalStatus.name) {
-  //   case 'question':
-  //     return <AddQuestionModal setModalStatus={setModalStatus} />;
-  //   case 'answer':
-  //     return <AddAnswerModal setModalStatus={setModalStatus}/>;
-  //   default:
-  //     return (
-  //       <div id="app">
-  //         <Overview />
-  //         <RelatedProducts products={products} />
-  //         <QandA setModalStatus={setModalStatus}/>
-  //         {/* <RatingsAndReviews /> */}
-  //       </div>
-  //     );
-  // }
-
   return (
     <div id="app">
+    {modalStatus.name === 'question'
+      ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
+    {modalStatus.name === 'answer'
+      ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
       <Overview />
       <RelatedProducts products={products} />
-      <QandA />
+      <QandA setModalStatus={setModalStatus} />
       {/* <RatingsAndReviews /> */}
     </div>
   );

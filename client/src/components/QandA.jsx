@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import QuestionsList from './QandASubFolder/QuestionsList.jsx';
 import SearchQuestions from './QandASubFolder/SearchQuestions.jsx';
-// import AddQuestion from './QandASubFolder/AddQuestionModal.jsx';
-// import AddAnswer from './QandASubFolder/AddAnswerModal.jsx';
 import './App.css';
 
 // const id = 40346;
 
 // at the moment, I've just added the forms at the bottom of the widget
 // they will need to access certain data, etc.
-
-// MODAL IDEA:
-// switch statement for rendering -- render based on state 'addQuestion' 'addAnswer' etc...
-// useState('') -- initializing the state of the modal -- standard
 
 const QandA = ({ setModalStatus }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -33,8 +27,6 @@ const QandA = ({ setModalStatus }) => {
       </h3>
       <SearchQuestions onSearch={onSearch} />
       <QuestionsList searchTerm={searchTerm} setModalStatus={setModalStatus} />
-      {/* <AddQuestion /> */}
-      {/* <AddAnswer /> */}
     </div>
   );
 };
