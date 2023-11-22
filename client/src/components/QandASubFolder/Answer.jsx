@@ -54,7 +54,7 @@ const Answer = ({ answer }) => {
         { answer.body ? <p><span className='answer-a'>A:</span> {answer.body}</p> : ''}
       </span>
       <span className='answer-photos'>
-      {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} key={photo.id}/>)}
+      {answer.photos.map((photo) => <img className='answer-photo' src={photo.url} alt='answer photo' key={photo.id}/>)}
       </span>
       <div className='answer-footer'>
         by {answer.answerer_name}, {convertDate()} |
