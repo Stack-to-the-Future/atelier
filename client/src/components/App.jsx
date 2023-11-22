@@ -26,30 +26,30 @@ function App() {
     getProducts();
   }, []);
 
-  switch (modalStatus.name) {
-    case 'question':
-      return <AddQuestionModal setModalStatus={setModalStatus} />;
-    case 'answer':
-      return <AddAnswerModal setModalStatus={setModalStatus}/>;
-    default:
-      return (
-        <div id="app">
-          <Overview />
-          <RelatedProducts products={products} />
-          <QandA setModalStatus={setModalStatus}/>
-          {/* <RatingsAndReviews /> */}
-        </div>
-      );
-  }
+  // switch (modalStatus.name) {
+  //   case 'question':
+  //     return <AddQuestionModal setModalStatus={setModalStatus} />;
+  //   case 'answer':
+  //     return <AddAnswerModal setModalStatus={setModalStatus}/>;
+  //   default:
+  //     return (
+  //       <div id="app">
+  //         <Overview />
+  //         <RelatedProducts products={products} />
+  //         <QandA setModalStatus={setModalStatus}/>
+  //         {/* <RatingsAndReviews /> */}
+  //       </div>
+  //     );
+  // }
 
-  // return (
-  //   <div id="app">
-  //     <Overview />
-  //     <RelatedProducts products={products} />
-  //     <QandA />
-  //     {/* <RatingsAndReviews /> */}
-  //   </div>
-  // );
+  return (
+    <div id="app">
+      <Overview />
+      <RelatedProducts products={products} />
+      <QandA />
+      {/* <RatingsAndReviews /> */}
+    </div>
+  );
 }
 
 export default App;

@@ -28,7 +28,7 @@ const AddAnswer = ({ setModalStatus }) => {
   };
 
   return (
-    <div>
+    <div id='modal'>
     <div>
       <button className='modal-close' onClick={onModalClose}>X</button>
     </div>

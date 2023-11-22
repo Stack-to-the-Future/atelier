@@ -25,6 +25,7 @@ const Question = ({ question, setModalStatus }) => {
   // triggers the modal for answers -- REFACTOR LATER (LIFT)
   const addAnswerClick = (e) => {
     e.preventDefault();
+    modal.style.display = 'block';
     setModalStatus({ name: 'answer' });
   };
 
