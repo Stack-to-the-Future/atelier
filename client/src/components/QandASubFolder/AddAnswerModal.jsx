@@ -28,7 +28,7 @@ const AddAnswer = ({ setModalStatus }) => {
   };
 
   return (
-    <div id='modal' onClick={() => setModalStatus({ name: '' })}>
+    <div id='modal'>
       <div className='overlay'>
         <div className='modal-content'>
           <div>
