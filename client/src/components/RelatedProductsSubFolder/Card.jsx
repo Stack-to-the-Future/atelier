@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {} from 'react';
 import './RelPro.css';
 
-const Card = ({ product, photo }) => (
+const Card = ({ product, productKey }) => {
+  console.log('ZZZZZZZ', productKey);
+
+  return (
     <button className='card-button' style={ {
       marginLeft: 15, marginBottom: 15, backgroundColor: 'lightbrown', padding: 25,
     } }>⭐️
       <br/>
       <img
-         src={`${photo}`}
+         src={product.photo}
          width="100"
          height="150"
       />
@@ -18,6 +21,7 @@ const Card = ({ product, photo }) => (
       <h4>${product.default_price}</h4>
     </button>
 
-);
+  );
+};
 
 export default Card;
