@@ -1,10 +1,7 @@
 import React, {} from 'react';
 import './RelPro.css';
 
-const Card = ({ product, productKey }) => {
-  console.log('ZZZZZZZ', productKey);
-
-  return (
+const Card = ({ product }) => (
     <button className='card-button' style={ {
       marginLeft: 15, marginBottom: 15, backgroundColor: 'lightbrown', padding: 25,
     } }>⭐️
@@ -21,7 +18,6 @@ const Card = ({ product, productKey }) => {
       <h4>${product.default_price}</h4>
     </button>
 
-  );
-};
+);
 
 export default Card;
