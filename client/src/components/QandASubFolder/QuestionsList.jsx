@@ -41,7 +41,7 @@ const QuestionsList = ({ searchTerm }) => {
 
   return (
     <div>
-      <div className="questionList-box">
+      <div className="questionlist">
         {questions.length > 0
           ? filteredQuestions.map((q) => <Question key={q.question_id} question={q}/>)
           : ''}

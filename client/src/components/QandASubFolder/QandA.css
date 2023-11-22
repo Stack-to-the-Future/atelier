@@ -16,6 +16,12 @@
 }
 
 /* QUESTION LIST */
+.questionlist{
+  height: 20rem;
+  width: 100%;
+  overflow: auto;
+}
+
 .list-bottom-buttons{
   padding: 1rem;
   margin-right: 1rem;

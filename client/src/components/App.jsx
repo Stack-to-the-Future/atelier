@@ -26,7 +26,7 @@ function App() {
       <Overview />
       <RelatedProducts products={products} />
       <QandA />
-      <RatingsAndReviews />
+      {/* <RatingsAndReviews /> */}
     </div>
   );
 }
