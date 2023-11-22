@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import './QandA.css';
+import './Modal.css';
 
-const AddAnswer = () => {
+const AddAnswer = ({ setModalStatus }) => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   const submitAnswer = (e) => {
@@ -19,37 +19,50 @@ const AddAnswer = () => {
     axios.post(`${process.env.URL}/qa/questions/646305/answers`, answerData, headers)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
+    setModalStatus({ name: '' });
+  };
+
+  const onModalClose = (e) => {
+    e.preventDefault();
+    setModalStatus({ name: '' });
   };
 
   return (
-    <div>
-      <h3>
-        Submit Your Answer
-      </h3>
-      <form onSubmit={submitAnswer}>
-        <label htmlFor="answer-body">
-          Your Answer (mandatory)
+    <div id="modal">
+      <div className="overlay">
+        <div className="modal-content">
           <div>
-            <input type="text" />
+            <button className="modal-close" type="button" onClick={onModalClose}>X</button>
           </div>
-        </label>
-        <label htmlFor="answer-username">
-          What is your nickname? (mandatory)
-          <div>
-            <input type="text" placeholder="Example: jack543!" />
-          </div>
+          <h3 className="modal-header">
+            Submit Your Answer
+          </h3>
+          <form onSubmit={submitAnswer}>
+            <label htmlFor="answer-body">
+              Your Answer (mandatory)
+              <div>
+                <input type="text" />
+              </div>
+            </label>
+            <label htmlFor="answer-username">
+              What is your nickname? (mandatory)
+              <div>
+                <input type="text" placeholder="Example: jack543!" />
+              </div>
 
-        </label>
-        <label htmlFor="answer-email">
-          Your email (mandatory)
-          <div>
-            <input type="text" placeholder="Why did you like the product or not?" />
-          </div>
+            </label>
+            <label htmlFor="answer-email">
+              Your email (mandatory)
+              <div>
+                <input type="text" placeholder="Why did you like the product or not?" />
+              </div>
 
-        </label>
-        <button type="button">Add Photos</button>
-        <button type="button">Add Answer</button>
-      </form>
+            </label>
+            <button type="button">Add Photos</button>
+            <button type="button">Add Answer</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

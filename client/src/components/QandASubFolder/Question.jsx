@@ -3,7 +3,7 @@ import axios from 'axios';
 import Answer from './Answer.jsx';
 import './QandA.css';
 
-const Question = ({ question }) => {
+const Question = ({ question, setModalStatus }) => {
   const [isHelpful, setIsHelpful] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [answerCount, setAnswerCount] = useState(2);
@@ -22,10 +22,10 @@ const Question = ({ question }) => {
       .catch((err) => console.error(err));
   };
 
-  // triggers the modal for answers - Modal functionality to be added!
+  // triggers the modal for answers -- REFACTOR LATER (LIFT)
   const addAnswerClick = (e) => {
     e.preventDefault();
-    alert('modal to be added');
+    setModalStatus({ name: 'answer' });
   };
 
   // useEffect to get the related answers - grabs all Answers and hits API once per question
