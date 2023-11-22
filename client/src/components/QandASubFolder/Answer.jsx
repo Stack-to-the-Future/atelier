@@ -48,8 +48,6 @@ const Answer = ({ answer }) => {
       .catch((err) => console.error(err));
   };
 
-  // { /* <span className='answer-a'>A:</span> */ }
-
   return (
     <div>
       <span className="answer-body">
