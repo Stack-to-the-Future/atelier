@@ -5,7 +5,6 @@ import './RelPro.css';
 
 const RelatedProductsList = ({ products }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
-  // const [relatedProducts, setRelatedProducts] = useState([]);
   const options = { headers: { Authorization: process.env.TOKEN } };
   useEffect(
     () => {

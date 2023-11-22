@@ -10,15 +10,15 @@ const Card = ({ product, productKey }) => {
     } }>⭐️
       <br/>
       <img
-         src={product[productKey].photo}
+         src={product.photo}
          width="100"
          height="150"
       />
       <br/>
-      <h4>{product[productKey].category}</h4>
+      <h4>{product.category}</h4>
       <br/>
-      <h4 className='prod-name'>{product[productKey].name}</h4>
-      <h4>${product[productKey].price}</h4>
+      <h4 className='prod-name'>{product.name}</h4>
+      <h4>${product.default_price}</h4>
     </button>
 
   );
