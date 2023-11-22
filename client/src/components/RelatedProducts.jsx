@@ -5,6 +5,7 @@ import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 
 const RelatedProducts = ({ products }) => (
     <div id='relpro'>
+      <h5 id='rel-prod-title'>RELATED PRODUCTS</h5>
       <RelatedProductsList products={products}/>
         <br/>
         <OutfitList />
