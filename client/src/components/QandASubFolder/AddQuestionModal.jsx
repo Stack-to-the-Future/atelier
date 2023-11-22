@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './QandA.css';
+import './Modal.css';
 
 const AddQuestion = ({ setModalStatus }) => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
@@ -32,32 +32,32 @@ const AddQuestion = ({ setModalStatus }) => {
           <div>
             <button className="modal-close" type="button" onClick={onModalClose}>X</button>
           </div>
-          <h3>
+          <h3 className="modal-header">
             Ask Your Question
           </h3>
           <form onSubmit={submitQuestion}>
-            <label htmlFor="question-productName">
+            <label htmlFor="question-productName" className="modal-label">
               About the (Need to insert the name of product)
               <div>
-                <input type="text" placeholder="Enter your question here" />
+                <textarea type="text" className="modal-answer" placeholder="Enter your question here" />
               </div>
 
             </label>
-            <label htmlFor="question-username">
+            <label htmlFor="question-username" className="modal-label">
               For privacy reasons, do not use your full name or email address
               <div>
-                <input type="text" placeholder="Example: jackson11!" />
+                <input type="text" className="modal-input" placeholder="Example: jackson11!" />
               </div>
 
             </label>
-            <label htmlFor="question-email">
+            <label htmlFor="question-email" className="modal-label">
               For authentication reasons you will not be emailed
               <div>
-                <input type="text" placeholder="Why did you like the product or not?" />
+                <input type="text" className="modal-input" placeholder="Why did you like the product or not?" />
               </div>
 
             </label>
-            <button type="button">Add Question</button>
+            <button className="submission" type="button">Add Question</button>
           </form>
         </div>
       </div>

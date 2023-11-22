@@ -14,21 +14,65 @@
 }
 
 .modal-content {
+  /* float: center; */
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  /* padding: 20px; */
   border: 1px solid #888;
-  width: 80%;
+  /* width: 50%; */
+  width: 40rem;
 }
 
-.close {
+.main-content{
+  margin-left: 5rem;
+}
+
+.modal-header{
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-label{
+  font-weight: 200;
+  font-size: .8rem;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+.modal-input{
+  padding: .4rem;
+  width: 80%;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.modal-answer {
+  padding: .4rem;
+  width: 80%;
+  border: solid;
+  border-color: black;
+  border-width: 1px;
+  height: 100px;
+  resize: none;
+}
+
+.submission{
+  padding: .4rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.modal-close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 1.5rem;
   font-weight: bold;
 }
-.close:hover,
-.close:focus {
+.modal-close:hover,
+.modal-close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;

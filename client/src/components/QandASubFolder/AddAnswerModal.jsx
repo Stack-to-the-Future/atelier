@@ -18,6 +18,7 @@ const AddAnswer = ({ setModalStatus }) => {
     console.log('body: ', answerData);
     axios.post(`${process.env.URL}/qa/questions/646305/answers`, answerData, headers)
       .then((response) => console.log(response))
+      // ADD AXIOS GET REQUEST TO THIS
       .catch((err) => console.error(err));
     setModalStatus({ name: '' });
   };
@@ -34,33 +35,35 @@ const AddAnswer = ({ setModalStatus }) => {
           <div>
             <button className="modal-close" type="button" onClick={onModalClose}>X</button>
           </div>
-          <h3 className="modal-header">
-            Submit Your Answer
-          </h3>
-          <form onSubmit={submitAnswer}>
-            <label htmlFor="answer-body">
-              Your Answer (mandatory)
-              <div>
-                <input type="text" />
-              </div>
-            </label>
-            <label htmlFor="answer-username">
-              What is your nickname? (mandatory)
-              <div>
-                <input type="text" placeholder="Example: jack543!" />
-              </div>
+          <div className="main-content">
+            <h3 className="modal-header">
+              Submit Your Answer
+            </h3>
+            <form onSubmit={submitAnswer}>
+              <label htmlFor="answer-body" className="modal-label">
+                Your Answer (mandatory)
+                <div>
+                  <textarea type="text" className="modal-answer" />
+                </div>
+              </label>
+              <label htmlFor="answer-username" className="modal-label">
+                What is your nickname? (mandatory)
+                <div>
+                  <input type="text" className="modal-input" placeholder="Example: jack543!" />
+                </div>
 
-            </label>
-            <label htmlFor="answer-email">
-              Your email (mandatory)
-              <div>
-                <input type="text" placeholder="Why did you like the product or not?" />
-              </div>
+              </label>
+              <label htmlFor="answer-email" className="modal-label">
+                Your email (mandatory)
+                <div>
+                  <input type="text" className="modal-input" placeholder="Why did you like the product or not?" />
+                </div>
 
-            </label>
-            <button type="button">Add Photos</button>
-            <button type="button">Add Answer</button>
-          </form>
+              </label>
+              <button className="submission" type="button">Add Photos</button>
+              <button className="submission" type="button">Add Answer</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

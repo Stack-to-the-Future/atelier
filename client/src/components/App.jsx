@@ -32,7 +32,7 @@ const App = () => {
         ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
       {modalStatus.name === 'answer'
         ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
-      <Overview />
+      {/* <Overview /> */}
       <RelatedProducts products={products} />
       <QandA setModalStatus={setModalStatus} />
       {/* <RatingsAndReviews /> */}

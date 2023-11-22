@@ -68,8 +68,8 @@ const Question = ({ question, setModalStatus }) => {
                 : question.question_helpfulness}
               )
             </button>
+            {' '}
             <button type="button" onClick={addAnswerClick}>
-              {' '}
               |
               <span className="inner-link">Add Answer</span>
               {' '}
