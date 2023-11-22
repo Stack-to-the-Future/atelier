@@ -9,7 +9,7 @@ const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => (
         key={idx}
         onClick={() => setPhotoIdx(idx)}
         className={`overview-gallery-style ${idx === photoIdx ? 'overview-gallery-selected' : ''
-          }`}
+        }`}
       />
     ))}
   </div>
