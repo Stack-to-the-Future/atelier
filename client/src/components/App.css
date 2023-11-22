@@ -64,13 +64,6 @@ table {
   flex-direction: column;
 }
 
-#overview-central {
-  width: 100%;
-  height: 30rem;
-  display: flex;
-  flex-direction: row;
-}
-
 #relpro {
   width: 100%;
   height: 40rem;
