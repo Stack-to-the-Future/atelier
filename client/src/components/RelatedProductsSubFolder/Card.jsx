@@ -2,10 +2,13 @@ import React, {} from 'react';
 import './RelPro.css';
 
 const Card = ({ product }) => (
-    <button className='card-button' style={ {
+  <div className='product-card'style={ {
+    marginLeft: 15, marginBottom: 15, backgroundColor: 'lightbrown', padding: 25,
+  } }>
+    <button style={ {
       marginLeft: 15, marginBottom: 15, backgroundColor: 'lightbrown', padding: 25,
-    } }>⭐️
-      <br/>
+    } }>⭐️  </button>
+      <br />
       <img
          src={product.photo}
          width="100"
@@ -16,7 +19,7 @@ const Card = ({ product }) => (
       <br/>
       <h4 className='prod-name'>{product.name}</h4>
       <h4>${product.default_price}</h4>
-    </button>
+  </div>
 
 );
 
