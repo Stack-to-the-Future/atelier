@@ -26,7 +26,6 @@ const Question = ({ question, setModalStatus }) => {
   const addAnswerClick = (e) => {
     e.preventDefault();
     setModalStatus({ name: 'answer' });
-    // alert('insert answer modal');
   };
 
   // useEffect to get the related answers - grabs all Answers and hits API once per question
