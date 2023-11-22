@@ -62,33 +62,68 @@
 /* ------------------------------------ IMAGE GALLERY ------------------------------------------ */
 
 #overview-gallery-main {
-  width: 100%;
+  width: 65%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }
 
 #overview-gallery-img {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
 }
 
-.overview-gallery-btn-group {
-  width: 100%;
+#overview-gallery-styles {
+  position: absolute;
+  top: 0;
+  left: 2%;
+  width: 10%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.overview-gallery-style {
+  width: 100%;
+  flex: 1;
+  margin-top: 10px;
+  border: 2px solid #525252;
+}
+
+.overview-gallery-selected {
+  border: 2px solid gold;
 }
 
 .overview-gallery-btn {
-  width: 25%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: 45%;
+}
+
+.left-btn {
+  left: 15%;
+  padding: calc(0.5rem + 2px);
+}
+
+.left-btn:hover {
+  border: 2px solid #525252;
+  padding: 0.5rem;
+}
+
+.right-btn {
+  right: 5%;
+  padding: calc(0.5rem + 2px);
+}
+
+.right-btn:hover {
+  border: 2px solid #525252;
+  padding: 0.5rem;
 }
 
 /* ------------------------------------ PRODUCT INFO ------------------------------------------- */
 
 #overview-productinfo-main {
-  width: 100%;
+  width: 35%;
   height: 100%;
   display: flex;
   flex-direction: column;
