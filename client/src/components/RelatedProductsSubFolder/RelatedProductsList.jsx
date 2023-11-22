@@ -13,7 +13,7 @@ const RelatedProductsList = ({ products }) => {
           const arr = response.data;
           setRelatedProductsId([...arr]);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.err(err));
     },
     [],
   );
