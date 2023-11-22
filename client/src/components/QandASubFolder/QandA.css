@@ -76,12 +76,12 @@
 }
 
 .answer-photo {
-  padding: 2rem;
-  width: 150px;
+  padding: 1rem;
+  width: 7rem;
 }
 
 .answer-button {
-  padding: .4rem;
+  padding: .3rem;
   font-weight: 500;
   cursor: pointer;
 }

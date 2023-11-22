@@ -3,9 +3,24 @@ import { render, fireEvent, screen } from '@testing-library/react';
 
 import QandA from '../client/src/components/QandA.jsx';
 
-describe('renders an interactive counter button', () => {
-  it('should render the counter button', () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Q AND A TESTS
+// initial test
+describe('renders title header for Q and A section', () => {
+  it('should render "QUESTIONS & ANSWERS', () => {
     render(<QandA />);
-    expect(screen.queryByText('Here is the Q and A!')).toBeFalsy();
+    expect(screen.queryByText('QUESTIONS & ANSWERS')).toBeTruthy();
   });
 });
