@@ -3,7 +3,7 @@ import axios from 'axios';
 import Question from './Question.jsx';
 import './QandA.css';
 
-const QuestionsList = ({ searchTerm }) => {
+const QuestionsList = ({ searchTerm, changeModal }) => {
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
 
@@ -16,6 +16,8 @@ const QuestionsList = ({ searchTerm }) => {
   // const actualProductID = 40346;
   const onAddQuestionClick = (e) => {
     e.preventDefault();
+    // setModalStatus('addQuestion');
+    changeModal('addQuestion');
     alert('Add Question Modal goes here!');
   };
 
@@ -41,7 +43,7 @@ const QuestionsList = ({ searchTerm }) => {
 
   return (
     <div>
-      <div className="questionList-box">
+      <div className="questionlist">
         {questions.length > 0
           ? filteredQuestions.map((q) => <Question key={q.question_id} question={q}/>)
           : ''}

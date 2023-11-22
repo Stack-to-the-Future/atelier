@@ -54,7 +54,7 @@ const Question = ({ question }) => {
     <div id='question'>
       <span>
         <span className="main-question">Q: {question.question_body}
-        <span className="question-interactions">     Helpful?
+        <span className="question-interactions"> Helpful?
         <a onClick={helpfulClick}><span className='inner-link'>Yes</span>(
           {isHelpful
             ? question.question_helpfulness + 1

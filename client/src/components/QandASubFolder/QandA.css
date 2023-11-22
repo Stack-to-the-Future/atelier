@@ -16,11 +16,19 @@
 }
 
 /* QUESTION LIST */
+.questionlist{
+  height: 20rem;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
 .list-bottom-buttons{
   padding: 1rem;
   margin-right: 1rem;
   border: 1px solid black;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 /* QUESTIONS */
@@ -45,6 +53,7 @@
   margin-left: .3rem;
   margin-right: .3rem;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /* ANSWERS */
@@ -60,8 +69,6 @@
 
 .answer-body {
   padding: .7rem;
-  /* padding-bottom: 1rem; */
-  /* margin: 1rem; */
 }
 
 .photo-box {
@@ -69,11 +76,12 @@
 }
 
 .answer-photo {
-  padding: 2rem;
-  width: 150px;
+  padding: 1rem;
+  width: 7rem;
 }
 
 .answer-button {
-  padding: .4rem;
+  padding: .3rem;
   font-weight: 500;
+  cursor: pointer;
 }
