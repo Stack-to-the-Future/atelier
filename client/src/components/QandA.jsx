@@ -14,7 +14,7 @@ import './App.css';
 // switch statement for rendering -- render based on state 'addQuestion' 'addAnswer' etc...
 // useState('') -- initializing the state of the modal -- standard
 
-const QandA = () => {
+const QandA = ({ changeModal }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const onSearch = (e) => {
@@ -32,7 +32,7 @@ const QandA = () => {
         QUESTIONS & ANSWERS
       </h3>
       <SearchQuestions onSearch={onSearch} />
-      <QuestionsList searchTerm={searchTerm} />
+      <QuestionsList searchTerm={searchTerm} changeModal={changeModal} />
       {/* <AddQuestion /> */}
       {/* <AddAnswer /> */}
     </div>
