@@ -22,10 +22,12 @@ const RatingsAndReviews = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  return (<div id='ratrev'>
-    <p>Ratings & Reviews</p>
-    <Ratings />
-    <Reviews reviews={reviews} />
-  </div>);
+  return (
+    <div id="ratrev">
+      <p>Ratings & Reviews</p>
+      <Ratings />
+      <Reviews reviews={reviews} />
+    </div>
+  );
 };
 export default RatingsAndReviews;
