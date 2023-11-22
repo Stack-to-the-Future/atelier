@@ -20,8 +20,8 @@ const RelatedProductsList = ({ products }) => {
 
   const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
   return (
-    <div id='rel-prod-list'>
-      <Carousel relatedProducts={getRelatedProducts()} products={products}/>
+    <div id="rel-prod-list">
+      <Carousel relatedProducts={getRelatedProducts()} />
     </div>
   );
 };

@@ -27,8 +27,8 @@ const QandA = ({ changeModal }) => {
   };
 
   return (
-    <div id='quanda'>
-      <h3 className='quanda-header'>
+    <div id="quanda">
+      <h3 className="quanda-header">
         QUESTIONS & ANSWERS
       </h3>
       <SearchQuestions onSearch={onSearch} />

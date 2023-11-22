@@ -45,15 +45,15 @@ const QuestionsList = ({ searchTerm, changeModal }) => {
     <div>
       <div className="questionlist">
         {questions.length > 0
-          ? filteredQuestions.map((q) => <Question key={q.question_id} question={q}/>)
+          ? filteredQuestions.map((q) => <Question key={q.question_id} question={q} />)
           : ''}
       </div>
       <div>
         <span>
-        {numOfQuestions < questions.length
-          ? <button className='list-bottom-buttons' onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
-          : ''}
-          <button className='list-bottom-buttons' onClick={onAddQuestionClick}>ADD A QUESTION +</button>
+          {numOfQuestions < questions.length
+            ? <button type="button" className="list-bottom-buttons" onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
+            : ''}
+          <button type="button" className="list-bottom-buttons" onClick={onAddQuestionClick}>ADD A QUESTION +</button>
         </span>
       </div>
     </div>

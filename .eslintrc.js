@@ -4,26 +4,26 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['airbnb-base', 'plugin:react/recommended'],
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    requireConfigFile: false,
-    babelOptions: {
-      presets: ['@babel/preset-env', '@babel/preset-react'],
-      plugins: ['@babel/plugin-transform-runtime'],
-    },
-    sourceType: 'module',
-    ecmaVersion: 6,
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'plugin:react/recommended',
+    'plugin:import/recommended',
+    'plugin:jsx-a11y/recommended',
+  ],
   settings: {
     react: {
       version: 'detect',
     },
   },
   rules: {
+    'react/function-component-definition': [
+      1,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
+    'import/extensions': 'off',
     'no-console': 0,
     'react/prop-types': 0,
     'no-alert': 'off',

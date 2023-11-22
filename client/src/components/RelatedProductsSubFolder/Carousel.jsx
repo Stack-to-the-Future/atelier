@@ -42,25 +42,25 @@ const Carousel = ({ relatedProducts }) => {
   return (
     <div id="rel-prod-carousel">
       {index > 0 ? (
-        <button onClick={() => scroll(-1)}>
+        <button type="button" onClick={() => scroll(-1)}>
           <h4>◀︎ BACK</h4>
         </button>
       ) : (
-        <div></div>
+        <div />
       )}
-      {toDisplay.slice(index, index + length).map((product, idx) => (
+      {toDisplay.slice(index, index + length).map((product) => (
         <Card
-          key={idx}
+          key={product.id}
           product={product}
           productKey={Object.keys(product)[0]}
         />
       ))}
       {index < relatedProducts.length - length ? (
-        <button onClick={() => scroll(+1)}>
+        <button type="button" onClick={() => scroll(+1)}>
           <h4>NEXT ▶︎</h4>
         </button>
       ) : (
-        <div></div>
+        <div />
       )}
     </div>
   );
