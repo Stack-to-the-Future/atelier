@@ -26,40 +26,40 @@ const AddQuestion = ({ setModalStatus }) => {
   };
 
   return (
-    <div id='modal' >
-      <div className='overlay'>
-        <div className='modal-content'>
+    <div id="modal">
+      <div className="overlay">
+        <div className="modal-content">
           <div>
-            <button className='modal-close' onClick={onModalClose}>X</button>
+            <button className="modal-close" type="button" onClick={onModalClose}>X</button>
           </div>
-            <h3>
-              Ask Your Question
-            </h3>
-            <form onSubmit={submitQuestion}>
-              <label htmlFor="question-productName">
-          About the (Need to insert the name of product)
-                <div>
-                  <input type="text" placeholder="Enter your question here" />
-                </div>
+          <h3>
+            Ask Your Question
+          </h3>
+          <form onSubmit={submitQuestion}>
+            <label htmlFor="question-productName">
+              About the (Need to insert the name of product)
+              <div>
+                <input type="text" placeholder="Enter your question here" />
+              </div>
 
-        </label>
-        <label htmlFor="question-username">
-          For privacy reasons, do not use your full name or email address
-                <div>
-                  <input type="text" placeholder="Example: jackson11!" />
-                </div>
+            </label>
+            <label htmlFor="question-username">
+              For privacy reasons, do not use your full name or email address
+              <div>
+                <input type="text" placeholder="Example: jackson11!" />
+              </div>
 
-        </label>
-        <label htmlFor="question-email">
-          For authentication reasons you will not be emailed
-                <div>
-                  <input type="text" placeholder="Why did you like the product or not?" />
-                </div>
+            </label>
+            <label htmlFor="question-email">
+              For authentication reasons you will not be emailed
+              <div>
+                <input type="text" placeholder="Why did you like the product or not?" />
+              </div>
 
-        </label>
-        <button type="button">Add Question</button>
-            </form>
-          </div>
+            </label>
+            <button type="button">Add Question</button>
+          </form>
+        </div>
       </div>
     </div>
   );

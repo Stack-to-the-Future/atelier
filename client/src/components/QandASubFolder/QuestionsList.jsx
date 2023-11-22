@@ -45,11 +45,13 @@ const QuestionsList = ({ searchTerm, setModalStatus }) => {
     <div>
       <div className="questionlist">
         {questions.length > 0
-          ? filteredQuestions.map((q) => <Question
-          key={q.question_id}
-          question={q}
-          setModalStatus={setModalStatus}
-           />)
+          ? filteredQuestions.map((q) => (
+            <Question
+              key={q.question_id}
+              question={q}
+              setModalStatus={setModalStatus}
+            />
+          ))
           : ''}
       </div>
       <div>

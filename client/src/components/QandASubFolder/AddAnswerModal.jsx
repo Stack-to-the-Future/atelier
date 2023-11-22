@@ -28,39 +28,39 @@ const AddAnswer = ({ setModalStatus }) => {
   };
 
   return (
-    <div id='modal'>
-      <div className='overlay'>
-        <div className='modal-content'>
+    <div id="modal">
+      <div className="overlay">
+        <div className="modal-content">
           <div>
-            <button className='modal-close' onClick={onModalClose}>X</button>
+            <button className="modal-close" type="button" onClick={onModalClose}>X</button>
           </div>
-            <h3 className='modal-header'>
-              Submit Your Answer
-            </h3>
-            <form onSubmit={submitAnswer}>
-              <label htmlFor="answer-body">
-          Your Answer (mandatory)
-                <div>
-                  <input type="text" />
-                </div>
-              </label>
-        <label htmlFor="answer-username">
-          What is your nickname? (mandatory)
-                <div>
-                  <input type="text" placeholder="Example: jack543!" />
-                </div>
+          <h3 className="modal-header">
+            Submit Your Answer
+          </h3>
+          <form onSubmit={submitAnswer}>
+            <label htmlFor="answer-body">
+              Your Answer (mandatory)
+              <div>
+                <input type="text" />
+              </div>
+            </label>
+            <label htmlFor="answer-username">
+              What is your nickname? (mandatory)
+              <div>
+                <input type="text" placeholder="Example: jack543!" />
+              </div>
 
-        </label>
-        <label htmlFor="answer-email">
-          Your email (mandatory)
-                <div>
-                  <input type="text" placeholder="Why did you like the product or not?" />
-                </div>
+            </label>
+            <label htmlFor="answer-email">
+              Your email (mandatory)
+              <div>
+                <input type="text" placeholder="Why did you like the product or not?" />
+              </div>
 
-        </label>
-        <button type="button">Add Photos</button>
-              <button type="button">Add Answer</button>
-            </form>
+            </label>
+            <button type="button">Add Photos</button>
+            <button type="button">Add Answer</button>
+          </form>
         </div>
       </div>
     </div>
