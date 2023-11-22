@@ -14,12 +14,6 @@ const RelatedProductsList = ({ products }) => {
           setRelatedProductsId([...arr]);
         })
         .catch((err) => console.log(err));
-      // axios.get(`${process.env.URL}/products/${product.id}/styles`, options)
-      // axios.get(`${process.env.URL}/products/40346/styles`, options)
-      //   .then((data) => {
-      //     setPhoto(data.data.results[0].photos[0].url);
-      //   })
-      //   .catch((err) => console.log(err));
     },
     [],
   );
@@ -33,5 +27,3 @@ const RelatedProductsList = ({ products }) => {
   );
 };
 export default RelatedProductsList;
-
-// <Carousel relatedProducts={getRelatedProducts()}/>
