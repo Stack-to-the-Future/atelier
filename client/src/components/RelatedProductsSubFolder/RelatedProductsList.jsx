@@ -13,15 +13,14 @@ const RelatedProductsList = ({ products }) => {
           const arr = response.data;
           setRelatedProductsId([...arr]);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.err(err));
     },
     [],
   );
 
   const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
   return (
-    <div id='rel-prod-list'>
-      <h5 id='rel-prod-title'>RELATED PRODUCTS</h5>
+    <div role='related-products' id='rel-prod-list'>
       <Carousel relatedProducts={getRelatedProducts()} />
     </div>
   );
