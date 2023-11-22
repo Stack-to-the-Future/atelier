@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './QandA.css';
 
-const AddAnswer = () => {
+const AddAnswer = ({ setModalStatus }) => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   const submitAnswer = (e) => {
@@ -19,10 +19,19 @@ const AddAnswer = () => {
     axios.post(`${process.env.URL}/qa/questions/646305/answers`, answerData, headers)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
+    setModalStatus({ name: '' });
+  };
+
+  const onModalClose = (e) => {
+    e.preventDefault();
+    setModalStatus({ name: '' });
   };
 
   return (
     <div>
+    <div>
+      <button className='modal-close' onClick={onModalClose}>X</button>
+    </div>
     <h3>
       Submit Your Answer
     </h3>

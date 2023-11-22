@@ -3,7 +3,7 @@ import axios from 'axios';
 import Question from './Question.jsx';
 import './QandA.css';
 
-const QuestionsList = ({ searchTerm, changeModal }) => {
+const QuestionsList = ({ searchTerm, setModalStatus }) => {
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
 
@@ -14,11 +14,11 @@ const QuestionsList = ({ searchTerm, changeModal }) => {
 
   // the actual product ID I will use is this:
   // const actualProductID = 40346;
+
+  // triggers the modal for questions -- REFACTOR LATER (LIFT)
   const onAddQuestionClick = (e) => {
     e.preventDefault();
-    // setModalStatus('addQuestion');
-    changeModal('addQuestion');
-    alert('Add Question Modal goes here!');
+    setModalStatus({ name: 'question' });
   };
 
   // grabs ALL of the questions from the server and stores them as state
@@ -45,7 +45,11 @@ const QuestionsList = ({ searchTerm, changeModal }) => {
     <div>
       <div className="questionlist">
         {questions.length > 0
-          ? filteredQuestions.map((q) => <Question key={q.question_id} question={q}/>)
+          ? filteredQuestions.map((q) => <Question
+          key={q.question_id}
+          question={q}
+          setModalStatus={setModalStatus}
+          />)
           : ''}
       </div>
       <div>

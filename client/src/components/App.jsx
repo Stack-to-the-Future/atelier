@@ -5,13 +5,14 @@ import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
 // import RatingsAndReviews from './RatingsAndReviews.jsx';
 import AddQuestionModal from './QandASubFolder/AddQuestionModal.jsx';
+import AddAnswerModal from './QandASubFolder/AddAnswerModal.jsx';
 import './App.css';
 
 // chosen product ID -- 40346
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [modalStatus, setModalStatus] = useState('');
+  const [modalStatus, setModalStatus] = useState({ name: '' });
 
   const getProducts = () => {
     const options = { headers: { Authorization: process.env.TOKEN } };
@@ -21,39 +22,34 @@ function App() {
     });
   };
 
-  const changeModal = (targetString) => {
-    setModalStatus(targetString);
-  };
-
   useEffect(() => {
     getProducts();
   }, []);
 
-  console.log(modalStatus);
-
-  switch (modalStatus) {
-    case 'addQuestion':
-      <AddQuestionModal />;
-      break;
-    case 'addAnswer':
-      break;
+  switch (modalStatus.name) {
+    case 'question':
+      return <AddQuestionModal setModalStatus={setModalStatus} />;
+    case 'answer':
+      return <AddAnswerModal setModalStatus={setModalStatus}/>;
     default:
-      <div id="app">
-        <Overview />
-        <RelatedProducts products={products} />
-        <QandA changeModal={changeModal}/>
-        {/* <RatingsAndReviews /> */}
-      </div>;
+      return (
+        <div id="app">
+          <Overview />
+          <RelatedProducts products={products} />
+          <QandA setModalStatus={setModalStatus}/>
+          {/* <RatingsAndReviews /> */}
+        </div>
+      );
   }
 
-  return (
-    <div id="app">
-      <Overview />
-      <RelatedProducts products={products} />
-      <QandA />
-      {/* <RatingsAndReviews /> */}
-    </div>
-  );
+  // return (
+  //   <div id="app">
+  //     <Overview />
+  //     <RelatedProducts products={products} />
+  //     <QandA />
+  //     {/* <RatingsAndReviews /> */}
+  //   </div>
+  // );
 }
 
 export default App;
