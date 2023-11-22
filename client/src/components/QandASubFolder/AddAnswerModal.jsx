@@ -1,14 +1,24 @@
 import React from 'react';
-// import axios from 'axios';
+import axios from 'axios';
+import './QandA.css';
 
 const AddAnswer = () => {
+  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
+
   const submitAnswer = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
-    console.log(e.target[2].value);
-    // build the new Answer from the values onSubmit
-    // send it in an axios post req
+    const answerData = {
+      name: e.target[0].value,
+      body: e.target[1].value,
+      email: e.target[2].value,
+      // HARDCODED
+      photos: [],
+    };
+    // THIS IS HARDCODED BUT WILL NEED ANSWER STATE!
+    console.log('body: ', answerData);
+    axios.post(`${process.env.URL}/qa/questions/646305/answers`, answerData, headers)
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
   };
 
   return (

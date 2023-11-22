@@ -35,7 +35,7 @@ const Stars = ({ rating }) => {
 
   return (
     <div className='stars-container'>
-      {generateStars().map((num, idx) => <Star key={idx} fill={num}/>)}
+      {generateStars().map((num, idx) => <Star key={idx} fill={num} />)}
     </div>
   );
 };
