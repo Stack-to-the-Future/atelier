@@ -51,29 +51,44 @@ const Question = ({ question }) => {
   const renderedAnswers = answers.slice(0, answerCount);
 
   return (
-    <div id='question'>
+    <div id="question">
       <span>
-        <span className="main-question">Q: {question.question_body}
-        <span className="question-interactions"> Helpful?
-        <a onClick={helpfulClick}><span className='inner-link'>Yes</span>(
-          {isHelpful
-            ? question.question_helpfulness + 1
-            : question.question_helpfulness})
-            </a>
-        <a onClick={addAnswerClick}> |<span className='inner-link'>Add Answer</span> </a>
-        </span>
+        <span className="main-question">
+          Q:
+          {' '}
+          {question.question_body}
+          <span className="question-interactions">
+            {' '}
+            Helpful?
+            <button type="button" onClick={helpfulClick}>
+              <span className="inner-link">Yes</span>
+              (
+              {isHelpful
+                ? question.question_helpfulness + 1
+                : question.question_helpfulness}
+              )
+            </button>
+            <button type="button" onClick={addAnswerClick}>
+              {' '}
+              |
+              <span className="inner-link">Add Answer</span>
+              {' '}
+            </button>
+          </span>
         </span>
       </span>
       <div>
-          {answers.length > 0
-            ? renderedAnswers.map((answer) => <Answer key={answer.answer_id} answer={answer}/>)
-            : ''}
+        {answers.length > 0
+          ? renderedAnswers.map((answer) => <Answer key={answer.answer_id} answer={answer} />)
+          : ''}
       </div>
-      { answers.length > 0 ? <div>
-      {answerCount < answers.length
-        ? <button className='answer-button' onClick={onShowMoreAnswers}>LOAD MORE ANSWERS</button>
-        : <button className='answer-button' onClick={onCollapseAnswers}>COLLAPSE ANSWERS</button>}
-      </div> : ''}
+      { answers.length > 0 ? (
+        <div>
+          {answerCount < answers.length
+            ? <button type="button" className="answer-button" onClick={onShowMoreAnswers}>LOAD MORE ANSWERS</button>
+            : <button type="button" className="answer-button" onClick={onCollapseAnswers}>COLLAPSE ANSWERS</button>}
+        </div>
+      ) : ''}
     </div>
   );
 };

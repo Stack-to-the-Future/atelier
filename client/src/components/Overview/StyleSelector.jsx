@@ -12,23 +12,29 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => {
   return (
     <div className="overview-styles-container">
       <div className="overview-style-title">
-        <b> STYLE &gt; </b>{' '}
+        <b> STYLE &gt; </b>
+        {' '}
         {styles[currentStyle] ? styles[currentStyle].name : ''}
       </div>
       <div className="overview-styles-images">
         {styles[0]
           && getArr().map((url, idx) => (url ? (
+            <button
+              type="button"
+              className={`overview-styles-image ${idx === currentStyle ? 'selected' : ''
+              }`}
+              onClick={() => {
+                setCurrentStyle(idx);
+              }}
+              key={`styles${url.slice(0, 3)}`}
+            >
               <img
-                className={`overview-styles-image ${idx === currentStyle ? 'selected' : ''
-                }`}
                 src={url}
-                key={idx}
-                onClick={() => {
-                  setCurrentStyle(idx);
-                }}
+                alt={`style:${idx}`}
               />
+            </button>
           ) : (
-              <div className="overview-styles-image" key={idx}></div>
+            <div className="overview-styles-image" key="styles" />
           )))}
       </div>
     </div>

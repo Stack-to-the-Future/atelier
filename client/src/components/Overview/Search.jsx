@@ -10,7 +10,7 @@ const Search = () => (
       <FontAwesomeIcon icon={faHandSpock} />
     </div>
     <div id="overview-search-searchbar">
-      <input id="overview-search-input" placeholder=""></input>
+      <input id="overview-search-input" placeholder="" />
       <FontAwesomeIcon icon={faMagnifyingGlass} />
     </div>
   </div>

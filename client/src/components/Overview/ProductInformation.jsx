@@ -23,7 +23,10 @@ const ProductInformation = ({
       <div>{product.category}</div>
       <h1 className="overview-product-title">{product.name}</h1>
     </div>
-    <div className="overview-product-price">${product.default_price}</div>
+    <div className="overview-product-price">
+      $
+      {product.default_price}
+    </div>
     <StyleSelector
       styles={styles}
       currentStyle={currentStyle}

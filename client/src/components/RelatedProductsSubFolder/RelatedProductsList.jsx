@@ -20,7 +20,7 @@ const RelatedProductsList = ({ products }) => {
 
   const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
   return (
-    <div role='related-products' id='rel-prod-list'>
+    <div id="rel-prod-list">
       <Carousel relatedProducts={getRelatedProducts()} />
     </div>
   );
