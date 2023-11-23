@@ -59,7 +59,6 @@ const Overview = () => {
           styles={styles}
           currentStyle={currentStyle}
           setCurrentStyle={(idx) => {
-            console.log('changing current style', idx);
             setCurrentStyle(idx);
           }}
         />
