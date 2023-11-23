@@ -30,10 +30,16 @@ const App = () => {
 
   return (
     <div id="app">
-      {modalStatus.name === 'question'
-        ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
-      {modalStatus.name === 'answer'
-        ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
+      {modalStatus.name === 'question' ? (
+        <AddQuestionModal setModalStatus={setModalStatus} />
+      ) : (
+        ''
+      )}
+      {modalStatus.name === 'answer' ? (
+        <AddAnswerModal setModalStatus={setModalStatus} />
+      ) : (
+        ''
+      )}
       <Overview />
       <RelatedProducts
         products={products}
