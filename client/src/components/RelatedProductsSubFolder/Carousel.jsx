@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card.jsx';
 
-const Carousel = ({ relatedProducts }) => {
+const Carousel = ({ relatedProducts, changeModal }) => {
   const length = 3;
   const [index, setIndex] = useState(0);
   const [toDisplay, setToDisplay] = useState([]);
@@ -50,9 +50,10 @@ const Carousel = ({ relatedProducts }) => {
       )}
       {toDisplay.slice(index, index + length).map((product) => (
         <Card
-          key={product.id}
+          key={product.id + index}
           product={product}
           productKey={Object.keys(product)[0]}
+          changeModal={changeModal}
         />
       ))}
       {index < relatedProducts.length - length ? (

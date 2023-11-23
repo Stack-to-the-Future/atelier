@@ -5,6 +5,7 @@ import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
 // import RatingsAndReviews from './RatingsAndReviews.jsx';
 import AddQuestionModal from './QandASubFolder/AddQuestionModal.jsx';
+import ComparingModal from './RelatedProductsSubFolder/ComparingModal.jsx';
 import './App.css';
 
 // chosen product ID -- 40346
@@ -37,10 +38,13 @@ const App = () => {
       break;
     case 'addAnswer':
       break;
+    case 'comparing':
+  <ComparingModal />;
+      break;
     default:
   <div id="app">
     <Overview />
-    <RelatedProducts products={products} />
+    <RelatedProducts products={products} changeModal={changeModal} />
     <QandA changeModal={changeModal} />
     {/* <RatingsAndReviews /> */}
   </div>;
@@ -48,7 +52,7 @@ const App = () => {
 
   return (
     <div id="app">
-      <Overview />
+      {/* <Overview /> */}
       <RelatedProducts products={products} />
       <QandA />
       {/* <RatingsAndReviews /> */}

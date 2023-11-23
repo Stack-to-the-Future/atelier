@@ -23,15 +23,25 @@
 }
 
 .product-card {
-  height: 100%;
+  height: 85%;
   width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
+  background-Color: rgb(238, 236, 236);
 }
 
 .prod-name {
   width: 100%;
   font-size: 1rem;
   text-align: left;
+}
+
+.prod-image {
+  width: 60%;
+  height: 65%;
+}
+
+.card-button {
+  text-align: right;
 }

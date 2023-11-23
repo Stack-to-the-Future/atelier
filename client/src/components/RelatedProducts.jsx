@@ -3,10 +3,10 @@ import React, {} from 'react';
 import RelatedProductsList from './RelatedProductsSubFolder/RelatedProductsList.jsx';
 import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 
-const RelatedProducts = ({ products }) => (
+const RelatedProducts = ({ products, changeModal }) => (
   <div id="relpro">
     <h5 id="rel-prod-title">RELATED PRODUCTS</h5>
-    <RelatedProductsList products={products} />
+    <RelatedProductsList changeModal={changeModal} products={products} />
     <br />
     <OutfitList />
   </div>
