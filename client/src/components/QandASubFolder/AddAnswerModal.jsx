@@ -8,8 +8,8 @@ const AddAnswer = ({ setModalStatus }) => {
   const submitAnswer = (e) => {
     e.preventDefault();
     const answerData = {
-      name: e.target[0].value,
-      body: e.target[1].value,
+      name: e.target[1].value,
+      body: e.target[0].value,
       email: e.target[2].value,
       // HARDCODED
       photos: [],
@@ -61,7 +61,7 @@ const AddAnswer = ({ setModalStatus }) => {
 
               </label>
               <button className="submission" type="button">Add Photos</button>
-              <button className="submission" type="button">Add Answer</button>
+              <button className="submission" type="button" onClick={submitAnswer}>Add Answer</button>
             </form>
           </div>
         </div>
