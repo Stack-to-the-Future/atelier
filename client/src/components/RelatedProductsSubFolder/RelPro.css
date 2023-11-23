@@ -45,3 +45,14 @@
 .card-button {
   text-align: right;
 }
+
+.product-modal {
+  height: 20rem;
+  width: 50%;
+  background-color: rgb(246, 255, 254);
+  border: 2px solid rgb(51, 213, 102);
+}
+
+.close-modal {
+  text-align: right;
+}
