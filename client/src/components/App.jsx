@@ -5,6 +5,7 @@ import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
 // import RatingsAndReviews from './RatingsAndReviews.jsx';
 import AddQuestionModal from './QandASubFolder/AddQuestionModal.jsx';
+import AddAnswerModal from './QandASubFolder/AddAnswerModal.jsx';
 import ComparingModal from './RelatedProductsSubFolder/ComparingModal.jsx';
 import './App.css';
 
@@ -12,7 +13,7 @@ import './App.css';
 
 const App = () => {
   const [products, setProducts] = useState([]);
-  const [modalStatus, setModalStatus] = useState('');
+  const [modalStatus, setModalStatus] = useState({ name: '' });
 
   const getProducts = () => {
     const options = { headers: { Authorization: process.env.TOKEN } };
@@ -22,39 +23,19 @@ const App = () => {
     });
   };
 
-  const changeModal = (targetString) => {
-    setModalStatus(targetString);
-  };
-
   useEffect(() => {
     getProducts();
   }, []);
 
-  console.log(modalStatus);
-
-  switch (modalStatus) {
-    case 'addQuestion':
-  <AddQuestionModal />;
-      break;
-    case 'addAnswer':
-      break;
-    case 'comparing':
-  <ComparingModal />;
-      break;
-    default:
-  <div id="app">
-    <Overview />
-    <RelatedProducts products={products} changeModal={changeModal} />
-    <QandA changeModal={changeModal} />
-    {/* <RatingsAndReviews /> */}
-  </div>;
-  }
-
   return (
     <div id="app">
-      {/* <Overview /> */}
+      {modalStatus.name === 'question'
+        ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
+      {modalStatus.name === 'answer'
+        ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
+      <Overview />
       <RelatedProducts products={products} />
-      <QandA />
+      <QandA setModalStatus={setModalStatus} />
       {/* <RatingsAndReviews /> */}
     </div>
   );
