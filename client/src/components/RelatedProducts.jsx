@@ -3,10 +3,14 @@ import React, {} from 'react';
 import RelatedProductsList from './RelatedProductsSubFolder/RelatedProductsList.jsx';
 import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 
-const RelatedProducts = ({ products, changeModal }) => (
+const RelatedProducts = ({ products, setModalStatus, setCompaired }) => (
   <div id="relpro">
     <h5 id="rel-prod-title">RELATED PRODUCTS</h5>
-    <RelatedProductsList changeModal={changeModal} products={products} />
+    <RelatedProductsList
+      setModalStatus={setModalStatus}
+      products={products}
+      setCompaired={setCompaired}
+    />
     <br />
     <OutfitList />
   </div>

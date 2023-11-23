@@ -13,6 +13,7 @@ import './App.css';
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
   const getProducts = () => {
@@ -34,7 +35,12 @@ const App = () => {
       {modalStatus.name === 'answer'
         ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
       <Overview />
-      <RelatedProducts products={products} />
+      <RelatedProducts
+        products={products}
+        setModalStatus={setModalStatus}
+        setCompaired={setCompaired}
+      />
+      {modalStatus.name === 'comparing' && <ComparingModal setModalStatus={setModalStatus} products={products} compairedProduct={compaired} />}
       <QandA setModalStatus={setModalStatus} />
       {/* <RatingsAndReviews /> */}
     </div>

@@ -1,11 +1,12 @@
 import React, {} from 'react';
 
-const ComparingModal = ({ product, products }) => {
+const ComparingModal = ({ product, products, setModalStatus }) => {
   // const [modalStatus, setModalStatus] = useState(false);
   console.log('');
   return (
     <div>
       <h3>Comparing</h3>
+      <button className="close-modal" type="button" onClick={() => { setModalStatus({ name: '' }); }}>❌</button>
       <table className="product-modal">
 
         <tr>
