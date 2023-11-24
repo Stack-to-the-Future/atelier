@@ -30,8 +30,8 @@ const App = () => {
   }, []);
 
   console.log(showModal);
-  console.log(compaired);
-  console.log(products[0]);
+  console.log('compaired prod::', compaired);
+  console.log('main prod::', products[2]);
 
   return (
     <div id="app">
@@ -51,7 +51,7 @@ const App = () => {
           <ComparingModal
             setShowModal={setShowModal}
             products={products}
-            compairedProduct={compaired}
+            compaired={compaired}
           />
         )
         : (

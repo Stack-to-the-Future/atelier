@@ -46,11 +46,23 @@
   text-align: right;
 }
 
-.product-modal {
+/* .product-modal {
   height: 20rem;
   width: 50%;
-  background-color: rgb(246, 255, 254);
-  border: 2px solid rgb(51, 213, 102);
+  background-color: rgb(246, 248, 255);
+  border: 2px solid rgb(51, 191, 213);
+} */
+
+.product-modal {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  position:relative;
+  width: 35%;
+  height: 70%;
+  overflow: auto;
+  background-color: rgb(235, 243, 247);
+
 }
 
 .close-modal {

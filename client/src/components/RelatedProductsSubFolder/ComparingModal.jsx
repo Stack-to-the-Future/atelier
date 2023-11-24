@@ -1,6 +1,6 @@
 import React, {} from 'react';
 
-const ComparingModal = ({ product, products, setShowModal }) => {
+const ComparingModal = ({ compaired, products, setShowModal }) => {
   // const [modalStatus, setModalStatus] = useState(false);
   console.log('');
   return (
@@ -10,18 +10,18 @@ const ComparingModal = ({ product, products, setShowModal }) => {
       <table className="table-modal">
         <thead>
           <tr>
-            <th>Related-Product</th>
-            <th>Feature</th>
-            <th>Main Product</th>
+            <th>{products[2].name}</th>
+            <th>{'    VS   '}</th>
+            <th>{compaired.name}</th>
           </tr>
         </thead>
         <br />
         <tbody>
           <tr>
-            <td>relPro-feature</td>
-            <td>  </td>
+            <td>{products[2].category}</td>
+            <td> category </td>
             <td>
-              main-prod feature
+              {compaired.category}
             </td>
           </tr>
         </tbody>
