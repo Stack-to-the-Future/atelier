@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React, {} from 'react';
 import './RelPro.css';
 
 const Card = ({ product, setShowModal, setCompaired }) => {
   const handleButtonClick = () => {
     setShowModal(true);
-  };
-  useEffect(() => {
     setCompaired(product);
-  }, []);
+  };
 
   return (
     <div
