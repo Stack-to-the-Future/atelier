@@ -13,7 +13,7 @@ const App = () => {
   const [productInfo, setProductInfo] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
-  // could be passed down
+  // could be passed down?
   const options = { headers: { Authorization: process.env.TOKEN } };
   const getProducts = () => {
     axios.get(`${process.env.URL}/products`, options).then((data) => {
@@ -26,14 +26,13 @@ const App = () => {
     getProducts();
   }, []);
 
-  // make initial product API call here
+  // make initial product API call here -- Ming can pass as prop
   const url = `${process.env.URL}/products/40346`;
   useEffect(() => {
     axios.get(url, options)
       .then((response) => setProductInfo(response.data))
       .catch((error) => console.log(error));
   }, []);
-  console.log(productInfo);
 
   return (
     <div id="app">
@@ -43,7 +42,6 @@ const App = () => {
         setModalStatus={setModalStatus}
         modalStatus={modalStatus}
         productName={productInfo.name}
-        productId={productInfo.id}
       />
       {/* <RatingsAndReviews /> */}
     </div>

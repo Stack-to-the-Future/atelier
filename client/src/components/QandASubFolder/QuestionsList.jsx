@@ -5,7 +5,7 @@ import AddQuestionModal from './AddQuestionModal.jsx';
 import './QandA.css';
 
 const QuestionsList = ({
-  searchTerm, setModalStatus, modalStatus, productName, productId
+  searchTerm, setModalStatus, modalStatus, productName,
 }) => {
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
@@ -15,7 +15,6 @@ const QuestionsList = ({
   // this is a temp value to work from = there are questions and answers associated with this id
   // const tempProductID = 40348;
 
-  console.log(productId);
   // the actual product ID I will use is this:
   const actualProductID = 40346;
 
