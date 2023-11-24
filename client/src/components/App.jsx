@@ -4,18 +4,18 @@ import Overview from './Overview.jsx';
 import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
 // import RatingsAndReviews from './RatingsAndReviews.jsx';
-import AddQuestionModal from './QandASubFolder/AddQuestionModal.jsx';
-import AddAnswerModal from './QandASubFolder/AddAnswerModal.jsx';
 import './App.css';
 
 // chosen product ID -- 40346
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [productInfo, setProductInfo] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
+  // could be passed down
+  const options = { headers: { Authorization: process.env.TOKEN } };
   const getProducts = () => {
-    const options = { headers: { Authorization: process.env.TOKEN } };
     axios.get(`${process.env.URL}/products`, options).then((data) => {
       const all = data.data;
       setProducts([...all]);
@@ -26,15 +26,25 @@ const App = () => {
     getProducts();
   }, []);
 
+  // make initial product API call here
+  const url = `${process.env.URL}/products/40346`;
+  useEffect(() => {
+    axios.get(url, options)
+      .then((response) => setProductInfo(response.data))
+      .catch((error) => console.log(error));
+  }, []);
+  console.log(productInfo);
+
   return (
     <div id="app">
-      {modalStatus.name === 'question'
-        ? <AddQuestionModal setModalStatus={setModalStatus} /> : ''}
-      {modalStatus.name === 'answer'
-        ? <AddAnswerModal setModalStatus={setModalStatus} /> : ''}
-      {/* <Overview /> */}
+      <Overview />
       <RelatedProducts products={products} />
-      <QandA setModalStatus={setModalStatus} />
+      <QandA
+        setModalStatus={setModalStatus}
+        modalStatus={modalStatus}
+        productName={productInfo.name}
+        productId={productInfo.id}
+      />
       {/* <RatingsAndReviews /> */}
     </div>
   );

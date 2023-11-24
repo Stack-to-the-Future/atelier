@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Answer from './Answer.jsx';
+import AddAnswerModal from './AddAnswerModal';
 import './QandA.css';
 
-const Question = ({ question, setModalStatus }) => {
+const Question = ({
+  question, setModalStatus, modalStatus, productName,
+}) => {
   const [isHelpful, setIsHelpful] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [answerCount, setAnswerCount] = useState(2);
@@ -52,6 +55,7 @@ const Question = ({ question, setModalStatus }) => {
 
   return (
     <div id="question">
+      {modalStatus.name === 'answer' ? <AddAnswerModal setModalStatus={setModalStatus} question={question.question_body} productName={productName} /> : ''}
       <span>
         <span className="main-question">
           Q:
@@ -79,7 +83,14 @@ const Question = ({ question, setModalStatus }) => {
       </span>
       <div>
         {answers.length > 0
-          ? renderedAnswers.map((answer) => <Answer key={answer.answer_id} answer={answer} />)
+          ? renderedAnswers.map((answer) => (
+            <Answer
+              key={answer.answer_id}
+              answer={answer}
+              setModalStatus={setModalStatus}
+              modalStatus={modalStatus}
+            />
+          ))
           : ''}
       </div>
       { answers.length > 0 ? (

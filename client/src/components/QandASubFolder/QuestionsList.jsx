@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Question from './Question.jsx';
+import AddQuestionModal from './AddQuestionModal.jsx';
 import './QandA.css';
 
-const QuestionsList = ({ searchTerm, setModalStatus }) => {
+const QuestionsList = ({
+  searchTerm, setModalStatus, modalStatus, productName, productId
+}) => {
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   // this is a temp value to work from = there are questions and answers associated with this id
-  const tempProductID = 40348;
+  // const tempProductID = 40348;
 
+  console.log(productId);
   // the actual product ID I will use is this:
-  // const actualProductID = 40346;
+  const actualProductID = 40346;
 
   // triggers the modal for questions -- REFACTOR LATER (LIFT)
   const onAddQuestionClick = (e) => {
@@ -24,7 +28,7 @@ const QuestionsList = ({ searchTerm, setModalStatus }) => {
   // grabs ALL of the questions from the server and stores them as state
   const questionCount = 1000;
   useEffect(() => {
-    axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${tempProductID}`, headers)
+    axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${actualProductID}`, headers)
       .then((response) => setQuestions(response.data.results))
       .catch((err) => console.error(err));
   }, []);
@@ -43,6 +47,7 @@ const QuestionsList = ({ searchTerm, setModalStatus }) => {
 
   return (
     <div>
+      {modalStatus.name === 'question' ? <AddQuestionModal setModalStatus={setModalStatus} productName={productName} /> : ''}
       <div className="questionlist">
         {questions.length > 0
           ? filteredQuestions.map((q) => (
@@ -50,6 +55,8 @@ const QuestionsList = ({ searchTerm, setModalStatus }) => {
               key={q.question_id}
               question={q}
               setModalStatus={setModalStatus}
+              modalStatus={modalStatus}
+              productName={productName}
             />
           ))
           : ''}
