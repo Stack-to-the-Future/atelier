@@ -54,6 +54,7 @@ const App = () => {
         products={products}
         setModalStatus={setModalStatus}
         setCompaired={setCompaired}
+        setProductInfo={setProductInfo}
       />
       <QandA
         setModalStatus={setModalStatus}

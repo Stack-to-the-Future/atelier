@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card.jsx';
 
-const Carousel = ({ relatedProducts, setModalStatus, setCompaired }) => {
+const Carousel = ({
+  relatedProducts, setModalStatus, setCompaired, setProductInfo,
+}) => {
   const length = 3;
   const [index, setIndex] = useState(0);
   const [toDisplay, setToDisplay] = useState([]);
@@ -55,6 +57,7 @@ const Carousel = ({ relatedProducts, setModalStatus, setCompaired }) => {
           productKey={Object.keys(product)[0]}
           setModalStatus={setModalStatus}
           setCompaired={setCompaired}
+          setProductInfo={setProductInfo}
         />
       ))}
       {index < relatedProducts.length - length ? (
