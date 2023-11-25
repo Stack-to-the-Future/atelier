@@ -43,7 +43,7 @@ const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
     setModalStatus({ name: '' });
   };
 
-  console.log(question);
+  console.log(questionId);
 
   // shared with other modal!
   const modalFunctions = {
