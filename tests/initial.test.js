@@ -21,7 +21,11 @@ import RelatedProducts from '../client/src/components/RelatedProducts.jsx';
 // initial test
 describe('renders title header for Q and A section', () => {
   it('should render "QUESTIONS & ANSWERS', () => {
-    render(<QandA />);
+    render(<QandA
+      setModalStatus={() => {}}
+      modalStatus={{name: ''}}
+      productName={'fake data baby!'}
+      />);
     expect(screen.queryByText('QUESTIONS & ANSWERS')).toBeTruthy();
   });
 });
