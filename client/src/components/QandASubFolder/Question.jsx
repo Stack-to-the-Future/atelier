@@ -53,6 +53,10 @@ const Question = ({
   // establishes the answers that need to be rendered
   const renderedAnswers = answers.slice(0, answerCount);
 
+  if (modalStatus.name === 'answer') {
+    console.log(question.question_id);
+  }
+
   return (
     <div id="question">
       {modalStatus.name === 'answer'
