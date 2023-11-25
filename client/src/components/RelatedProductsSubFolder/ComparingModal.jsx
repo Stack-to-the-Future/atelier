@@ -6,7 +6,7 @@ const ComparingModal = ({ compaired, products, setModalStatus }) => {
   const [compairedProductFeatures, setCompairedProductFeatures] = useState([]);
   const [combinedFeatures, setCombinedFeatures] = useState([]);
 
-  // when modal mounts
+  // On Mount
   useEffect(() => {
     const getProductsFeatures = () => {
       const options = { headers: { Authorization: process.env.TOKEN } };
@@ -33,21 +33,17 @@ const ComparingModal = ({ compaired, products, setModalStatus }) => {
     setCombinedFeatures([...filteredCombination]);
   }, [mainProductFeatures, compairedProductFeatures]);
 
-  const styles = {
-    border: '1px solid rgba(0, 0, 0, 0.1)',
-  };
-
   return (
     <div className="product-modal">
       <h3>Comparing</h3>
       <button className="close-modal" type="button" onClick={() => { setModalStatus({ name: '' }); }}> X </button>
-      <div className="modal">
+      <div className="table-modal">
         <table className="table-modal">
-          <thead style={styles}>
+          <thead className="table-modal">
             <tr>
-              <th style={styles}>{products[2].name}</th>
-              <th style={styles}>{'   VS   '}</th>
-              <th style={styles}>{compaired.name}</th>
+              <th className="table-modal">{products[2].name}</th>
+              <th className="table-modal">{'   VS   '}</th>
+              <th className="table-modal">{compaired.name}</th>
             </tr>
           </thead>
 
@@ -71,6 +67,7 @@ const ComparingModal = ({ compaired, products, setModalStatus }) => {
                 {compaired.default_price}
               </td>
             </tr>
+            {/* TODO (review stars) */}
 
             {/* <tr>
               <td>{products[2].reviews}</td>
@@ -85,9 +82,9 @@ const ComparingModal = ({ compaired, products, setModalStatus }) => {
               const cTemp = compairedProductFeatures.filter((x) => (x.feature === detail.feature));
               return (
                 <tr key={detail.value + detail.id}>
-                  <td style={styles}>{mTemp[0] ? mTemp[0].value : '-' }</td>
-                  <td style={styles}>{detail.feature}</td>
-                  <td style={styles}>{cTemp[0] ? cTemp[0].value : '-' }</td>
+                  <td className="table-modal">{mTemp[0] ? mTemp[0].value : '-' }</td>
+                  <td className="table-modal">{detail.feature}</td>
+                  <td className="table-modal">{cTemp[0] ? cTemp[0].value : '-' }</td>
                 </tr>
               );
             })}
