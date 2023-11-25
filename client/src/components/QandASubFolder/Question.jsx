@@ -55,7 +55,15 @@ const Question = ({
 
   return (
     <div id="question">
-      {modalStatus.name === 'answer' ? <AddAnswerModal setModalStatus={setModalStatus} question={question.question_body} productName={productName} /> : ''}
+      {modalStatus.name === 'answer'
+        ? (
+          <AddAnswerModal
+            setModalStatus={setModalStatus}
+            question={question.question_body}
+            productName={productName}
+            questionId={question.question_id}
+          />
+        ) : ''}
       <span>
         <span className="main-question">
           Q:

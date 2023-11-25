@@ -42,6 +42,7 @@ const App = () => {
         setModalStatus={setModalStatus}
         modalStatus={modalStatus}
         productName={productInfo.name}
+        productId={40348}
       />
       {/* <RatingsAndReviews /> */}
     </div>

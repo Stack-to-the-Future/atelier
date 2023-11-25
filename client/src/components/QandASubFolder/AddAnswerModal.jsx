@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Modal.css';
 
-const AddAnswer = ({ setModalStatus, question, productName }) => {
+const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
   const [body, setBody] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  // const [photos, setPhotos] = useState([]);
+  const [photos, setPhotos] = useState([]);
   const [showPhotoForm, showSetPhotoForm] = useState(false);
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
@@ -19,6 +19,7 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
   // handle submission
   // append photos to the photos state (reset onsubmission)
   //
+  // console.log('question: ', question);
 
   const submitAnswer = (e) => {
     e.preventDefault();
@@ -27,13 +28,13 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
       body,
       email,
       // HARDCODED
-      photos: [],
+      // photos: [],
       // ACTUAL
-      // photos,
+      photos: [],
     };
     // THIS IS HARDCODED BUT WILL NEED ANSWER STATE!
     // HARDCODED TO ONLY REPLY TO FIRST QUESTION!
-    axios.post(`${process.env.URL}/qa/questions/646305/answers`, answerData, headers)
+    axios.post(`${process.env.URL}/qa/questions/${questionId}/answers`, answerData, headers)
       .then((response) => console.log(response))
       // ADD AXIOS GET REQUEST TO THIS
       // how do I do this?? -- talk to the guys about lifting the questions call to the app comp
@@ -41,6 +42,8 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
       .catch((err) => console.error(err));
     setModalStatus({ name: '' });
   };
+
+  console.log(question);
 
   // shared with other modal!
   const modalFunctions = {
@@ -57,6 +60,10 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
     emailChange: (e) => {
       setEmail(e.target.value);
     },
+    photosChange: (e) => {
+      e.preventDefault();
+      console.log(e.target.value);
+    },
   };
 
   return (
@@ -66,7 +73,7 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
           <div id="modal">
             <div className="overlay">
               <div className="modal-content">
-                <form>
+                <form onSubmit={modalFunctions.photosChange}>
                   {/* <label htmlFor="answer-img">Select image:</label>
                   <input type="file" id="img" name="img" accept="image/*" /> */}
                   <p>Select image: </p>
