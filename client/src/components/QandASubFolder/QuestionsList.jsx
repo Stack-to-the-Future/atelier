@@ -45,6 +45,7 @@ const QuestionsList = ({
           <AddQuestionModal
             setModalStatus={setModalStatus}
             productName={productName}
+            productId={productId}
           />
         )
         : ''}

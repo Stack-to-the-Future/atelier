@@ -15,15 +15,20 @@ const AddAnswer = ({
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   // TO DO:
-  // NEED PRODUCT DATA FROM APP
-  // NEED QUESTION DATA
 
-  // PHOTO FORM:
-  // handle submission
-  // append photos to the photos state (reset onsubmission)
+  const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
   const submitAnswer = (e) => {
     e.preventDefault();
+    if (!emailRegex.test(email)) {
+      alert('You must enter valid email');
+      setEmail('');
+      return;
+    }
+    if (username === '' || body === '') {
+      alert('You must enter username/body');
+      return;
+    }
     const answerData = {
       name: username,
       body,
@@ -32,7 +37,7 @@ const AddAnswer = ({
     };
     axios.post(`${process.env.URL}/qa/questions/${questionId}/answers`, answerData, headers)
       .then((response) => console.log(response))
-      // ADD AXIOS GET REQUEST TO THIS
+      // ADD AXIOS GET REQUEST TO THIS TO RERENDER LIST?
       .catch((err) => console.error(err));
     setModalStatus({ name: '', data: '' });
   };
@@ -73,7 +78,7 @@ const AddAnswer = ({
                 </div>
                 <div className="main-content">
                   <span className="answer-photos">
-                    {photos.map((img, index) => <img className="answer-photo" src={img} alt="answer" key={index} />)}
+                    {photos.map((img) => <img className="answer-photo" src={img} alt="answer" key={img} />)}
                   </span>
                   <form>
                     <p>Select image: </p>
@@ -140,18 +145,7 @@ const AddAnswer = ({
           </div>
         )}
     </div>
-
   );
 };
 
 export default AddAnswer;
-
-// 1.3.6.5. Submit answer (button)
-// A button by which the answer can be submitted.
-// Upon selecting this button the form’s inputs should be validated.
-// If there are any invalid entries, the submission should be prevented, and a
-// warning message will appear. This message should be titled “You must enter the following:”
-// This error will occur if:
-// Any mandatory fields are blank
-// The email address provided is not in correct email format
-// The images selected are invalid or unable to be uploaded.
