@@ -4,19 +4,6 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import QandA from '../client/src/components/QandA.jsx';
 import RelatedProducts from '../client/src/components/RelatedProducts.jsx';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Q AND A TESTS
 // initial test
 describe('renders title header for Q and A section', () => {

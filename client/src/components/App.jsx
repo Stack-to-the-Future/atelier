@@ -13,7 +13,7 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [productInfo, setProductInfo] = useState({});
   const [compaired, setCompaired] = useState({});
-  const [modalStatus, setModalStatus] = useState({ name: '' });
+  const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
 
   // could be passed down?
   const options = { headers: { Authorization: process.env.TOKEN } };

@@ -28,7 +28,7 @@ const Question = ({
   // triggers the modal for answers -- REFACTOR LATER (LIFT)
   const addAnswerClick = (e) => {
     e.preventDefault();
-    setModalStatus({ name: 'answer' });
+    setModalStatus({ name: 'answer', data: `${question.question_id}` });
   };
 
   // useEffect to get the related answers - grabs all Answers and hits API once per question
@@ -51,15 +51,15 @@ const Question = ({
   };
 
   // establishes the answers that need to be rendered
-  const renderedAnswers = answers.slice(0, answerCount);
-
-  if (modalStatus.name === 'answer') {
-    console.log(question.question_id);
-  }
+  const workingAnswers = answers.slice();
+  // loop throught he array and if the answer isn't from seller push, otherwise add it to the front
+  const sellerFirst = [];
+  workingAnswers.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
+  const renderList = sellerFirst.slice(0, answerCount);
 
   return (
     <div id="question">
-      {modalStatus.name === 'answer'
+      {modalStatus.name === 'answer' && modalStatus.data === `${question.question_id}`
         ? (
           <AddAnswerModal
             setModalStatus={setModalStatus}
@@ -95,7 +95,7 @@ const Question = ({
       </span>
       <div>
         {answers.length > 0
-          ? renderedAnswers.map((answer) => (
+          ? renderList.map((answer) => (
             <Answer
               key={answer.answer_id}
               answer={answer}

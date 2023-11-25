@@ -12,13 +12,7 @@ const QuestionsList = ({
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // this is a temp value to work from = there are questions and answers associated with this id
-  // const tempProductID = 40348;
-
-  // the actual product ID I will use is this:
-  // const actualProductID = 40346;
-
-  // triggers the modal for questions -- REFACTOR LATER (LIFT)
+  // triggers the modal for questions
   const onAddQuestionClick = (e) => {
     e.preventDefault();
     setModalStatus({ name: 'question' });
@@ -46,7 +40,14 @@ const QuestionsList = ({
 
   return (
     <div>
-      {modalStatus.name === 'question' ? <AddQuestionModal setModalStatus={setModalStatus} productName={productName} /> : ''}
+      {modalStatus.name === 'question'
+        ? (
+          <AddQuestionModal
+            setModalStatus={setModalStatus}
+            productName={productName}
+          />
+        )
+        : ''}
       <div className="questionlist">
         {questions.length > 0
           ? filteredQuestions.map((q) => (

@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Modal.css';
 
-const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
+const AddAnswer = ({
+  setModalStatus, question, productName, questionId,
+}) => {
   const [body, setBody] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [photo, setPhoto] = useState('');
   const [photos, setPhotos] = useState([]);
   const [showPhotoForm, showSetPhotoForm] = useState(false);
 
@@ -18,8 +21,6 @@ const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
   // PHOTO FORM:
   // handle submission
   // append photos to the photos state (reset onsubmission)
-  //
-  // console.log('question: ', question);
 
   const submitAnswer = (e) => {
     e.preventDefault();
@@ -27,29 +28,20 @@ const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
       name: username,
       body,
       email,
-      // HARDCODED
-      // photos: [],
-      // ACTUAL
-      photos: [],
+      photos,
     };
-    // THIS IS HARDCODED BUT WILL NEED ANSWER STATE!
-    // HARDCODED TO ONLY REPLY TO FIRST QUESTION!
     axios.post(`${process.env.URL}/qa/questions/${questionId}/answers`, answerData, headers)
       .then((response) => console.log(response))
       // ADD AXIOS GET REQUEST TO THIS
-      // how do I do this?? -- talk to the guys about lifting the questions call to the app comp
-      // .then(() => axios.get(..., headers))
       .catch((err) => console.error(err));
-    setModalStatus({ name: '' });
+    setModalStatus({ name: '', data: '' });
   };
-
-  console.log(questionId);
 
   // shared with other modal!
   const modalFunctions = {
     close: (e) => {
       e.preventDefault();
-      setModalStatus({ name: '' });
+      setModalStatus({ name: '', data: '' });
     },
     bodyChange: (e) => {
       setBody(e.target.value);
@@ -60,9 +52,12 @@ const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
     emailChange: (e) => {
       setEmail(e.target.value);
     },
+    photoChange: (e) => {
+      setPhoto(e.target.value);
+    },
     photosChange: (e) => {
       e.preventDefault();
-      console.log(e.target.value);
+      setPhotos([...photos, photo]);
     },
   };
 
@@ -73,13 +68,23 @@ const AddAnswer = ({ setModalStatus, question, productName, questionId }) => {
           <div id="modal">
             <div className="overlay">
               <div className="modal-content">
-                <form onSubmit={modalFunctions.photosChange}>
-                  {/* <label htmlFor="answer-img">Select image:</label>
-                  <input type="file" id="img" name="img" accept="image/*" /> */}
-                  <p>Select image: </p>
-                  <input type="file" id="img" name="img" accept="image/*" />
-                  <input type="submit" />
-                </form>
+                <div>
+                  <button className="modal-close" type="button" onClick={() => showSetPhotoForm(false)}>X</button>
+                </div>
+                <div className="main-content">
+                  <span className="answer-photos">
+                    {photos.map((img, index) => <img className="answer-photo" src={img} alt="answer" key={index} />)}
+                  </span>
+                  <form>
+                    <p>Select image: </p>
+                    <input type="text" placeholder="please enter photo URL" className="modal-input" value={photo} onChange={modalFunctions.photoChange} />
+                    {
+                      photos.length > 4 ? <p>Only 5 photos allowed per answer</p> : <button className="submission" type="button" onClick={modalFunctions.photosChange}>Add Photo</button>
+
+                    }
+                    <button className="submission" type="button" onClick={() => showSetPhotoForm(false)}>Submit Photos</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
