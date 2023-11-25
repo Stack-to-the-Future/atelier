@@ -1,9 +1,9 @@
 import React, {} from 'react';
 import './RelPro.css';
 
-const Card = ({ product, setShowModal, setCompaired }) => {
+const Card = ({ product, setModalStatus, setCompaired }) => {
   const handleButtonClick = () => {
-    setShowModal(true);
+    setModalStatus({ name: 'compare' });
     setCompaired(product);
   };
 

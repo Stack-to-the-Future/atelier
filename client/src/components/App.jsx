@@ -14,7 +14,6 @@ import './App.css';
 const App = () => {
   const [products, setProducts] = useState([]);
   const [compaired, setCompaired] = useState({});
-  const [showModal, setShowModal] = useState(false);
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
   const getProducts = () => {
@@ -29,10 +28,6 @@ const App = () => {
     getProducts();
   }, []);
 
-  console.log(showModal);
-  console.log('compaired prod::', compaired);
-  console.log('main prod::', products[2]);
-
   return (
     <div id="app">
       {modalStatus.name === 'question' ? (
@@ -46,21 +41,22 @@ const App = () => {
         ''
       )}
       <Overview />
-      {showModal
+      {modalStatus.name === 'compare'
         ? (
           <ComparingModal
-            setShowModal={setShowModal}
+            setModalStatus={setModalStatus}
             products={products}
             compaired={compaired}
           />
         )
         : (
-          <RelatedProducts
-            products={products}
-            setShowModal={setShowModal}
-            setCompaired={setCompaired}
-          />
+          ''
         )}
+      <RelatedProducts
+        products={products}
+        setModalStatus={setModalStatus}
+        setCompaired={setCompaired}
+      />
       <QandA setModalStatus={setModalStatus} />
       {/* <RatingsAndReviews /> */}
     </div>

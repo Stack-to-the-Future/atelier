@@ -46,25 +46,43 @@
   text-align: right;
 }
 
-/* .product-modal {
-  height: 20rem;
-  width: 50%;
-  background-color: rgb(246, 248, 255);
-  border: 2px solid rgb(51, 191, 213);
+/* .modal {
+  display: flex;
+  flex-flow: column;
+  position: fixed;
+  top: 15%;
+  right: 41%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  text-align: center;
+  overflow: auto;
+  border: 1px solid black;
 } */
 
 .product-modal {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  position:relative;
-  width: 35%;
-  height: 70%;
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  height: fit-content;
+  width: fit-content;
+  background-color: rgb(255, 255, 255);
+  border: 0.5px solid rgb(0, 0, 0);
+  text-align: left;
   overflow: auto;
-  background-color: rgb(235, 243, 247);
+}
 
+
+.table-modal {
+  text-align: center;
+  border:0.5px solid black;
 }
 
 .close-modal {
   text-align: right;
+  background-color: rgb(255, 255, 255);
+  background: rgb(255, 255, 255);
+  /* width: fit-content; */
 }

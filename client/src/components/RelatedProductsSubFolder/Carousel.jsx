@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card.jsx';
 
-const Carousel = ({ relatedProducts, setShowModal, setCompaired }) => {
+const Carousel = ({ relatedProducts, setModalStatus, setCompaired }) => {
   const length = 3;
   const [index, setIndex] = useState(0);
   const [toDisplay, setToDisplay] = useState([]);
@@ -53,7 +53,7 @@ const Carousel = ({ relatedProducts, setShowModal, setCompaired }) => {
           key={product.id + index}
           product={product}
           productKey={Object.keys(product)[0]}
-          setShowModal={setShowModal}
+          setModalStatus={setModalStatus}
           setCompaired={setCompaired}
         />
       ))}

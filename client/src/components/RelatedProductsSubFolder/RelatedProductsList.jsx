@@ -3,7 +3,7 @@ import axios from 'axios';
 import Carousel from './Carousel.jsx';
 import './RelPro.css';
 
-const RelatedProductsList = ({ products, setShowModal, setCompaired }) => {
+const RelatedProductsList = ({ products, setModalStatus, setCompaired }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
   const options = { headers: { Authorization: process.env.TOKEN } };
   useEffect(
@@ -23,7 +23,7 @@ const RelatedProductsList = ({ products, setShowModal, setCompaired }) => {
     <div id="rel-prod-list">
       <Carousel
         relatedProducts={getRelatedProducts()}
-        setShowModal={setShowModal}
+        setModalStatus={setModalStatus}
         setCompaired={setCompaired}
       />
     </div>

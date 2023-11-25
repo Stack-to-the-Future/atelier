@@ -3,11 +3,11 @@ import React, {} from 'react';
 import RelatedProductsList from './RelatedProductsSubFolder/RelatedProductsList.jsx';
 import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 
-const RelatedProducts = ({ products, setShowModal, setCompaired }) => (
+const RelatedProducts = ({ products, setModalStatus, setCompaired }) => (
   <div id="relpro">
     <h5 id="rel-prod-title">RELATED PRODUCTS</h5>
     <RelatedProductsList
-      setShowModal={setShowModal}
+      setModalStatus={setModalStatus}
       products={products}
       setCompaired={setCompaired}
     />
