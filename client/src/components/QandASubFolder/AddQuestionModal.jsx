@@ -20,7 +20,6 @@ const AddQuestion = ({ setModalStatus, productName }) => {
       // at the moment hardcoded!!-- eventually passed from app!
       product_id: 40348,
     };
-    console.log('data: ', data);
     axios.post(`${process.env.URL}/qa/questions`, data, headers)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
