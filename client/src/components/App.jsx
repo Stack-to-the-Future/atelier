@@ -4,6 +4,7 @@ import Overview from './Overview.jsx';
 import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
 // import RatingsAndReviews from './RatingsAndReviews.jsx';
+import ComparingModal from './RelatedProductsSubFolder/ComparingModal.jsx';
 import './App.css';
 
 // chosen product ID -- 40346
@@ -11,6 +12,7 @@ import './App.css';
 const App = () => {
   const [products, setProducts] = useState([]);
   const [productInfo, setProductInfo] = useState({});
+  const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
   // could be passed down?
@@ -37,7 +39,22 @@ const App = () => {
   return (
     <div id="app">
       <Overview />
-      <RelatedProducts products={products} />
+      {modalStatus.name === 'compare'
+        ? (
+          <ComparingModal
+            setModalStatus={setModalStatus}
+            products={products}
+            compaired={compaired}
+          />
+        )
+        : (
+          ''
+        )}
+      <RelatedProducts
+        products={products}
+        setModalStatus={setModalStatus}
+        setCompaired={setCompaired}
+      />
       <QandA
         setModalStatus={setModalStatus}
         modalStatus={modalStatus}
