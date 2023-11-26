@@ -3,20 +3,8 @@ import axios from 'axios';
 import Carousel from './Carousel.jsx';
 import './RelPro.css';
 
-const RelatedProductsList = ({ products, setModalStatus, setCompaired }) => {
-  const [relatedProductsId, setRelatedProductsId] = useState([]);
-  const options = { headers: { Authorization: process.env.TOKEN } };
-  useEffect(
-    () => {
-      axios.get(`${process.env.URL}/products/40346/related`, options)
-        .then((response) => {
-          const arr = response.data;
-          setRelatedProductsId([...arr]);
-        })
-        .catch((err) => console.error(err));
-    },
-    [],
-  );
+const RelatedProductsList = ({ products, setCompaired, setModalStatus, relatedProductsId,  setToDisplay, toDisplay }) => {
+  
 
   const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
   return (
@@ -25,6 +13,7 @@ const RelatedProductsList = ({ products, setModalStatus, setCompaired }) => {
         relatedProducts={getRelatedProducts()}
         setModalStatus={setModalStatus}
         setCompaired={setCompaired}
+        toDisplay={toDisplay}
       />
     </div>
   );

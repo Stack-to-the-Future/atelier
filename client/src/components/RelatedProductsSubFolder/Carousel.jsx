@@ -3,18 +3,19 @@ import axios from 'axios';
 import Card from './Card.jsx';
 
 const Carousel = ({
-  relatedProducts, setModalStatus, setCompaired, setProductInfo,
+  // relatedProducts, setModalStatus, setCompaired, setProductInfo,
+  relatedProducts, setModalStatus, setCompaired, setProductInfo, outFits, setOutFits,
 }) => {
   const length = 3;
   const [index, setIndex] = useState(0);
-  const [toDisplay, setToDisplay] = useState([]);
+  const [toDisplay, setToDisplay] = useState([]); // move to RElprod
   const options = { Authorization: process.env.TOKEN };
 
   const scroll = (direction) => {
     const newIndex = index + direction;
     setIndex(newIndex);
   };
-
+  // Getting all related Products photos
   useEffect(() => {
     const getPhotos = () => {
       const promises = relatedProducts.map((product) => axios({
@@ -58,6 +59,8 @@ const Carousel = ({
           setModalStatus={setModalStatus}
           setCompaired={setCompaired}
           setProductInfo={setProductInfo}
+          // outFits={outFits}
+          // addOutfits={addOutfit}
         />
       ))}
       {index < relatedProducts.length - length ? (
