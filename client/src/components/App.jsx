@@ -15,7 +15,6 @@ const App = () => {
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
-  // could be passed down?
   const options = { headers: { Authorization: process.env.TOKEN } };
   const getProducts = () => {
     axios.get(`${process.env.URL}/products`, options).then((data) => {
@@ -36,6 +35,8 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  console.log('prodInfo:::', productInfo);
+
   return (
     <div id="app">
       <Overview />
@@ -52,10 +53,10 @@ const App = () => {
         )}
       <RelatedProducts
         products={products}
+        productInfo={productInfo}
         setModalStatus={setModalStatus}
         setCompaired={setCompaired}
         setProductInfo={setProductInfo}
-        productInfo={productInfo}
       />
       <QandA
         setModalStatus={setModalStatus}

@@ -2,21 +2,25 @@ import React, {} from 'react';
 import './RelPro.css';
 
 const Card = ({
-  product, setModalStatus, setCompaired, setProductInfo,
+  product, setModalStatus, setCompaired, setProductInfo, icon,
 }) => {
   const handleButtonClick = () => {
     setModalStatus({ name: 'compare' });
     setCompaired(product);
+    setProductInfo({ ...product });
+  };
+  // change Main product
+  const changeMainProd = () => {
+    setProductInfo(product);
   };
 
   return (
-    <div
+    <button
       className="product-card"
-      style={{
-        marginRight: 15, marginLeft: 15, marginBottom: 15, backgroundColor: 'lightbrown', padding: 25,
-      }}
+      type="button"
+      onClick={() => { changeMainProd(); }}
     >
-      <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>⭐️</button>
+      <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>{icon}</button>
       <br />
       <img
         src={product.photo}
@@ -25,7 +29,6 @@ const Card = ({
         alt="product"
         className="prod-image"
       />
-      <br />
       <h4>{product.category}</h4>
       <br />
       <h4 className="prod-name">{product.name}</h4>
@@ -33,7 +36,7 @@ const Card = ({
         $
         {product.default_price}
       </h4>
-    </div>
+    </button>
 
   );
 };

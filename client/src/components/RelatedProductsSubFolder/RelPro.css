@@ -1,34 +1,71 @@
 
 #rel-prod-title {
   width: 100%;
-  height: 5%;
+  height: 3%;
+}
+
+#outFit-prod-title {
+  width: 100%;
+  height: 3%;
 }
 
 #rel-prod-list {
   width: 100%;
-  height: 50%;
+  height: 48%;
   display: flex;
   flex-flow: column wrap;
-  flex-shrink: 1;
   justify-content: space-between;
 }
 
-
-#rel-prod-carousel {
+#outFit-prod-list {
   width: 100%;
-  height: 95%;
+  height: 49%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+
+.outFit-button {
+  height: 87%;
+  width: 31%;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  background-Color: rgb(238, 236, 236);
+  border:0.5px solid black;
+}
+
+
+.rel-prod-carousel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
+}
+
+.outFit-prod-carousel {
+  width: 65.5%;
+  height: 100%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
 }
 
+
 .product-card {
-  height: 85%;
+  height: 87%;
   width: 100%;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  background-Color: rgb(238, 236, 236);
+  background-Color: rgb(238, 237, 236);
+  border: 1.7px solid rgb(219, 218, 216);
 }
 
 .prod-name {

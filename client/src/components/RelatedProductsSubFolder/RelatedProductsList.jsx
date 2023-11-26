@@ -3,17 +3,61 @@ import axios from 'axios';
 import Carousel from './Carousel.jsx';
 import './RelPro.css';
 
-const RelatedProductsList = ({ products, setCompaired, setModalStatus, relatedProductsId,  setToDisplay, toDisplay }) => {
-  
+const RelatedProductsList = ({
+  products, setCompaired, setModalStatus, setProductInfo,
+  relatedProductsId,
+}) => {
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [toDisplay, setToDisplay] = useState([]);
+  const [star, setStar] = useState('');
 
-  const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
+  // Set icon onMount
+  useEffect(() => { setStar('*'); }, []);
+
+  // gathering related Products
+  useEffect(() => {
+    const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
+    setRelatedProducts(getRelatedProducts());
+  }, [products]);
+  // console.log('111:::', relatedProducts);
+
+  const options = { Authorization: process.env.TOKEN };
+  // Getting all related Products photos
+  useEffect(() => {
+    const getPhotos = () => {
+      const promises = relatedProducts.map((product) => axios({
+        method: 'GET',
+        url: `${process.env.URL}/products/${product.id}/styles`,
+        headers: options,
+      }).then((response) => {
+        const { data } = response;
+        return {
+          ...product,
+          photo: data.results[0].photos[0].thumbnail_url,
+        };
+      }));
+
+      Promise.all(promises)
+        .then((results) => {
+          setToDisplay([...toDisplay, ...results]);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    };
+
+    getPhotos();
+  }, [relatedProducts]);
+  // console.log('222:::', toDisplay);
   return (
     <div id="rel-prod-list">
       <Carousel
-        relatedProducts={getRelatedProducts()}
         setModalStatus={setModalStatus}
         setCompaired={setCompaired}
-        toDisplay={toDisplay}
+        setToDisplay={setToDisplay}
+        gallery={toDisplay}
+        setProductInfo={setProductInfo}
+        icon={star}
       />
     </div>
   );
