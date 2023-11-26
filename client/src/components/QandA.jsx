@@ -4,7 +4,7 @@ import SearchQuestions from './QandASubFolder/SearchQuestions.jsx';
 import './App.css';
 
 const QandA = ({
-  setModalStatus, modalStatus, productName,
+  setModalStatus, modalStatus, productName, productId,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -28,6 +28,7 @@ const QandA = ({
         setModalStatus={setModalStatus}
         modalStatus={modalStatus}
         productName={productName}
+        productId={productId}
       />
     </div>
   );

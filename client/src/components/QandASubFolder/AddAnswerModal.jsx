@@ -2,51 +2,51 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Modal.css';
 
-const AddAnswer = ({ setModalStatus, question, productName }) => {
+const AddAnswer = ({
+  setModalStatus, question, productName, questionId,
+}) => {
   const [body, setBody] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  // const [photos, setPhotos] = useState([]);
+  const [photo, setPhoto] = useState('');
+  const [photos, setPhotos] = useState([]);
   const [showPhotoForm, showSetPhotoForm] = useState(false);
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   // TO DO:
-  // NEED PRODUCT DATA FROM APP
-  // NEED QUESTION DATA
 
-  // PHOTO FORM:
-  // handle submission
-  // append photos to the photos state (reset onsubmission)
-  //
+  const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
   const submitAnswer = (e) => {
     e.preventDefault();
+    if (!emailRegex.test(email)) {
+      alert('You must enter valid email');
+      setEmail('');
+      return;
+    }
+    if (username === '' || body === '') {
+      alert('You must enter username/body');
+      return;
+    }
     const answerData = {
       name: username,
       body,
       email,
-      // HARDCODED
-      photos: [],
-      // ACTUAL
-      // photos,
+      photos,
     };
-    // THIS IS HARDCODED BUT WILL NEED ANSWER STATE!
-    // HARDCODED TO ONLY REPLY TO FIRST QUESTION!
-    axios.post(`${process.env.URL}/qa/questions/646305/answers`, answerData, headers)
+    axios.post(`${process.env.URL}/qa/questions/${questionId}/answers`, answerData, headers)
       .then((response) => console.log(response))
-      // ADD AXIOS GET REQUEST TO THIS
-      // how do I do this?? -- talk to the guys about lifting the questions call to the app comp
-      // .then(() => axios.get(..., headers))
+      // ADD AXIOS GET REQUEST TO THIS TO RERENDER LIST?
       .catch((err) => console.error(err));
-    setModalStatus({ name: '' });
+    setModalStatus({ name: '', data: '' });
   };
 
   // shared with other modal!
   const modalFunctions = {
     close: (e) => {
       e.preventDefault();
-      setModalStatus({ name: '' });
+      setModalStatus({ name: '', data: '' });
     },
     bodyChange: (e) => {
       setBody(e.target.value);
@@ -57,6 +57,13 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
     emailChange: (e) => {
       setEmail(e.target.value);
     },
+    photoChange: (e) => {
+      setPhoto(e.target.value);
+    },
+    photosChange: (e) => {
+      e.preventDefault();
+      setPhotos([...photos, photo]);
+    },
   };
 
   return (
@@ -66,13 +73,23 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
           <div id="modal">
             <div className="overlay">
               <div className="modal-content">
-                <form>
-                  {/* <label htmlFor="answer-img">Select image:</label>
-                  <input type="file" id="img" name="img" accept="image/*" /> */}
-                  <p>Select image: </p>
-                  <input type="file" id="img" name="img" accept="image/*" />
-                  <input type="submit" />
-                </form>
+                <div>
+                  <button className="modal-close" type="button" onClick={() => showSetPhotoForm(false)}>X</button>
+                </div>
+                <div className="main-content">
+                  <span className="answer-photos">
+                    {photos.map((img) => <img className="answer-photo" src={img} alt="answer" key={img} />)}
+                  </span>
+                  <form>
+                    <p>Select image: </p>
+                    <input type="text" placeholder="please enter photo URL" className="modal-input" value={photo} onChange={modalFunctions.photoChange} />
+                    {
+                      photos.length > 4 ? <p>Only 5 photos allowed per answer</p> : <button className="submission" type="button" onClick={modalFunctions.photosChange}>Add Photo</button>
+
+                    }
+                    <button className="submission" type="button" onClick={() => showSetPhotoForm(false)}>Submit Photos</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
@@ -128,18 +145,7 @@ const AddAnswer = ({ setModalStatus, question, productName }) => {
           </div>
         )}
     </div>
-
   );
 };
 
 export default AddAnswer;
-
-// 1.3.6.5. Submit answer (button)
-// A button by which the answer can be submitted.
-// Upon selecting this button the form’s inputs should be validated.
-// If there are any invalid entries, the submission should be prevented, and a
-// warning message will appear. This message should be titled “You must enter the following:”
-// This error will occur if:
-// Any mandatory fields are blank
-// The email address provided is not in correct email format
-// The images selected are invalid or unable to be uploaded.
