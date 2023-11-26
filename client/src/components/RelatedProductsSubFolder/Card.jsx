@@ -20,7 +20,9 @@ const Card = ({
       type="button"
       onClick={() => { changeMainProd(); }}
     >
-      <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>{icon}</button>
+      { (icon === '*')
+        ? <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>⭐️</button>
+        : <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>✖️</button>}
       <br />
       <img
         src={product.photo}
