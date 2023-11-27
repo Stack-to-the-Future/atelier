@@ -2,16 +2,20 @@ import React, {} from 'react';
 import './RelPro.css';
 
 const Card = ({
-  product, setModalStatus, setCompaired, setProductInfo, icon,
+  product, setModalStatus, setCompaired, setProductInfo, setOutFits, icon, gallery,
 }) => {
   const handleButtonClick = () => {
-    setModalStatus({ name: 'compare' });
-    setCompaired(product);
-    setProductInfo({ ...product });
+    if (icon === '*') {
+      setModalStatus({ name: 'compare' });
+      setCompaired(product);
+    } else {
+      const deleted = gallery.filter((outfit) => outfit !== product);
+      setOutFits([...deleted]);
+    }
   };
   // change Main product
   const changeMainProd = () => {
-    setProductInfo(product);
+    setProductInfo({ ...product });
   };
 
   return (
@@ -21,8 +25,8 @@ const Card = ({
       onClick={() => { changeMainProd(); }}
     >
       { (icon === '*')
-        ? <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>⭐️</button>
-        : <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>✖️</button>}
+        ? <button className="card-button" type="button" onClick={() => { handleButtonClick(icon); }}>⭐️</button>
+        : <button className="card-button" type="button" onClick={() => { handleButtonClick(icon); }}>✖️</button>}
       <br />
       <img
         src={product.photo}
@@ -31,10 +35,10 @@ const Card = ({
         alt="product"
         className="prod-image"
       />
-      <h4>{product.category}</h4>
+      <h4 className="prod-category">{product.category}</h4>
       <br />
       <h4 className="prod-name">{product.name}</h4>
-      <h4>
+      <h4 className="prod-price">
         $
         {product.default_price}
       </h4>

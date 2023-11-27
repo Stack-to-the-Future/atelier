@@ -15,6 +15,7 @@ const App = () => {
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '' });
 
+  // Gets all the available products
   const options = { headers: { Authorization: process.env.TOKEN } };
   const getProducts = () => {
     axios.get(`${process.env.URL}/products`, options).then((data) => {
@@ -22,7 +23,6 @@ const App = () => {
       setProducts([...all]);
     });
   };
-
   useEffect(() => {
     getProducts();
   }, []);
@@ -34,8 +34,6 @@ const App = () => {
       .then((response) => setProductInfo(response.data))
       .catch((error) => console.log(error));
   }, []);
-
-  console.log('prodInfo:::', productInfo);
 
   return (
     <div id="app">

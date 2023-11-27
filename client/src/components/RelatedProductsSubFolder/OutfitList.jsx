@@ -32,6 +32,7 @@ const OutfitList = ({
           setModalStatus={setModalStatus}
           setCompaired={setCompaired}
           setProductInfo={setProductInfo}
+          setOutFits={setOutFits}
           gallery={outFits}
           icon={remove}
         />

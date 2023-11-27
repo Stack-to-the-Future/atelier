@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from './Card.jsx';
 
 const Carousel = ({
-  setModalStatus, setCompaired, setProductInfo, gallery, icon,
+  setModalStatus, setCompaired, setProductInfo, gallery, setOutFits, icon,
 }) => {
   const length = 4;
   const [index, setIndex] = useState(0);
@@ -11,10 +11,6 @@ const Carousel = ({
     const newIndex = index + direction;
     setIndex(newIndex);
   };
-
-  useEffect(() => {
-    console.log(gallery);
-  }, [gallery]);
 
   return (
     <div className="rel-prod-carousel">
@@ -29,8 +25,10 @@ const Carousel = ({
         <Card
           key={`${product.id}, ${product.name}`}
           product={product}
+          gallery={gallery}
           setModalStatus={setModalStatus}
           setCompaired={setCompaired}
+          setOutFits={setOutFits}
           setProductInfo={setProductInfo}
           icon={icon}
         />
