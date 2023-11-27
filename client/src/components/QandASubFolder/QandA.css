@@ -8,7 +8,7 @@
 
 /* SEARCH */
 .question-search {
-  width: 100%;
+  width: 96%;
   border-color: black;
   border-style: solid;
   border-width: .1rem;
@@ -60,9 +60,9 @@
 }
 
 /* ANSWERS */
-#answer{
-  /* padding-left: 3rem; */
-}
+/* #answer{
+  padding-left: 3rem;
+} */
 
 .a-tag{
   float: left;
