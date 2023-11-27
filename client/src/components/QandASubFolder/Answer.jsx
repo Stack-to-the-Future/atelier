@@ -16,7 +16,7 @@ const Answer = ({ answer }) => {
     const month = months[d.getMonth()];
     const day = d.getDate();
     const year = d.getFullYear();
-    const date = `${month} ${day}, ${year}`;
+    const date = `${month} ${day + 1}, ${year}`;
     return date;
   };
 
