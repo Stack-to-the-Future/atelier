@@ -61,7 +61,18 @@
 
 /* ANSWERS */
 #answer{
-  padding-left: 3rem;
+  /* padding-left: 3rem; */
+}
+
+.a-tag{
+  float: left;
+  font-size: 1.2rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+
+#A{
+  display: inline-block;
 }
 
 .answer-footer{
@@ -70,6 +81,7 @@
 }
 
 .answer-a{
+  display: inline-block;
   font-weight: 600;
   font-size: 1.2rem;
 }

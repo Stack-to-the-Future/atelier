@@ -94,8 +94,8 @@ const Question = ({
         </span>
       </span>
       <div id="answer">
+        <span className="a-tag"><b>A:</b></span>
         <span id="A">
-        <b>A: </b>
           {answers.length > 0
             ? renderList.map((answer) => (
               <Answer
