@@ -117,3 +117,6 @@
 .answer-button:hover{
   color: goldenrod;
 }
+.answer-button:active{
+  color: rgb(87, 65, 9);
+}
