@@ -93,17 +93,20 @@ const Question = ({
           </span>
         </span>
       </span>
-      <div>
-        {answers.length > 0
-          ? renderList.map((answer) => (
-            <Answer
-              key={answer.answer_id}
-              answer={answer}
-              setModalStatus={setModalStatus}
-              modalStatus={modalStatus}
-            />
-          ))
-          : ''}
+      <div id="answer">
+        <span id="A">
+        <b>A: </b>
+          {answers.length > 0
+            ? renderList.map((answer) => (
+              <Answer
+                key={answer.answer_id}
+                answer={answer}
+                setModalStatus={setModalStatus}
+                modalStatus={modalStatus}
+              />
+            ))
+            : ''}
+        </span>
       </div>
       { answers.length > 0 ? (
         <div>

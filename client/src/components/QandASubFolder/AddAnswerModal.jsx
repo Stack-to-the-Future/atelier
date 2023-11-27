@@ -14,8 +14,6 @@ const AddAnswer = ({
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // TO DO:
-
   const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
   const submitAnswer = (e) => {
@@ -85,7 +83,6 @@ const AddAnswer = ({
                     <input type="text" placeholder="please enter photo URL" className="modal-input" value={photo} onChange={modalFunctions.photoChange} />
                     {
                       photos.length > 4 ? <p>Only 5 photos allowed per answer</p> : <button className="submission" type="button" onClick={modalFunctions.photosChange}>Add Photo</button>
-
                     }
                     <button className="submission" type="button" onClick={() => showSetPhotoForm(false)}>Submit Photos</button>
                   </form>

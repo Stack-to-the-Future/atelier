@@ -8,9 +8,7 @@ const Answer = ({ answer }) => {
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // TO DO:
-  // Seller sort of answers?? -- IN BOLD
-
+  // not working correctly?
   // converts raw answer.date data into proper format: month, dd, yyyy
   const convertDate = () => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -53,7 +51,7 @@ const Answer = ({ answer }) => {
       <span className="answer-body">
         { answer.body ? (
           <p>
-            <span className="answer-a">A:</span>
+            {/* <span className="answer-a">A:</span> */}
             {' '}
             {answer.body}
           </p>

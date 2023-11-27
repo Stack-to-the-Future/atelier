@@ -72,9 +72,7 @@ const AddQuestion = ({ setModalStatus, productName, productId }) => {
               <div>
                 <textarea type="text" className="modal-answer" placeholder="Enter your question here" maxLength="1000" value={body} onChange={modalFunctions.bodyChange} />
               </div>
-
             </label>
-
             <div>
               <input type="text" className="modal-input" placeholder="Example: jackson11!" maxLength="60" value={username} onChange={modalFunctions.usernameChange} />
               <p htmlFor="question-username" className="modal-label">
