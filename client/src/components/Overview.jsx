@@ -6,23 +6,9 @@ import ImageGallery from './Overview/ImageGallery.jsx';
 import ProductInformation from './Overview/ProductInformation.jsx';
 import './App.css';
 
-const Overview = () => {
+const Overview = ({ product, ratings }) => {
   const [styles, setStyles] = useState([]);
-  const [product, setProduct] = useState([]);
   const [currentStyle, setCurrentStyle] = useState(0);
-
-  const getProduct = () => {
-    const url = `${process.env.URL}/products/40346`;
-    axios({
-      method: 'GET',
-      url,
-      headers: {
-        Authorization: process.env.TOKEN,
-      },
-    })
-      .then((response) => setProduct(response.data))
-      .catch((err) => console.err(err));
-  };
 
   const getStyles = () => {
     const url = `${process.env.URL}/products/40346/styles`;
@@ -40,7 +26,6 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    getProduct();
     getStyles();
   }, []);
 
@@ -61,6 +46,7 @@ const Overview = () => {
           setCurrentStyle={(idx) => {
             setCurrentStyle(idx);
           }}
+          ratings={ratings}
         />
       </div>
     </div>

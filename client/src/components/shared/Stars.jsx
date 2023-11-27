@@ -1,46 +1,35 @@
 import React from 'react';
-import Star from './Star.jsx';
 import './Common.css';
 
-const Stars = ({ rating }) => {
-  // Generates array of numbers 0-1 that will be used to populate stars
-  // Will automatically handle flooring to next quarter.
-  const generateStars = () => {
-    const handleFraction = (decimal) => {
-      if (decimal >= 0.75) {
-        return 0.75;
-      } if (decimal >= 0.50) {
-        return 0.50;
-      } if (decimal >= 0.25) {
-        return 0.25;
-      }
+const Stars = ({ ratings }) => {
+  const calc = () => {
+    if (!ratings['1']) {
       return 0;
-    };
-    const result = [];
-    let remaining = rating;
-    for (let i = 0; i < 5; i += 1) {
-      if (!remaining) {
-        result.push(0);
-      } else if (remaining >= 1) {
-        result.push(1);
-        remaining -= 1;
-      } else {
-        result.push(handleFraction(remaining));
-        remaining = 0;
-      }
+    }
+    let count = 0;
+    let weight = 0;
+
+    for (let i = 1; i <= 5; i += 1) {
+      const current = +ratings[i] || 0;
+      count += current;
+      weight += current * i;
     }
 
-    return result;
+    const stars = weight / count;
+    const ones = Math.floor(stars);
+    const digit = (stars - ones) * 10;
+
+    if (digit < 4) {
+      return ones;
+    }
+    if (digit < 5) {
+      return ones + 0.4;
+    }
+    if (digit < 6) {
+      return ones + 0.5;
+    }
+    return ones + 0.6;
   };
-
-  return (
-    <div className="stars-container">
-      {
-        // eslint-disable-next-line react/no-array-index-key
-      generateStars().map((num, idx) => <Star key={idx} fill={num} />)
-      }
-    </div>
-  );
+  return <div className="stars" style={{ '--rating': calc() }} />;
 };
-
 export default Stars;
