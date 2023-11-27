@@ -29,7 +29,7 @@ const AddToCart = ({ skus }) => {
       return quantities;
     }
 
-    while (num <= 15 && num <= skus[currentSku].quantity) {
+    while (num < 15 && num <= skus[currentSku].quantity) {
       quantities.push((num += 1));
     }
 
@@ -37,9 +37,11 @@ const AddToCart = ({ skus }) => {
   };
 
   return (
-    <div className="overview-cart-main">
+    <div data-testid="cart-main" className="overview-cart-main">
       <select
+        data-testid="cart-select-size"
         className="overview-size-select"
+        placeholder="Select Size"
         defaultValue="Select Size"
         onChange={(e) => setCurrentSku(e.target.value)}
       >

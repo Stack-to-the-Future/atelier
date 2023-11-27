@@ -3,6 +3,7 @@ module.exports = {
     es6: true,
     browser: true,
     node: true,
+    'jest/globals': true,
   },
   extends: [
     'eslint:recommended',
@@ -14,6 +15,11 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
     },
   },
   rules: {
@@ -27,6 +33,7 @@ module.exports = {
     'no-console': 0,
     'react/prop-types': 0,
     'no-alert': 'off',
+    'react/jsx-filename-extension': [0],
   },
-  plugins: ['react', 'jsx-a11y', 'import'],
+  plugins: ['react', 'jsx-a11y', 'import', 'jest'],
 };

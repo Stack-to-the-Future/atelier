@@ -2,16 +2,16 @@ import React from 'react';
 import './Overview.css';
 
 const Announcement = () => (
-  <div className="overview-announcement">
-    <i className="overview-announcement-message">
+  <div data-testid="announce-main" className="overview-announcement">
+    <i data-testid="announce-message" className="overview-announcement-message">
       SITE-WIDE ANNOUNCEMENT MESSAGE! --
     </i>
     SALE/DISCOUNT
-    <b className="overview-announcement-offer">
+    <b data-testid="annouce-offer" className="overview-announcement-offer">
       OFFER
     </b>
     --
-    <u className="overview-announcement-product">
+    <u data-testid="announce-product" className="overview-announcement-product">
       NEW PRODUCT HIGHLIGHT
     </u>
   </div>
