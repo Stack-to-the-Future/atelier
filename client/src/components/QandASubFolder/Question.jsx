@@ -94,7 +94,7 @@ const Question = ({
         </span>
       </span>
       <div id="answer">
-        { answerCount === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
+        { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
           {answers.length > 0
             ? renderList.map((answer) => (
