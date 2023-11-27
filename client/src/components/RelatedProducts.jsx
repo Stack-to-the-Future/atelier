@@ -5,7 +5,7 @@ import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 import './RelatedProductsSubFolder/RelPro.css';
 
 const RelatedProducts = ({
-  products, productInfo, setModalStatus, setCompaired, setProductInfo,
+  products, productInfo, setModalStatus, setCompaired, setProductInfo, setMainProduct, mainProduct,
 }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
 
@@ -29,6 +29,7 @@ const RelatedProducts = ({
         setCompaired={setCompaired}
         setProductInfo={setProductInfo}
         relatedProductsId={relatedProductsId}
+        mainProduct={setMainProduct}
       />
       <br />
       <h5 id="outFit-prod-title">YOUR OUTFIT</h5>
@@ -37,6 +38,8 @@ const RelatedProducts = ({
         productInfo={productInfo}
         setCompaired={setCompaired}
         setProductInfo={setProductInfo}
+        setMainProduct={setMainProduct}
+        mainProduct={mainProduct}
       />
     </div>
   );

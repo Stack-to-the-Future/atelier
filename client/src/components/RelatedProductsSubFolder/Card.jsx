@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React from 'react';
 import './RelPro.css';
 
 const Card = ({
@@ -10,10 +10,11 @@ const Card = ({
       setModalStatus({ name: 'compare' });
       setCompaired(product);
     } else {
-      const deleted = gallery.filter((outfit) => outfit !== product);
-      setOutFits([...deleted]);
+      const deleted = gallery.filter((obj) => obj.id !== product.id);
+      setOutFits([...deleted]); // chnage this..
     }
   };
+
   // change Main product
   const changeMainProd = (e) => {
     e.preventDefault();
@@ -43,6 +44,7 @@ const Card = ({
           $
           {product.default_price}
         </h4>
+        {/* {'Subject to change once I have drilled star reviews down here'} */}
         <h4 className="prod-reviews">*****</h4>
       </button>
     </form>

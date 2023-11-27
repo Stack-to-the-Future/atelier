@@ -23,7 +23,7 @@ const RelatedProductsList = ({
   // Getting all related Products photos
   useEffect(() => {
     const getPhotos = () => {
-      const promises = relatedProducts.map((product) => axios({
+      const promises = products.map((product) => axios({
         method: 'GET',
         url: `${process.env.URL}/products/${product.id}/styles`,
         headers: options,
@@ -37,7 +37,7 @@ const RelatedProductsList = ({
 
       Promise.all(promises)
         .then((results) => {
-          setToDisplay([...toDisplay, ...results]);
+          setRelatedProducts([...relatedProducts, ...results]);
         })
         .catch((error) => {
           console.error('Error fetching data:', error);
@@ -45,6 +45,11 @@ const RelatedProductsList = ({
     };
 
     getPhotos();
+  }, [products]);
+
+  useEffect(() => {
+    const getToDisplay = () => relatedProducts.filter((p) => relatedProductsId.includes(p.id));
+    setToDisplay(getToDisplay());
   }, [relatedProducts]);
 
   return (
