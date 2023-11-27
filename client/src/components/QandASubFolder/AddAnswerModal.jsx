@@ -35,7 +35,6 @@ const AddAnswer = ({
     };
     axios.post(`${process.env.URL}/qa/questions/${questionId}/answers`, answerData, headers)
       .then((response) => console.log(response))
-      // ADD AXIOS GET REQUEST TO THIS TO RERENDER LIST?
       .catch((err) => console.error(err));
     setModalStatus({ name: '', data: '' });
   };
