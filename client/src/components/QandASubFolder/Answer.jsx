@@ -42,6 +42,7 @@ const Answer = ({ answer }) => {
     }
     setHelpful(true);
     axios.put(helpfulURL, {}, headers)
+    // get rid of these response logs!
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
