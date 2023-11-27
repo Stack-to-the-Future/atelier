@@ -11,6 +11,13 @@ import './App.css';
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [ratings, setRatings] = useState({
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  });
   const [productInfo, setProductInfo] = useState({});
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
@@ -23,33 +30,42 @@ const App = () => {
       setProducts([...all]);
     });
   };
+  const getRatings = () => {
+    axios({
+      method: 'GET',
+      url: `${process.env.URL}/reviews/meta/?product_id=${40346}`,
+      headers: { Authorization: process.env.TOKEN },
+    })
+      .then((response) => setRatings(response.data.ratings))
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getProducts();
+    getRatings();
   }, []);
 
   // make initial product API call here -- Ming can pass as prop
   const url = `${process.env.URL}/products/40346`;
   useEffect(() => {
-    axios.get(url, options)
+    axios
+      .get(url, options)
       .then((response) => setProductInfo(response.data))
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div id="app">
-      <Overview />
-      {modalStatus.name === 'compare'
-        ? (
-          <ComparingModal
-            setModalStatus={setModalStatus}
-            products={products}
-            compaired={compaired}
-          />
-        )
-        : (
-          ''
-        )}
+      <Overview product={productInfo} ratings={ratings} />
+      {modalStatus.name === 'compare' ? (
+        <ComparingModal
+          setModalStatus={setModalStatus}
+          products={products}
+          compaired={compaired}
+        />
+      ) : (
+        ''
+      )}
       <RelatedProducts
         products={products}
         setModalStatus={setModalStatus}
