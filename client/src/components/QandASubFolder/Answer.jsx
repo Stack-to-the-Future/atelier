@@ -8,9 +8,7 @@ const Answer = ({ answer }) => {
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // TO DO:
-  // Seller sort of answers?? -- IN BOLD
-
+  // not working correctly?
   // converts raw answer.date data into proper format: month, dd, yyyy
   const convertDate = () => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -18,7 +16,7 @@ const Answer = ({ answer }) => {
     const month = months[d.getMonth()];
     const day = d.getDate();
     const year = d.getFullYear();
-    const date = `${month} ${day}, ${year}`;
+    const date = `${month} ${day + 1}, ${year}`;
     return date;
   };
 
@@ -44,6 +42,7 @@ const Answer = ({ answer }) => {
     }
     setHelpful(true);
     axios.put(helpfulURL, {}, headers)
+    // get rid of these response logs!
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
@@ -53,7 +52,7 @@ const Answer = ({ answer }) => {
       <span className="answer-body">
         { answer.body ? (
           <p>
-            <span className="answer-a">A:</span>
+            {/* <span className="answer-a">A:</span> */}
             {' '}
             {answer.body}
           </p>
