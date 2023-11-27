@@ -2,23 +2,31 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Modal.css';
 
-const AddQuestion = ({ setModalStatus, productName }) => {
+const AddQuestion = ({ setModalStatus, productName, productId }) => {
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
   const [body, setBody] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
-  // TO DO:
-  // NEED PRODUCT DATA FROM APP??
+  const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
   const submitQuestion = (e) => {
+    e.preventDefault();
+    if (!emailRegex.test(email)) {
+      alert('You must enter valid email');
+      setEmail('');
+      return;
+    }
+    if (username === '' || body === '') {
+      alert('You must enter username/body');
+      return;
+    }
     e.preventDefault();
     const data = {
       body,
       name: username,
       email,
-      // at the moment hardcoded!!-- eventually passed from app!
-      product_id: 40348,
+      product_id: `${productId}`,
     };
     axios.post(`${process.env.URL}/qa/questions`, data, headers)
       .then((response) => console.log(response))
@@ -54,9 +62,9 @@ const AddQuestion = ({ setModalStatus, productName }) => {
             Ask Your Question
           </h3>
           <h4 className="sub-header">
-            {/* INSERT VALUES */}
+            About the
+            {' '}
             {productName}
-            :
           </h4>
           <form onSubmit={submitQuestion}>
             <label htmlFor="question-productName" className="modal-label">

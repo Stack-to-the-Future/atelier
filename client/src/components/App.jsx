@@ -11,9 +11,16 @@ import './App.css';
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [ratings, setRatings] = useState({
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  });
   const [productInfo, setProductInfo] = useState({});
-  const [compaired, setCompaired] = useState({}); // move to child component
-  const [modalStatus, setModalStatus] = useState({ name: '' });
+  const [compaired, setCompaired] = useState({});
+  const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
 
   const options = { headers: { Authorization: process.env.TOKEN } };
 
@@ -24,9 +31,28 @@ const App = () => {
       setProducts([...all]);
     }).catch((error) => { console.error('Error getting products:', error); });
   };
+  const getRatings = () => {
+    axios({
+      method: 'GET',
+      url: `${process.env.URL}/reviews/meta/?product_id=${40346}`,
+      headers: { Authorization: process.env.TOKEN },
+    })
+      .then((response) => setRatings(response.data.ratings))
+      .catch((err) => console.log(err));
+  };
+  const getRatings = () => {
+    axios({
+      method: 'GET',
+      url: `${process.env.URL}/reviews/meta/?product_id=${40346}`,
+      headers: { Authorization: process.env.TOKEN },
+    })
+      .then((response) => setRatings(response.data.ratings))
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getProducts();
+    getRatings();
   }, []);
 
   // Gets main products features
@@ -48,25 +74,24 @@ const App = () => {
   // make initial product API call here -- Ming can pass as prop
   const url = `${process.env.URL}/products/40346`;
   useEffect(() => {
-    axios.get(url, options)
+    axios
+      .get(url, options)
       .then((response) => setProductInfo(response.data))
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div id="app">
-      <Overview />
-      {modalStatus.name === 'compare'
-        ? (
-          <ComparingModal
-            setModalStatus={setModalStatus}
-            products={products}
-            compaired={compaired}
-          />
-        )
-        : (
-          ''
-        )}
+      <Overview product={productInfo} ratings={ratings} />
+      {modalStatus.name === 'compare' ? (
+        <ComparingModal
+          setModalStatus={setModalStatus}
+          products={products}
+          compaired={compaired}
+        />
+      ) : (
+        ''
+      )}
       <RelatedProducts
         products={products}
         productInfo={productInfo}
@@ -78,6 +103,7 @@ const App = () => {
         setModalStatus={setModalStatus}
         modalStatus={modalStatus}
         productName={productInfo.name}
+        productId={40348}
       />
       {/* <RatingsAndReviews /> */}
     </div>

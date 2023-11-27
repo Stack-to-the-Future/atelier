@@ -5,20 +5,14 @@ import AddQuestionModal from './AddQuestionModal.jsx';
 import './QandA.css';
 
 const QuestionsList = ({
-  searchTerm, setModalStatus, modalStatus, productName,
+  searchTerm, setModalStatus, modalStatus, productName, productId,
 }) => {
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // this is a temp value to work from = there are questions and answers associated with this id
-  // const tempProductID = 40348;
-
-  // the actual product ID I will use is this:
-  const actualProductID = 40346;
-
-  // triggers the modal for questions -- REFACTOR LATER (LIFT)
+  // triggers the modal for questions
   const onAddQuestionClick = (e) => {
     e.preventDefault();
     setModalStatus({ name: 'question' });
@@ -27,10 +21,10 @@ const QuestionsList = ({
   // grabs ALL of the questions from the server and stores them as state
   const questionCount = 1000;
   useEffect(() => {
-    axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${actualProductID}`, headers)
+    axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${productId}`, headers)
       .then((response) => setQuestions(response.data.results))
       .catch((err) => console.error(err));
-  }, []);
+  }, [productId]);
 
   // on click increments the questions rendered by two
   const onLoadMoreQuestions = (e) => {
@@ -46,7 +40,15 @@ const QuestionsList = ({
 
   return (
     <div>
-      {modalStatus.name === 'question' ? <AddQuestionModal setModalStatus={setModalStatus} productName={productName} /> : ''}
+      {modalStatus.name === 'question'
+        ? (
+          <AddQuestionModal
+            setModalStatus={setModalStatus}
+            productName={productName}
+            productId={productId}
+          />
+        )
+        : ''}
       <div className="questionlist">
         {questions.length > 0
           ? filteredQuestions.map((q) => (

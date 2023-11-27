@@ -7,11 +7,15 @@ import './Overview.css';
 const Search = () => (
   <div id="overview-search-main">
     <div id="overview-search-logo">
-      <FontAwesomeIcon icon={faHandSpock} />
+      <FontAwesomeIcon data-testid="search-logo" icon={faHandSpock} />
     </div>
     <div id="overview-search-searchbar">
-      <input id="overview-search-input" placeholder="" />
-      <FontAwesomeIcon icon={faMagnifyingGlass} />
+      <input
+        data-testid="search-input"
+        id="overview-search-input"
+        placeholder=""
+      />
+      <FontAwesomeIcon data-testid="search-icon" icon={faMagnifyingGlass} />
     </div>
   </div>
 );

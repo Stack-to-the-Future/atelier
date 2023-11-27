@@ -65,7 +65,7 @@ const Answer = ({ answer }) => {
       <div className="answer-footer">
         by
         {' '}
-        {answer.answerer_name}
+        {answer.answerer_name === 'Seller' ? <b>Seller</b> : answer.answerer_name}
         ,
         {' '}
         {convertDate()}
