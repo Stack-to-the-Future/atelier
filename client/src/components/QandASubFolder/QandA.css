@@ -33,6 +33,12 @@
   margin-bottom: 2rem;
   cursor: pointer;
 }
+.list-bottom-buttons:hover{
+  background-color: goldenrod;
+}
+.list-bottom-buttons:active{
+  background-color: rgb(87, 65, 9);
+}
 
 /* QUESTIONS */
 
@@ -107,4 +113,7 @@
   cursor: pointer;
   background-color: white;
   padding-bottom: 1rem;
+}
+.answer-button:hover{
+  color: goldenrod;
 }

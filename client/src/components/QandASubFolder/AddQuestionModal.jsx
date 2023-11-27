@@ -26,7 +26,7 @@ const AddQuestion = ({ setModalStatus, productName, productId }) => {
       body,
       name: username,
       email,
-      product_id: `${productId}`,
+      product_id: productId,
     };
     axios.post(`${process.env.URL}/qa/questions`, data, headers)
       .then((response) => console.log(response))
