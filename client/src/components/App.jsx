@@ -72,8 +72,6 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // console.log('info: ', productInfo.id);
-
   return (
     <div id="app">
       <Overview product={productInfo} ratings={ratings} />
