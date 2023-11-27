@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './RelPro.css';
 
 const ComparingModal = ({ compaired, products, setModalStatus }) => {
   const [mainProductFeatures, setMainProductFeatures] = useState([]);

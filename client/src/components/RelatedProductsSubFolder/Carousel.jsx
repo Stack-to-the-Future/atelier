@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from './Card.jsx';
+import './RelPro.css';
 
 const Carousel = ({
   setModalStatus, setCompaired, setProductInfo, gallery, setOutFits, icon,

@@ -34,7 +34,7 @@ const App = () => {
       .then((response) => setProductInfo(response.data))
       .catch((error) => console.log(error));
   }, []);
-
+  // console.log('prodInfo::', productInfo);
   return (
     <div id="app">
       <Overview />

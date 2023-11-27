@@ -13,13 +13,11 @@ const RelatedProductsList = ({
 
   // Set icon onMount
   useEffect(() => { setStar('*'); }, []);
-
   // gathering related Products
   useEffect(() => {
     const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
     setRelatedProducts(getRelatedProducts());
   }, [products]);
-  // console.log('111:::', relatedProducts);
 
   const options = { Authorization: process.env.TOKEN };
   // Getting all related Products photos
@@ -48,7 +46,7 @@ const RelatedProductsList = ({
 
     getPhotos();
   }, [relatedProducts]);
-  // console.log('222:::', toDisplay);
+
   return (
     <div id="rel-prod-list">
       <Carousel
