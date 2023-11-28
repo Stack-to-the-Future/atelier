@@ -52,7 +52,7 @@ const AddQuestion = ({ setModalStatus, productName, productId }) => {
   };
 
   return (
-    <div id="modal">
+    <div id="modal" data-testid="add-question-modal">
       <div className="overlay">
         <div className="modal-content">
           <div>

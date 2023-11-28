@@ -50,7 +50,7 @@ const QuestionsList = ({
         )}
       <div className="questionlist">
         {questions.length > 0
-          ? filteredQuestions.map((q) => (
+          && filteredQuestions.map((q) => (
             <Question
               key={q.question_id}
               question={q}
@@ -58,8 +58,7 @@ const QuestionsList = ({
               modalStatus={modalStatus}
               productName={productName}
             />
-          ))
-          : ''}
+          ))}
       </div>
       <div>
         <span>

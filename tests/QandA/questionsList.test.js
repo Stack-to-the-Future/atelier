@@ -83,70 +83,6 @@ const mockQuestionsCall = {
                   "answerer_name": "NotJack",
                   "helpfulness": 0,
                   "photos": []
-              },
-              "5993133": {
-                  "id": 5993133,
-                  "body": "What should I type for an answer to this question",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "NotJack",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993134": {
-                  "id": 5993134,
-                  "body": "What should I type for an answer to this question",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "NotJack",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993135": {
-                  "id": 5993135,
-                  "body": "What should I type for an answer to this question",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "NotJack",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993136": {
-                  "id": 5993136,
-                  "body": "What should I type for an answer to this question",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "NotJack",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993137": {
-                  "id": 5993137,
-                  "body": "What should I type for an answer to this question",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "NotJack",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993138": {
-                  "id": 5993138,
-                  "body": "What should I type for an answer to this question",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "NotJack",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993139": {
-                  "id": 5993139,
-                  "body": "answer goes here",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "someone",
-                  "helpfulness": 0,
-                  "photos": []
-              },
-              "5993140": {
-                  "id": 5993140,
-                  "body": "test",
-                  "date": "2023-08-25T00:00:00.000Z",
-                  "answerer_name": "person",
-                  "helpfulness": 0,
-                  "photos": []
               }
           }
       },
@@ -181,12 +117,21 @@ describe('it should render QuestionsList properly', () => {
   })
 
   it('should render Add Question Button', async () => {
-    const button = await screen.findByTestId('add-question-button');
+    const button = await screen.getByTestId('add-question-button');
     expect(button).toBeTruthy();
   })
 
-  it('should NOT render More Questions Button', async () => {
+  it('should render More Questions Button', async () => {
     const button = await screen.findByTestId('more-questions-button');
     expect(button).toBeTruthy();
+  })
+})
+
+describe('it should render QuestionsList properly', () => {
+  beforeEach(() => render(<QuestionsList searchTerm={searchTerm} modalStatus={{name: 'question'}} productName={productName} productId={productId} />));
+
+  it('should render Add Question Modal', async () => {
+    const modal = await screen.getByTestId("add-question-modal");
+    expect(modal).toBeTruthy();
   })
 })
