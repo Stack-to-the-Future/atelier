@@ -18,7 +18,7 @@ const App = () => {
     4: 0,
     5: 0,
   });
-  const [productInfo, setProductInfo] = useState({});
+  const [productInfo, setProductInfo] = useState(null);
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
 
@@ -31,61 +31,65 @@ const App = () => {
       setProducts([...all]);
     }).catch((error) => { console.error('Error getting products:', error); });
   };
-  const getRatings = () => {
+  const getRatings = (id) => {
     axios({
       method: 'GET',
-      url: `${process.env.URL}/reviews/meta/?product_id=${40346}`,
+      url: `${process.env.URL}/reviews/meta/?product_id=${id}`,
       headers: { Authorization: process.env.TOKEN },
     })
       .then((response) => setRatings(response.data.ratings))
       .catch((err) => console.log(err));
   };
-  const getRatings = () => {
-    axios({
-      method: 'GET',
-      url: `${process.env.URL}/reviews/meta/?product_id=${40346}`,
-      headers: { Authorization: process.env.TOKEN },
-    })
-      .then((response) => setRatings(response.data.ratings))
-      .catch((err) => console.log(err));
+
+  // Gets the main products features
+  const getMainProduct = (id) => {
+    console.log('ID..', id);
+    axios.get(`${process.env.URL}/products/${id}`, options)
+      .then((response) => {
+        console.log('Data..', response.data);
+        setProductInfo(response.data);
+      })
+      .then(() => getRatings(id))
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     getProducts();
-    getRatings();
+    getMainProduct(40346);
   }, []);
 
-  // Gets main products features
-  // setMainProduct({ ...products[2] });
-  // const getMainProduct = (id) => {
-  //   axios.get(`${process.env.URL}/products/${id}/styles`, options).then((data) => {
-  //     const photo = data.results[0].photos[0].thumbnail_url;
-  //     console.log('photo::', data);
-  //     setMainProduct({ data });
-  //   }).catch((error) => { console.error('Error getting product:', error); });
-  // };
-
-  // useEffect(() => {
-  //   // getProducts();
-  //   getMainProduct();
-  // }, [products]);
-  console.log('productInfo::', productInfo);
+  useEffect(() => {
+    console.log(productInfo);
+  }, [productInfo]);
 
   // make initial product API call here -- Ming can pass as prop
-  const url = `${process.env.URL}/products/40346`;
-  useEffect(() => {
-    axios
-      .get(url, options)
-      .then((response) => setProductInfo(response.data))
-      .catch((error) => console.log(error));
-  }, []);
+  // const url = `${process.env.URL}/products/40346`;
+  // useEffect(() => {
+  //   axios
+  //     .get(url, options)
+  //     .then((response) => setProductInfo(response.data))
+  //     .catch((error) => console.log(error));
+  // }, []);
 
-  return (
+  // compare
+  const handleCompaired = (obj) => {
+    setCompaired(obj);
+  };
+  // modal status
+  const handleModalStatus = (obj) => {
+    setCompaired(obj);
+  };
+  // handle product Info change
+  const handleProductInfo = (obj) => {
+    setProductInfo({ ...obj });
+  };
+
+  return productInfo && (
     <div id="app">
       <Overview product={productInfo} ratings={ratings} />
       {modalStatus.name === 'compare' ? (
         <ComparingModal
-          setModalStatus={setModalStatus}
+          handleModalStatus={handleModalStatus}
           products={products}
           compaired={compaired}
         />
@@ -94,10 +98,11 @@ const App = () => {
       )}
       <RelatedProducts
         products={products}
-        productInfo={productInfo}
-        setModalStatus={setModalStatus}
-        setCompaired={setCompaired}
-        setProductInfo={setProductInfo}
+        current={productInfo}
+        handleModalStatus={handleModalStatus}
+        handleCompaired={handleCompaired}
+        handleProductInfo={handleProductInfo}
+        getMainProduct={getMainProduct}
       />
       <QandA
         setModalStatus={setModalStatus}

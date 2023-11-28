@@ -2,34 +2,36 @@ import React from 'react';
 import './RelPro.css';
 
 const Card = ({
-  product, setModalStatus, setCompaired, setProductInfo, setOutFits, icon, gallery,
+  product, handleCompaired, handleModalStatus, handleProductInfo,
+  handleOutFitList, getMainProduct, icon, gallery,
 }) => {
-  const handleButtonClick = (e) => {
-    e.preventDefault();
+  const handleButtonClick = () => {
     if (icon === '*') {
-      setModalStatus({ name: 'compare' });
-      setCompaired(product);
+      handleModalStatus({ name: 'compare' });
+      handleCompaired(product);
     } else {
       const deleted = gallery.filter((obj) => obj.id !== product.id);
-      setOutFits([...deleted]); // chnage this..
+      handleOutFitList([...deleted]);
     }
   };
 
   // change Main product
-  const changeMainProd = (e) => {
-    e.preventDefault();
-    setProductInfo({ ...product });
-  };
+  // const changeMainProd = () => {
+  //   getMainProduct(product.id);
+  // };
 
   return (
-    <form
+    <div
       className="all-cards"
-      type="submit"
     >
       { (icon === '*')
-        ? <button className="card-button" type="submit" onClick={(e) => { handleButtonClick(e); }}>⭐️</button>
-        : <button className="card-button" type="submit" onClick={(e) => { handleButtonClick(e); }}>✖️</button>}
-      <button className={(icon === '*') ? 'product-card' : 'outFit-card'} type="submit" onClick={(e) => { changeMainProd(e); }}>
+        ? <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>⭐️</button>
+        : <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>✖️</button>}
+      <button
+        className={(icon === '*') ? 'product-card' : 'outFit-card'}
+        type="button"
+        onClick={() => getMainProduct(product.id)}
+      >
         <img
           src={product.photo}
           width="100"
@@ -47,7 +49,7 @@ const Card = ({
         {/* {'Subject to change once I have drilled star reviews down here'} */}
         <h4 className="prod-reviews">*****</h4>
       </button>
-    </form>
+    </div>
 
   );
 };

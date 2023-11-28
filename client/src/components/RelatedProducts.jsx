@@ -5,41 +5,44 @@ import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 import './RelatedProductsSubFolder/RelPro.css';
 
 const RelatedProducts = ({
-  products, productInfo, setModalStatus, setCompaired, setProductInfo, setMainProduct, mainProduct,
+  products, current, handleModalStatus, handleCompaired,
+  handleProductInfo, getMainProduct,
 }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
 
   const options = { headers: { Authorization: process.env.TOKEN } };
   // Get related ID's
   useEffect(() => {
-    axios.get(`${process.env.URL}/products/40346/related`, options)
-      .then((response) => {
-        const arr = response.data;
-        setRelatedProductsId([...arr]);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    if (current) {
+      axios.get(`${process.env.URL}/products/${current.id}/related`, options)
+        .then((response) => {
+          const arr = response.data;
+          setRelatedProductsId(arr);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [current]);
 
   return (
     <div id="relpro">
       <h5 id="rel-prod-title">RELATED PRODUCTS</h5>
       <RelatedProductsList
-        setModalStatus={setModalStatus}
+        handleModalStatus={handleModalStatus}
         products={products}
-        setCompaired={setCompaired}
-        setProductInfo={setProductInfo}
+        handleCompaired={handleCompaired}
+        getMainProduct={getMainProduct}
+        handleProductInfo={handleProductInfo}
         relatedProductsId={relatedProductsId}
-        mainProduct={setMainProduct}
+        current={current}
       />
       <br />
       <h5 id="outFit-prod-title">YOUR OUTFIT</h5>
       <OutfitList
-        setModalStatus={setModalStatus}
-        productInfo={productInfo}
-        setCompaired={setCompaired}
-        setProductInfo={setProductInfo}
-        setMainProduct={setMainProduct}
-        mainProduct={mainProduct}
+        handleModalStatus={handleModalStatus}
+        current={current}
+        handleCompaired={handleCompaired}
+        handleProductInfo={handleProductInfo}
+        getMainProduct={getMainProduct}
       />
     </div>
   );

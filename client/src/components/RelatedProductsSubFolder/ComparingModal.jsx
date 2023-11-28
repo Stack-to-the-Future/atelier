@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './RelPro.css';
 
-const ComparingModal = ({ compaired, products, setModalStatus }) => {
+const ComparingModal = ({ compaired, products, handleModalStatus }) => {
   const [mainProductFeatures, setMainProductFeatures] = useState([]);
   const [compairedProductFeatures, setCompairedProductFeatures] = useState([]);
   const [combinedFeatures, setCombinedFeatures] = useState([]);
@@ -37,7 +37,7 @@ const ComparingModal = ({ compaired, products, setModalStatus }) => {
   return (
     <div className="product-modal">
       <h3>Comparing</h3>
-      <button className="close-modal" type="button" onClick={() => { setModalStatus({ name: '' }); }}> X </button>
+      <button className="close-modal" type="button" onClick={() => { handleModalStatus({ name: '' }); }}> X </button>
       <div className="table-modal">
         <table className="table-modal">
           <thead className="table-modal">

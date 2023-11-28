@@ -5,7 +5,7 @@ import './RelPro.css';
 
 const RelatedProductsList = ({
   products, setCompaired, setModalStatus, setProductInfo,
-  relatedProductsId,
+  relatedProductsId, handleProductInfo, getMainProduct, current,
 }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [toDisplay, setToDisplay] = useState([]);
@@ -17,7 +17,7 @@ const RelatedProductsList = ({
   useEffect(() => {
     const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
     setRelatedProducts(getRelatedProducts());
-  }, [products]);
+  }, [current]);
 
   const options = { Authorization: process.env.TOKEN };
   // Getting all related Products photos
@@ -37,7 +37,7 @@ const RelatedProductsList = ({
 
       Promise.all(promises)
         .then((results) => {
-          setRelatedProducts([...relatedProducts, ...results]);
+          setRelatedProducts(results);
         })
         .catch((error) => {
           console.error('Error fetching data:', error);
@@ -45,7 +45,7 @@ const RelatedProductsList = ({
     };
 
     getPhotos();
-  }, [products]);
+  }, [current]);
 
   useEffect(() => {
     const getToDisplay = () => relatedProducts.filter((p) => relatedProductsId.includes(p.id));
@@ -58,6 +58,8 @@ const RelatedProductsList = ({
         setModalStatus={setModalStatus}
         setCompaired={setCompaired}
         setToDisplay={setToDisplay}
+        handleProductInfo={handleProductInfo}
+        getMainProduct={getMainProduct}
         gallery={toDisplay}
         setProductInfo={setProductInfo}
         icon={star}
