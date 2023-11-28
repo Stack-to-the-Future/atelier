@@ -11,7 +11,7 @@ const Overview = ({ product, ratings }) => {
   const [currentStyle, setCurrentStyle] = useState(0);
 
   const getStyles = () => {
-    const url = `${process.env.URL}/products/40346/styles`;
+    const url = `${process.env.URL}/products/${product.id}/styles`;
     axios({
       method: 'GET',
       url,
@@ -29,7 +29,7 @@ const Overview = ({ product, ratings }) => {
 
   useEffect(() => {
     getStyles();
-  }, []);
+  }, [product]);
 
   return (
     <div id="overview-main">
