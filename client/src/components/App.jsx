@@ -61,24 +61,28 @@ const App = () => {
 
   // Gets the main products features
   const getMainProduct = (id) => {
-    console.log('ID..', id);
     axios.get(`${process.env.URL}/products/${id}`, options)
       .then((response) => {
-        console.log('Data..', response.data);
         setProductInfo(response.data);
+        // console.log('p.info:', productInfo);
       })
       .then(() => getRatings(id))
       .catch((error) => console.log(error));
+  };
+
+  // compare
+  const handleCompaired = (obj) => {
+    setCompaired(obj);
+  };
+  // modal status
+  const handleModalStatus = (obj) => {
+    setModalStatus(obj);
   };
 
   useEffect(() => {
     getProducts();
     getMainProduct(40346);
   }, []);
-
-  useEffect(() => {
-    console.log(productInfo);
-  }, [productInfo]);
 
   // make initial product API call here -- Ming can pass as prop
   const url = `${process.env.URL}/products/${productInfo.id}`;
@@ -89,27 +93,19 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // compare
-  const handleCompaired = (obj) => {
-    setCompaired(obj);
-  };
-  // modal status
-  const handleModalStatus = (obj) => {
-    setCompaired(obj);
-  };
-  // handle product Info change
-  const handleProductInfo = (obj) => {
-    setProductInfo({ ...obj });
-  };
+  // console.log(';;;;', modalStatus);
 
-  return productInfo && (
+  return (
     <div id="app">
       <Overview product={productInfo} ratings={ratings} />
       {modalStatus.name === 'compare' ? (
         <ComparingModal
           handleModalStatus={handleModalStatus}
+          // handleCompaired={handleCompaired}
           products={products}
           compaired={compaired}
+          ratings={ratings}
+          current={productInfo}
         />
       ) : (
         ''
@@ -119,7 +115,6 @@ const App = () => {
         current={productInfo}
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
-        handleProductInfo={handleProductInfo}
         getMainProduct={getMainProduct}
       />
       <QandA

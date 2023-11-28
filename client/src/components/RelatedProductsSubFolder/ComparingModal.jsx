@@ -11,7 +11,7 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
   useEffect(() => {
     const getProductsFeatures = () => {
       const options = { headers: { Authorization: process.env.TOKEN } };
-      axios.get(`${process.env.URL}/products/${products[2].id}`, options).then((data) => {
+      axios.get(`${process.env.URL}/products/${products[2].id}`, options).then((data) => { // current
         const { features } = data.data;
         const temp = features;
         setMainProductFeatures([...temp]);
@@ -37,7 +37,7 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
   return (
     <div className="product-modal">
       <h3>Comparing</h3>
-      <button className="close-modal" type="button" onClick={() => { handleModalStatus({ name: '' }); }}> X </button>
+      <button className="close-modal" type="button" onClick={() => { handleModalStatus({ name: '', data: '' }); }}> X </button>
       <div className="table-modal">
         <table className="table-modal">
           <thead className="table-modal">
@@ -82,7 +82,7 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
               const mTemp = mainProductFeatures.filter((item) => item.feature === detail.feature);
               const cTemp = compairedProductFeatures.filter((x) => (x.feature === detail.feature));
               return (
-                <tr key={detail.value + detail.id}>
+                <tr key={`${detail.value} ${compaired.id} ${compaired.price}`}>
                   <td className="table-modal">{mTemp[0] ? mTemp[0].value : '-' }</td>
                   <td className="table-modal">{detail.feature}</td>
                   <td className="table-modal">{cTemp[0] ? cTemp[0].value : '-' }</td>

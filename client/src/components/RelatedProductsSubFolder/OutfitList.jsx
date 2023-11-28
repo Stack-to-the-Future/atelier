@@ -4,15 +4,15 @@ import Carousel from './Carousel.jsx';
 import './RelPro.css';
 
 const OutfitList = ({
-  handleCompaired, handleModalStatus, handleProductInfo, current, getMainProduct,
+  current, getMainProduct, ratings, handleModalStatus, handleCompaired,
 }) => {
   const [outFits, setOutFits] = useState([]);
   const [remove, setRemove] = useState('');
 
-  // // handle OutFit list Change
-  // const handleOutFitList = (arr) => {
-  //   setOutFits([...arr]);
-  // };
+  // handle OutFit list Change
+  const handleOutFitList = (arr) => {
+    setOutFits([...arr]);
+  };
   const options = { headers: { Authorization: process.env.TOKEN } };
   // adds an OutFit
   const addOutfit = () => {
@@ -27,13 +27,11 @@ const OutfitList = ({
     }).catch((error) => { console.error('Error getting product:', error); });
   };
 
-  // Handle delete from OutFit list
-  const handleOutFitList = () => {
-    setOutFits();
-  };
-
   // Set icon onMount
-  useEffect(() => { setRemove('X'); }, []);
+  useEffect(() => {
+    setRemove('X');
+    // addOutfit();
+  }, []);
 
   return (
     <div id="outFit-prod-list">
@@ -48,10 +46,10 @@ const OutfitList = ({
         <Carousel
           handleModalStatus={handleModalStatus}
           handleCompaired={handleCompaired}
-          handleProductInfo={handleProductInfo}
           handleOutFitList={handleOutFitList}
           getMainProduct={getMainProduct}
           gallery={outFits}
+          ratings={ratings}
           icon={remove}
         />
       </div>

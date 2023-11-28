@@ -5,8 +5,7 @@ import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 import './RelatedProductsSubFolder/RelPro.css';
 
 const RelatedProducts = ({
-  products, current, handleModalStatus, handleCompaired,
-  handleProductInfo, getMainProduct,
+  products, current, handleModalStatus, handleCompaired, getMainProduct, ratings,
 }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
 
@@ -28,21 +27,21 @@ const RelatedProducts = ({
       <h5 id="rel-prod-title">RELATED PRODUCTS</h5>
       <RelatedProductsList
         handleModalStatus={handleModalStatus}
-        products={products}
         handleCompaired={handleCompaired}
+        products={products}
         getMainProduct={getMainProduct}
-        handleProductInfo={handleProductInfo}
         relatedProductsId={relatedProductsId}
         current={current}
+        ratings={ratings}
       />
       <br />
       <h5 id="outFit-prod-title">YOUR OUTFIT</h5>
       <OutfitList
         handleModalStatus={handleModalStatus}
-        current={current}
         handleCompaired={handleCompaired}
-        handleProductInfo={handleProductInfo}
+        current={current}
         getMainProduct={getMainProduct}
+        ratings={ratings}
       />
     </div>
   );

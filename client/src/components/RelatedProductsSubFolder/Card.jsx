@@ -2,12 +2,16 @@ import React from 'react';
 import './RelPro.css';
 
 const Card = ({
-  product, handleCompaired, handleModalStatus,
+  product, handleCompaired, handleModalStatus, ratings,
   handleOutFitList, getMainProduct, icon, gallery,
 }) => {
   const handleButtonClick = () => {
+    // console.log('Button clicked!');
+    // console.log('Icon:', icon);
+    // console.log('Product:', product);
     if (icon === '*') {
-      handleModalStatus({ name: 'compare' });
+      const temp = { name: 'compare', data: '' };
+      handleModalStatus(temp);
       handleCompaired(product);
     } else {
       const deleted = gallery.filter((obj) => obj.id !== product.id);
@@ -42,7 +46,7 @@ const Card = ({
           {product.default_price}
         </h4>
         {/* {'Subject to change once I have drilled star reviews down here'} */}
-        <h4 className="prod-reviews">*****</h4>
+        <h4 className="prod-reviews">{ratings}</h4>
       </button>
     </div>
 

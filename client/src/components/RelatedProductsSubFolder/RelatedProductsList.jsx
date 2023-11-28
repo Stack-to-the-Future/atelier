@@ -4,7 +4,7 @@ import Carousel from './Carousel.jsx';
 import './RelPro.css';
 
 const RelatedProductsList = ({
-  products, setCompaired, setModalStatus, setProductInfo,
+  products, handleModalStatus, handleCompaired, setProductInfo, ratings,
   relatedProductsId, handleProductInfo, getMainProduct, current,
 }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -51,18 +51,20 @@ const RelatedProductsList = ({
     const getToDisplay = () => relatedProducts.filter((p) => relatedProductsId.includes(p.id));
     setToDisplay(getToDisplay());
   }, [relatedProducts]);
+  // console.log(toDisplay);
 
   return (
     <div id="rel-prod-list">
       <Carousel
-        setModalStatus={setModalStatus}
-        setCompaired={setCompaired}
+        handleModalStatus={handleModalStatus}
+        handleCompaired={handleCompaired}
         setToDisplay={setToDisplay}
         handleProductInfo={handleProductInfo}
         getMainProduct={getMainProduct}
         gallery={toDisplay}
         setProductInfo={setProductInfo}
         icon={star}
+        ratings={ratings}
       />
     </div>
   );

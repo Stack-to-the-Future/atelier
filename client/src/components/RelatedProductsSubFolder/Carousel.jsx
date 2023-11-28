@@ -3,10 +3,10 @@ import Card from './Card.jsx';
 import './RelPro.css';
 
 const Carousel = ({
-  handleCompaired, handleModalStatus, handleProductInfo, gallery,
+  handleCompaired, handleModalStatus, gallery, ratings,
   handleOutFitList, getMainProduct, icon,
 }) => {
-  const length = 3;
+  const length = 4;
   const [index, setIndex] = useState(0);
 
   const scroll = (direction) => {
@@ -31,8 +31,8 @@ const Carousel = ({
           handleModalStatus={handleModalStatus}
           handleCompaired={handleCompaired}
           handleOutFitList={handleOutFitList}
-          handleProductInfo={handleProductInfo}
           getMainProduct={getMainProduct}
+          ratings={ratings}
           icon={icon}
         />
       ))}
