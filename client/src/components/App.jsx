@@ -40,13 +40,14 @@ const App = () => {
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
 
-  // could be passed down?
   const options = { headers: { Authorization: process.env.TOKEN } };
+
+  // Gets all the available products
   const getProducts = () => {
     axios.get(`${process.env.URL}/products`, options).then((data) => {
       const all = data.data;
       setProducts([...all]);
-    });
+    }).catch((error) => { console.error('Error getting products:', error); });
   };
   const getRatings = () => {
     axios({
@@ -58,9 +59,29 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
+  // Gets the main products features
+  const getMainProduct = (id) => {
+    axios.get(`${process.env.URL}/products/${id}`, options)
+      .then((response) => {
+        setProductInfo(response.data);
+        // console.log('p.info:', productInfo);
+      })
+      .then(() => getRatings(id))
+      .catch((error) => console.log(error));
+  };
+
+  // compare
+  const handleCompaired = (obj) => {
+    setCompaired(obj);
+  };
+  // modal status
+  const handleModalStatus = (obj) => {
+    setModalStatus(obj);
+  };
+
   useEffect(() => {
     getProducts();
-    getRatings();
+    getMainProduct(40346);
   }, []);
 
   // make initial product API call here -- Ming can pass as prop
@@ -72,22 +93,29 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  // console.log(';;;;', modalStatus);
+
   return (
     <div id="app">
       <Overview product={productInfo} ratings={ratings} />
       {modalStatus.name === 'compare' ? (
         <ComparingModal
-          setModalStatus={setModalStatus}
+          handleModalStatus={handleModalStatus}
+          // handleCompaired={handleCompaired}
           products={products}
           compaired={compaired}
+          ratings={ratings}
+          current={productInfo}
         />
       ) : (
         ''
       )}
       <RelatedProducts
         products={products}
-        setModalStatus={setModalStatus}
-        setCompaired={setCompaired}
+        current={productInfo}
+        handleModalStatus={handleModalStatus}
+        handleCompaired={handleCompaired}
+        getMainProduct={getMainProduct}
       />
       <QandA
         setModalStatus={setModalStatus}
