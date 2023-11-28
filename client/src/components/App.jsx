@@ -64,9 +64,8 @@ const App = () => {
     axios.get(`${process.env.URL}/products/${id}`, options)
       .then((response) => {
         setProductInfo(response.data);
-        // console.log('p.info:', productInfo);
       })
-      .then(() => getRatings(id))
+      .then(() => getRatings())
       .catch((error) => console.log(error));
   };
 
@@ -81,19 +80,8 @@ const App = () => {
 
   useEffect(() => {
     getProducts();
-    getMainProduct(40346);
+    getMainProduct(productInfo.id);
   }, []);
-
-  // make initial product API call here -- Ming can pass as prop
-  const url = `${process.env.URL}/products/${productInfo.id}`;
-  useEffect(() => {
-    axios
-      .get(url, options)
-      .then((response) => setProductInfo(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  // console.log(';;;;', modalStatus);
 
   return (
     <div id="app">
@@ -101,7 +89,6 @@ const App = () => {
       {modalStatus.name === 'compare' ? (
         <ComparingModal
           handleModalStatus={handleModalStatus}
-          // handleCompaired={handleCompaired}
           products={products}
           compaired={compaired}
           ratings={ratings}
