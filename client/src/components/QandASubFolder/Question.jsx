@@ -58,7 +58,7 @@ const Question = ({
   const renderList = sellerFirst.slice(0, answerCount);
 
   return (
-    <div id="question">
+    <div id="question" data-testid="question">
       {modalStatus.name === 'answer' && modalStatus.data === `${question.question_id}`
         ? (
           <AddAnswerModal
@@ -76,7 +76,7 @@ const Question = ({
           <span className="question-interactions">
             {' '}
             Helpful?
-            <button type="button" onClick={helpfulClick}>
+            <button type="button" data-testid="question-helpful" onClick={helpfulClick}>
               <span className="inner-link">Yes</span>
               (
               {isHelpful

@@ -8,8 +8,6 @@ const Answer = ({ answer }) => {
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // not working correctly?
-  // converts raw answer.date data into proper format: month, dd, yyyy
   const convertDate = () => {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const d = new Date(answer.date);
@@ -20,7 +18,6 @@ const Answer = ({ answer }) => {
     return date;
   };
 
-  // handles a click on 'report' for each answer
   const reportURL = `${process.env.URL}/qa/answers/${answer.answer_id}/report`;
   const onReportClick = (e) => {
     e.preventDefault();
@@ -33,7 +30,6 @@ const Answer = ({ answer }) => {
       .catch((err) => console.error(err));
   };
 
-  // handles the 'helpful' click for each answer
   const helpfulURL = `${process.env.URL}/qa/answers/${answer.answer_id}/helpful`;
   const onHelpfulClick = (e) => {
     e.preventDefault();
@@ -42,17 +38,15 @@ const Answer = ({ answer }) => {
     }
     setHelpful(true);
     axios.put(helpfulURL, {}, headers)
-    // get rid of these response logs!
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
 
   return (
-    <div>
+    <div data-testid="answer">
       <span className="answer-body">
         { answer.body ? (
           <p>
-            {/* <span className="answer-a">A:</span> */}
             {' '}
             {answer.body}
           </p>
@@ -72,7 +66,7 @@ const Answer = ({ answer }) => {
         |
         Helpful?
         {' '}
-        <button type="button" onClick={onHelpfulClick}>
+        <button type="button" onClick={onHelpfulClick} data-testid="answer-helpful">
           <span className="inner-link">Yes</span>
           (
           {helpful ? answer.helpfulness + 1 : answer.helpfulness}
@@ -80,7 +74,7 @@ const Answer = ({ answer }) => {
         </button>
         {' '}
         |
-        <button type="button" className="inner-link" onClick={onReportClick}>{report ? 'Reported' : 'Report'}</button>
+        <button type="button" className="inner-link" data-testid="answer-report" onClick={onReportClick}>{report ? 'Reported' : 'Report'}</button>
       </div>
     </div>
   );

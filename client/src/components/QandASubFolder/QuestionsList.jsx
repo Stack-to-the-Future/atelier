@@ -12,13 +12,11 @@ const QuestionsList = ({
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
-  // triggers the modal for questions
   const onAddQuestionClick = (e) => {
     e.preventDefault();
     setModalStatus({ name: 'question' });
   };
 
-  // grabs ALL of the questions from the server and stores them as state
   const questionCount = 1000;
   useEffect(() => {
     axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${productId}`, headers)
@@ -26,15 +24,12 @@ const QuestionsList = ({
       .catch((err) => console.error(err));
   }, [productId]);
 
-  // on click increments the questions rendered by two
   const onLoadMoreQuestions = (e) => {
     e.preventDefault();
     setNumOfQuestions(numOfQuestions + 2);
   };
 
-  // I need to incrementally increase the amount +2
   const renderedQuestions = questions.slice(0, numOfQuestions);
-  // functions to filter terms and function to filter based on search
   const filterFunc = (term, q) => q.question_body.toLowerCase().includes(term.toLowerCase());
   const filteredQuestions = renderedQuestions.filter((q) => filterFunc(searchTerm, q));
 
@@ -63,8 +58,7 @@ const QuestionsList = ({
       <div>
         <span>
           {numOfQuestions < questions.length
-            && <button type="button" className="list-bottom-buttons" data-testid="more-questions-button" onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
-            }
+            && <button type="button" className="list-bottom-buttons" data-testid="more-questions-button" onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
           <button type="button" className="list-bottom-buttons" data-testid="add-question-button" onClick={onAddQuestionClick}>ADD A QUESTION +</button>
         </span>
       </div>

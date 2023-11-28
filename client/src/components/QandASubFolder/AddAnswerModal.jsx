@@ -64,7 +64,7 @@ const AddAnswer = ({
   };
 
   return (
-    <div>
+    <div data-testid="question">
       {showPhotoForm
         ? (
           <div id="modal">
@@ -91,7 +91,7 @@ const AddAnswer = ({
           </div>
         )
         : (
-          <div id="modal">
+          <div id="modal" data-testid="add-answer-modal">
             <div className="overlay">
               <div className="modal-content">
                 <div>

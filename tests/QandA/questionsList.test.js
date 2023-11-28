@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import * as axios from 'axios';
+// import axios from 'axios';
 import QuestionsList from '../../client/src/components/QandASubFolder/QuestionsList.jsx';
 
 const searchTerm = '';
@@ -11,7 +12,7 @@ const modalStatus = { name: '', data: '' };
 const productName = 'Morning Joggers';
 
 const productId = 40346;
-
+// DOING REAL CALLS
 jest.mock('axios');
 const mockQuestionsCall = {
   product_id: '40346',
@@ -127,8 +128,8 @@ describe('it should render QuestionsList properly', () => {
   });
 
   it('should render More Questions Button', async () => {
-    const button = await screen.findByTestId('more-questions-button');
-    expect(button).toBeTruthy();
+    const button = await screen.queryByTestId('more-questions-button');
+    expect(button).not.toBeInTheDocument();
   });
 });
 

@@ -89,7 +89,6 @@ const App = () => {
       {modalStatus.name === 'compare' ? (
         <ComparingModal
           handleModalStatus={handleModalStatus}
-          // handleCompaired={handleCompaired}
           products={products}
           compaired={compaired}
           ratings={ratings}

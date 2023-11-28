@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Answer from '../../client/src/components/QandASubFolder/QuestionsList.jsx';
+import Answer from '../../client/src/components/QandASubFolder/Answer.jsx';
 
 const answer = {
   answer_id: 5993312,
@@ -16,7 +16,17 @@ describe('it should render Answer properly', () => {
   beforeEach(() => render(<Answer answer={answer} />));
 
   it('should render an Answer', async () => {
-    const modal = await screen.findByTestId('answer');
-    expect(modal).toBeTruthy();
+    const item = await screen.findByTestId('answer');
+    expect(item).toBeTruthy();
+  });
+
+  it('should render a helpful', async () => {
+    const button = await screen.findByTestId('answer-report');
+    expect(button).toBeTruthy();
+  });
+
+  it('should render a helpful', async () => {
+    const button = await screen.findByTestId('answer-helpful');
+    expect(button).toBeTruthy();
   });
 });
