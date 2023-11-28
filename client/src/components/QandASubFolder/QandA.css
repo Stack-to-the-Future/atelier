@@ -1,13 +1,14 @@
 
 .quanda-header {
-  margin-top: 1rem;
+  margin: .6rem;
+  margin-top: 2rem;
   font-weight: 600;
   font-size: 1.1rem;
 }
 
 /* SEARCH */
 .question-search {
-  width: 100%;
+  width: 96%;
   border-color: black;
   border-style: solid;
   border-width: .1rem;
@@ -26,9 +27,17 @@
 .list-bottom-buttons{
   padding: 1rem;
   margin-right: 1rem;
-  border: 1px solid black;
+  background-color: white;
+  font-weight: 600;
+  border: 2px solid black;
   margin-bottom: 2rem;
   cursor: pointer;
+}
+.list-bottom-buttons:hover{
+  background-color: goldenrod;
+}
+.list-bottom-buttons:active{
+  background-color: rgb(87, 65, 9);
 }
 
 /* QUESTIONS */
@@ -57,12 +66,28 @@
 }
 
 /* ANSWERS */
+/* #answer{
+  padding-left: 3rem;
+} */
+
+.a-tag{
+  float: left;
+  font-size: 1.2rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+
+#A{
+  display: inline-block;
+}
+
 .answer-footer{
   font-weight: normal;
   font-size: .8rem;
 }
 
 .answer-a{
+  display: inline-block;
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -81,7 +106,17 @@
 }
 
 .answer-button {
+  margin-top: 1rem;
   padding: .3rem;
-  font-weight: 500;
+  font-size: .9rem;
+  font-weight: 600;
   cursor: pointer;
+  background-color: white;
+  padding-bottom: 1rem;
+}
+.answer-button:hover{
+  color: goldenrod;
+}
+.answer-button:active{
+  color: rgb(87, 65, 9);
 }
