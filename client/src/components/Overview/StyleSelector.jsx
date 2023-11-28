@@ -1,7 +1,9 @@
 import React from 'react';
 import './Overview.css';
 
-const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => (
+const StyleSelector = ({
+  styles, changeCurrentStyle, currentStyle,
+}) => (
   <div className="overview-styles-container">
     <div className="overview-style-title">
       <b> STYLE &gt; </b>
@@ -14,12 +16,14 @@ const StyleSelector = ({ styles, setCurrentStyle, currentStyle }) => (
           <button
             type="button"
             className="overview-styles-image-container"
-            onClick={() => setCurrentStyle(idx)}
+            onClick={() => {
+              changeCurrentStyle(idx);
+            }}
             key={style.name}
           >
             <img
-              className={`overview-styles-image ${idx === currentStyle ? 'selected' : ''
-              }`}
+              className={`overview-styles-image ${idx === currentStyle
+                ? 'selected' : ''}`}
               src={style.photos[0].thumbnail_url}
               alt="style"
             />
