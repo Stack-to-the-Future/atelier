@@ -49,7 +49,7 @@ const App = () => {
       setProducts([...all]);
     }).catch((error) => { console.error('Error getting products:', error); });
   };
-  const getRatings = (id) => {
+  const getRatings = () => {
     axios({
       method: 'GET',
       url: `${process.env.URL}/reviews/meta/?product_id=${productInfo.id}`,

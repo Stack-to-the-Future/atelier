@@ -2,7 +2,7 @@ import React from 'react';
 import './RelPro.css';
 
 const Card = ({
-  product, handleCompaired, handleModalStatus, handleProductInfo,
+  product, handleCompaired, handleModalStatus,
   handleOutFitList, getMainProduct, icon, gallery,
 }) => {
   const handleButtonClick = () => {
@@ -14,11 +14,6 @@ const Card = ({
       handleOutFitList([...deleted]);
     }
   };
-
-  // change Main product
-  // const changeMainProd = () => {
-  //   getMainProduct(product.id);
-  // };
 
   return (
     <div
