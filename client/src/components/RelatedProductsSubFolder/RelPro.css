@@ -1,50 +1,134 @@
 
 #rel-prod-title {
   width: 100%;
-  height: 5%;
+  height: 3%;
+}
+
+#outFit-prod-title {
+  width: 100%;
+  height: 3%;
 }
 
 #rel-prod-list {
   width: 100%;
-  height: 50%;
+  height: 48%;
   display: flex;
   flex-flow: column wrap;
-  flex-shrink: 1;
   justify-content: space-between;
 }
 
-
-#rel-prod-carousel {
+#outFit-prod-list {
   width: 100%;
-  height: 95%;
+  height: 47%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+
+.rel-prod-carousel {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+
+}
+
+.outFit-button {
+  height: 96%;
+  width: 30%;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+
+  border:0.5px solid rgb(0, 0, 0);
+}
+
+.outFit-prod-carousel {
+  height: 97%;
+  width: 70%;
+  display: flex;
+  flex-flow: row;
+}
+
+.all-cards {
+  height: 92%;
+  width: 45%;
+  margin-left: 0.7rem;
+  margin-right: 0.75rem;
+  padding: 0.5rem;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+}
+
+.outFit-card {
+  height: 100%;
+  width: 95%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: left;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  border: 2px solid rgb(233, 231, 225);
+
 }
 
 .product-card {
-  height: 85%;
-  width: 100%;
+  height: 97%;
+  width: 95%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: left;
   display: flex;
   flex-flow: column;
-  justify-content: flex-start;
-  background-Color: rgb(238, 236, 236);
-}
+  justify-content: center;
+  border: 2px solid rgb(233, 231, 225);
 
-.prod-name {
-  width: 100%;
-  font-size: 1rem;
-  text-align: left;
+}
+/* border: 1.7px solid rgb(219, 218, 216); */
+
+.card-button {
+  height: auto;
+  margin-left: auto;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(250, 250, 247);
 }
 
 .prod-image {
   width: 60%;
-  height: 65%;
+  height: 70%;
+  padding-left: 10%;
 }
 
-.card-button {
-  text-align: right;
+.prod-category {
+  width: 60%;
+  height: 65%;
+  padding-left: 10%;
 }
+
+.prod-name {
+  width: 60%;
+  height: 65%;
+  padding-left: 10%;
+}
+
+.prod-price {
+  width: 60%;
+  height: 65%;
+  padding-left: 10%;
+}
+
+.prod-reviews {
+  width: 60%;
+  height: 65%;
+  padding-left: 10%;
+}
+
 
 .product-modal {
   display: flex;
@@ -64,12 +148,12 @@
 
 .table-modal {
   text-align: center;
-  border: '1px solid rgba(0, 0, 0, 0.1)';
-  border:0.5px solid black;
+  border:0.5px solid rgb(0, 0, 0);
 }
 
 .close-modal {
   text-align: right;
-  background-color: rgb(255, 255, 255);
-  background: rgb(255, 255, 255);
+  margin-left: auto;
+  background-color: rgba(242, 155, 151, 0.91);
+  border:0.5px solid rgb(0, 0, 0);
 }
