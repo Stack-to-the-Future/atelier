@@ -64,7 +64,6 @@ const App = () => {
     axios.get(`${process.env.URL}/products/${id}`, options)
       .then((response) => {
         setProductInfo(response.data);
-        // console.log('p.info:', productInfo);
       })
       .then(() => getRatings(id))
       .catch((error) => console.log(error));
@@ -93,15 +92,12 @@ const App = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  // console.log(';;;;', modalStatus);
-
   return (
     <div id="app">
       <Overview product={productInfo} ratings={ratings} />
       {modalStatus.name === 'compare' ? (
         <ComparingModal
           handleModalStatus={handleModalStatus}
-          // handleCompaired={handleCompaired}
           products={products}
           compaired={compaired}
           ratings={ratings}
