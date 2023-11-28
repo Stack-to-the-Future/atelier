@@ -39,16 +39,15 @@ const QuestionsList = ({
   const filteredQuestions = renderedQuestions.filter((q) => filterFunc(searchTerm, q));
 
   return (
-    <div>
+    <div data-testid="question-list-container">
       {modalStatus.name === 'question'
-        ? (
+        && (
           <AddQuestionModal
             setModalStatus={setModalStatus}
             productName={productName}
             productId={productId}
           />
-        )
-        : ''}
+        )}
       <div className="questionlist">
         {questions.length > 0
           ? filteredQuestions.map((q) => (
@@ -65,9 +64,9 @@ const QuestionsList = ({
       <div>
         <span>
           {numOfQuestions < questions.length
-            ? <button type="button" className="list-bottom-buttons" onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
-            : ''}
-          <button type="button" className="list-bottom-buttons" onClick={onAddQuestionClick}>ADD A QUESTION +</button>
+            && <button type="button" className="list-bottom-buttons" data-testid="more-questions-button" onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>
+            }
+          <button type="button" className="list-bottom-buttons" data-testid="add-question-button" onClick={onAddQuestionClick}>ADD A QUESTION +</button>
         </span>
       </div>
     </div>
