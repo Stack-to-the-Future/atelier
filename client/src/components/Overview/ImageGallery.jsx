@@ -20,6 +20,7 @@ const ImageGallery = ({ photos }) => {
         setPhotoIdx={setPhotoIdx}
       />
       <button
+        data-testid="gallery-button-left"
         type="button"
         className="overview-gallery-btn left-btn"
         onClick={() => handleChangeImage(-1)}
@@ -27,11 +28,12 @@ const ImageGallery = ({ photos }) => {
         <FontAwesomeIcon icon={faArrowLeft} className="icon" />
       </button>
       {photos.length ? (
-        <img id="overview-gallery-img" src={photos[photoIdx].url} alt="Main Product" />
+        <img id="overview-gallery-img" data-testid="gallery-main-image" src={photos[photoIdx].url} alt="Main Product" />
       ) : (
         ''
       )}
       <button
+        data-testid="gallery-button-right"
         type="button"
         className="overview-gallery-btn right-btn"
         onClick={() => handleChangeImage(1)}
