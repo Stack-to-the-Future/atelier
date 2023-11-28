@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './Overview.css';
 
-const AddToCart = ({ skus }) => {
-  const [currentSku, setCurrentSku] = useState('');
-
+const AddToCart = ({ skus, currentSku, changeCurrentSku }) => {
   const getSizes = () => {
     const keys = [];
 
@@ -25,25 +23,27 @@ const AddToCart = ({ skus }) => {
     const quantities = [];
     let num = 0;
 
-    if (currentSku === '') {
-      return quantities;
-    }
-
-    while (num < 15 && num <= skus[currentSku].quantity) {
+    while (num < 15 && num < skus[currentSku].quantity) {
       quantities.push((num += 1));
     }
 
     return quantities;
   };
 
+  useEffect(() => {
+    const select = document.getElementById('overview-size-select');
+    select.options[0].selected = true;
+  }, [skus, currentSku]);
+
   return (
     <div data-testid="cart-main" className="overview-cart-main">
       <select
         data-testid="cart-select-size"
+        id="overview-size-select"
         className="overview-size-select"
         placeholder="Select Size"
         defaultValue="Select Size"
-        onChange={(e) => setCurrentSku(e.target.value)}
+        onChange={(e) => changeCurrentSku(e.target.value)}
       >
         <option value="Select Size" disabled>
           Select Size
@@ -55,8 +55,12 @@ const AddToCart = ({ skus }) => {
         ))}
       </select>
 
-      {currentSku !== '' && (
-        <select className="overview-quant-select" defaultValue="1">
+      {(currentSku !== '') && (
+        <select
+          data-testid="cart-select-quant"
+          className="overview-quant-select"
+          defaultValue="1"
+        >
           {skus[currentSku].quantity ? (
             getQuant().map((num) => (
               <option value={num.toString()} key={`quant:${num}`}>
@@ -69,9 +73,10 @@ const AddToCart = ({ skus }) => {
         </select>
       )}
 
-      {currentSku
+      {currentSku !== ''
         && (skus[currentSku].quantity ? (
           <button
+            data-testid="cart-add-button"
             type="button"
             className="overview-add-button"
             onClick={() => console.log('Added!')}
@@ -82,6 +87,7 @@ const AddToCart = ({ skus }) => {
           </button>
         ) : (
           <button
+            data-testid="cart-fake-button"
             type="button"
             className="overview-add-button"
             onClick={() => console.log('uhoh!')}

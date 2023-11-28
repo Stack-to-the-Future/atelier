@@ -25,6 +25,8 @@ const Overview = ({ product, ratings }) => {
       .catch((err) => console.error(err));
   };
 
+  const changeCurrentStyle = (idx) => setCurrentStyle(idx);
+
   useEffect(() => {
     getStyles();
   }, []);
@@ -33,7 +35,7 @@ const Overview = ({ product, ratings }) => {
     <div id="overview-main">
       <Search />
       <Announcement />
-      <div id="overview-central">
+      <div data-testid="overview-gallery-container" id="overview-central">
         {styles.length ? (
           <ImageGallery photos={styles[currentStyle].photos} />
         ) : (
@@ -43,9 +45,7 @@ const Overview = ({ product, ratings }) => {
           product={product}
           styles={styles}
           currentStyle={currentStyle}
-          setCurrentStyle={(idx) => {
-            setCurrentStyle(idx);
-          }}
+          changeCurrentStyle={changeCurrentStyle}
           ratings={ratings}
         />
       </div>

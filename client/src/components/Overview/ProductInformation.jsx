@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Stars from '../shared/Stars.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -8,32 +8,50 @@ const ProductInformation = ({
   product,
   styles,
   currentStyle,
-  setCurrentStyle,
+  changeCurrentStyle,
   ratings,
-}) => (
-  <div id="overview-productinfo-main">
-    <div className="overview-product-stars">
-      <div className="overview-stars-container">
-        <Stars ratings={ratings} />
+}) => {
+  const [skus, setSkus] = useState({});
+  const [currentSku, setCurrentSku] = useState('');
+
+  const changeCurrentSku = (sku) => setCurrentSku(sku);
+
+  useEffect(() => {
+    if (!styles[currentStyle]) {
+      return;
+    }
+    setCurrentSku('');
+    setSkus(styles[currentStyle].skus);
+  }, [currentStyle]);
+
+  return (
+    <div id="overview-productinfo-main">
+      <div className="overview-product-stars">
+        <div data-testid="overview-product-stars" className="overview-stars-container">
+          <Stars ratings={ratings} />
+        </div>
+        <a className="overview-reviews-link" href="#ratrev">
+          Read all reviews
+        </a>
       </div>
-      <a className="overview-reviews-link" href="#ratrev">
-        Read all reviews
-      </a>
+      <div className="overview-title-container">
+        <p data-testid="overview-product-category" className="overview-category">{product.category}</p>
+        <h1 data-testid="overview-product-name" className="overview-product-title">{product.name}</h1>
+        <p data-testid="overview-product-price">
+          {`$${product.default_price}`}
+        </p>
+      </div>
+      <StyleSelector
+        styles={styles}
+        currentStyle={currentStyle}
+        changeCurrentStyle={changeCurrentStyle}
+      />
+      <AddToCart
+        skus={skus}
+        currentSku={currentSku}
+        changeCurrentSku={changeCurrentSku}
+      />
     </div>
-    <div className="overview-title-container">
-      <p className="overview-category">{product.category}</p>
-      <h1 className="overview-product-title">{product.name}</h1>
-      <p>
-        $
-        {product.default_price}
-      </p>
-    </div>
-    <StyleSelector
-      styles={styles}
-      currentStyle={currentStyle}
-      setCurrentStyle={setCurrentStyle}
-    />
-    <AddToCart skus={styles[currentStyle] ? styles[currentStyle].skus : {}} />
-  </div>
-);
+  );
+};
 export default ProductInformation;
