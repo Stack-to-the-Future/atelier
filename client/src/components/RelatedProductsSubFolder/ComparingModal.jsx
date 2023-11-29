@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './RelPro.css';
 
-const ComparingModal = ({ compaired, products, handleModalStatus }) => {
-  const [mainProductFeatures, setMainProductFeatures] = useState([]);
+const ComparingModal = ({ compaired, handleModalStatus, current }) => {
   const [compairedProductFeatures, setCompairedProductFeatures] = useState([]);
   const [combinedFeatures, setCombinedFeatures] = useState([]);
 
@@ -11,28 +10,24 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
   useEffect(() => {
     const getProductsFeatures = () => {
       const options = { headers: { Authorization: process.env.TOKEN } };
-      axios.get(`${process.env.URL}/products/${products[2].id}`, options).then((data) => { // current
-        const { features } = data.data;
-        const temp = features;
-        setMainProductFeatures([...temp]);
-        return axios.get(`${process.env.URL}/products/${compaired.id}`, options);
-      }).then((response) => {
-        const { features } = response.data;
-        const temp = features;
-        setCompairedProductFeatures([...temp]);
-      }).catch((err) => console.error(err));
+      axios.get(`${process.env.URL}/products/${compaired.id}`, options)
+        .then((response) => {
+          const { features } = response.data;
+          const temp = features;
+          setCompairedProductFeatures([...temp]);
+        }).catch((err) => console.error(err));
     };
 
     getProductsFeatures();
   }, []);
 
   // combine both products features arrays
-  const combination = [...mainProductFeatures, ...compairedProductFeatures];
+  const combination = [current, ...compairedProductFeatures];
   const filteredCombination = combination.filter((prod, idx) => combination.indexOf(prod) === idx);
 
   useEffect(() => {
     setCombinedFeatures([...filteredCombination]);
-  }, [mainProductFeatures, compairedProductFeatures]);
+  }, [compairedProductFeatures]);
 
   return (
     <div className="product-modal">
@@ -42,7 +37,7 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
         <table className="table-modal">
           <thead className="table-modal">
             <tr>
-              <th className="table-modal">{products[2].name}</th>
+              <th className="table-modal">{current.name}</th>
               <th className="table-modal">{'   VS   '}</th>
               <th className="table-modal">{compaired.name}</th>
             </tr>
@@ -50,7 +45,7 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
 
           <tbody>
             <tr>
-              <td>{products[2].category}</td>
+              <td>{current.category}</td>
               <td> category </td>
               <td>
                 {compaired.category}
@@ -60,7 +55,7 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
             <tr>
               <td>
                 $
-                {products[2].default_price}
+                {current.default_price}
               </td>
               <td> Price </td>
               <td>
@@ -68,18 +63,8 @@ const ComparingModal = ({ compaired, products, handleModalStatus }) => {
                 {compaired.default_price}
               </td>
             </tr>
-            {/* TODO (review stars) */}
-
-            {/* <tr>
-              <td>{products[2].reviews}</td>
-              <td> Reviews </td>
-              <td>
-                {compaired.reviews}
-              </td>
-            </tr> */}
-
             {combinedFeatures.map((detail) => {
-              const mTemp = mainProductFeatures.filter((item) => item.feature === detail.feature);
+              const mTemp = [current].filter((item) => item.feature === detail.feature);
               const cTemp = compairedProductFeatures.filter((x) => (x.feature === detail.feature));
               return (
                 <tr key={`${detail.value} ${compaired.id} ${compaired.price}`}>

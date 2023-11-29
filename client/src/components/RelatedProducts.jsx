@@ -8,7 +8,6 @@ const RelatedProducts = ({
   products, current, handleModalStatus, handleCompaired, getMainProduct, ratings,
 }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
-
   const options = { headers: { Authorization: process.env.TOKEN } };
   // Get related ID's
   useEffect(() => {
