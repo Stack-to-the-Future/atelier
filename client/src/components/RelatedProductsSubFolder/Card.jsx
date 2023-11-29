@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Stars from '../shared/Stars.jsx';
 import './RelPro.css';
 
 const Card = ({
-  product, handleCompaired, handleModalStatus, ratings,
+  product, handleCompaired, handleModalStatus,
   handleOutFitList, getMainProduct, icon, gallery,
 }) => {
+  const [singleProductRatings, setSingleProductRatings] = useState({});
+  // Get each products ratings
+  const options = { headers: { Authorization: process.env.TOKEN } };
+  const fetchProductCardRatings = () => {
+    axios.get(`${process.env.URL}/reviews/meta?product_id=${product.id}`, options)
+      .then((data) => { setSingleProductRatings(data.data.ratings); })
+      .catch((err) => console.error(err));
+  };
   const handleButtonClick = () => {
-    // console.log('Button clicked!');
-    // console.log('Icon:', icon);
-    // console.log('Product:', product);
     if (icon === '*') {
       const temp = { name: 'compare', data: '' };
       handleModalStatus(temp);
@@ -18,6 +25,10 @@ const Card = ({
       handleOutFitList([...deleted]);
     }
   };
+
+  useEffect(() => {
+    fetchProductCardRatings();
+  }, []);
 
   return (
     <div
@@ -45,8 +56,7 @@ const Card = ({
           $
           {product.default_price}
         </h4>
-        {/* {'Subject to change once I have drilled star reviews down here'} */}
-        <h4 className="prod-reviews">{ratings}</h4>
+        <h4 className="prod-reviews"><Stars ratings={singleProductRatings} /></h4>
       </button>
     </div>
 

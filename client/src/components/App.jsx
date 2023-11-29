@@ -56,7 +56,7 @@ const App = () => {
       headers: { Authorization: process.env.TOKEN },
     })
       .then((response) => setRatings(response.data.ratings))
-      .catch((err) => console.log(err));
+      .catch((err) => (err));
   };
 
   // Gets the main products features
@@ -65,7 +65,7 @@ const App = () => {
       .then((response) => {
         setProductInfo(response.data);
       })
-      .then(() => getRatings(id))
+      .then(() => getRatings())
       .catch((error) => console.log(error));
   };
 
@@ -77,20 +77,15 @@ const App = () => {
   const handleModalStatus = (obj) => {
     setModalStatus(obj);
   };
+  //   // modal status
+  // const handleProductInfo = (obj) => {
+  //   setProductInfo(obj);
+  // };
 
   useEffect(() => {
     getProducts();
-    getMainProduct(40346);
+    getMainProduct(productInfo.id);
   }, []);
-
-  // // make initial product API call here -- Ming can pass as prop
-  // const url = `${process.env.URL}/products/${productInfo.id}`;
-  // useEffect(() => {
-  //   axios
-  //     .get(url, options)
-  //     .then((response) => setProductInfo(response.data))
-  //     .catch((error) => console.log(error));
-  // }, []);
 
   return (
     <div id="app">
@@ -98,9 +93,7 @@ const App = () => {
       {modalStatus.name === 'compare' ? (
         <ComparingModal
           handleModalStatus={handleModalStatus}
-          products={products}
           compaired={compaired}
-          ratings={ratings}
           current={productInfo}
         />
       ) : (
@@ -112,6 +105,7 @@ const App = () => {
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
         getMainProduct={getMainProduct}
+        ratings={ratings}
       />
       <QandA
         setModalStatus={setModalStatus}
