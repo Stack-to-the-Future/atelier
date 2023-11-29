@@ -4,7 +4,7 @@ import './RelPro.css';
 
 const Carousel = ({
   handleCompaired, handleModalStatus, gallery, ratings,
-  handleOutFitList, getMainProduct, icon,
+  handleOutFitList, getMainProduct, icon, handleProductInfo,
 }) => {
   const length = 4;
   const [index, setIndex] = useState(0);
@@ -29,6 +29,7 @@ const Carousel = ({
           product={product}
           gallery={gallery}
           handleModalStatus={handleModalStatus}
+          handleProductInfo={handleProductInfo}
           handleCompaired={handleCompaired}
           handleOutFitList={handleOutFitList}
           getMainProduct={getMainProduct}

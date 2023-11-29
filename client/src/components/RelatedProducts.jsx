@@ -5,7 +5,8 @@ import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 import './RelatedProductsSubFolder/RelPro.css';
 
 const RelatedProducts = ({
-  products, current, handleModalStatus, handleCompaired, getMainProduct, ratings,
+  products, current, handleModalStatus, handleCompaired,
+  getMainProduct, ratings, handleProductInfo,
 }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
   const options = { headers: { Authorization: process.env.TOKEN } };
@@ -30,6 +31,7 @@ const RelatedProducts = ({
         products={products}
         getMainProduct={getMainProduct}
         relatedProductsId={relatedProductsId}
+        handleProductInfo={handleProductInfo}
         current={current}
         ratings={ratings}
       />
