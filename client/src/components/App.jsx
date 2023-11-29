@@ -93,6 +93,7 @@ const App = () => {
           compaired={compaired}
           ratings={ratings}
           current={productInfo}
+          getRatings={getRatings}
         />
       ) : (
         ''
@@ -103,6 +104,7 @@ const App = () => {
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
         getMainProduct={getMainProduct}
+        getRatings={getRatings}
       />
       <QandA
         setModalStatus={setModalStatus}
