@@ -40,14 +40,16 @@ const App = () => {
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
 
-  const options = { headers: { Authorization: process.env.TOKEN } };
-
   // Gets all the available products
   const getProducts = () => {
-    axios.get(`${process.env.URL}/products`, options).then((data) => {
-      const all = data.data;
-      setProducts([...all]);
-    }).catch((error) => { console.error('Error getting products:', error); });
+    axios({
+      method: 'GET',
+      url: '/products',
+    })
+      .then((data) => {
+        const all = data.data;
+        setProducts([...all]);
+      }).catch((error) => { console.error('Error getting products:', error); });
   };
   const getRatings = () => {
     axios({
