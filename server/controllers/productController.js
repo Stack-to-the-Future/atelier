@@ -54,7 +54,6 @@ module.exports = {
 
   getRelatedProducts: (req, res) => {
     const { id } = req.params;
-    console.log(id);
     axios({
       method: 'GET',
       url: `${baseUrl}/products/${id}/related`,

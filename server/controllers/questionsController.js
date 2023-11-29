@@ -122,7 +122,7 @@ module.exports = {
 
     axios({
       method: 'PUT',
-      url: `${baseUrl}/qa/answers/${id}/helpful`,
+      url: `${baseUrl}/qa/answers/${id}/report`,
       headers,
     })
       .then(() => res.statusStatus(204))
