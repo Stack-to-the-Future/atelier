@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
   getQuestions: (params) => axios({
     method: 'GET',
-    url: `/qa/questions/`,
+    url: '/qa/questions/',
     params,
   }),
 
