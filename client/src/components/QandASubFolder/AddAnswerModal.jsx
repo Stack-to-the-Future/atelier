@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import PhotoForm from './PhotoForm.jsx';
+import AnswerForm from './AnswerForm.jsx';
 import './Modal.css';
 
 const AddAnswer = ({
@@ -39,7 +41,6 @@ const AddAnswer = ({
     setModalStatus({ name: '', data: '' });
   };
 
-  // shared with other modal!
   const modalFunctions = {
     close: (e) => {
       e.preventDefault();
@@ -64,81 +65,27 @@ const AddAnswer = ({
   };
 
   return (
-    <div>
+    <div data-testid="question">
       {showPhotoForm
         ? (
-          <div id="modal">
-            <div className="overlay">
-              <div className="modal-content">
-                <div>
-                  <button className="modal-close" type="button" onClick={() => showSetPhotoForm(false)}>X</button>
-                </div>
-                <div className="main-content">
-                  <span className="answer-photos">
-                    {photos.map((img) => <img className="answer-photo" src={img} alt="answer" key={img} />)}
-                  </span>
-                  <form>
-                    <p>Select image: </p>
-                    <input type="text" placeholder="please enter photo URL" className="modal-input" value={photo} onChange={modalFunctions.photoChange} />
-                    {
-                      photos.length > 4 ? <p>Only 5 photos allowed per answer</p> : <button className="submission" type="button" onClick={modalFunctions.photosChange}>Add Photo</button>
-                    }
-                    <button className="submission" type="button" onClick={() => showSetPhotoForm(false)}>Submit Photos</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+          <PhotoForm
+            showSetPhotoForm={showSetPhotoForm}
+            modalFunctions={modalFunctions}
+            photos={photos}
+            photo={photo}
+          />
         )
         : (
-          <div id="modal">
-            <div className="overlay">
-              <div className="modal-content">
-                <div>
-                  <button className="modal-close" type="button" onClick={modalFunctions.close}>X</button>
-                </div>
-                <div className="main-content">
-                  <h3 className="modal-header">
-                    Submit Your Answer
-                  </h3>
-                  <h4 className="sub-header">
-                    {productName}
-                    :
-                    {' '}
-                    {question}
-                  </h4>
-                  <form onSubmit={submitAnswer}>
-                    {/* BODY */}
-                    <label htmlFor="answer-body" className="modal-label">
-                      Your Answer (mandatory)*
-                      <div>
-                        <textarea type="text" className="modal-answer" maxLength="1000" value={body} onChange={modalFunctions.bodyChange} />
-                      </div>
-                    </label>
-                    {/* USERNAME */}
-                    <label htmlFor="answer-username" className="modal-label">
-                      What is your nickname? (mandatory)*
-                      <div>
-                        <input type="text" className="modal-input" placeholder="Example: jack543!" maxLength="60" value={username} onChange={modalFunctions.usernameChange} />
-                        <p>For privacy reasons, do not use your full name or email address</p>
-                      </div>
-                    </label>
-                    {/* EMAIL */}
-                    <label htmlFor="answer-email" className="modal-label">
-                      Your email (mandatory)*
-                      <div>
-                        <input type="text" className="modal-input" placeholder="Example: jack@email.com" maxLength="60" value={email} onChange={modalFunctions.emailChange} />
-                        <p>For authentication reasons, you will not be emailed</p>
-                      </div>
-                    </label>
-                    {/* INVALID FIELD INFO */}
-                    <button className="submission" type="button" onClick={() => showSetPhotoForm(true)}>Add Photos</button>
-                    <button className="submission" type="button" onClick={submitAnswer}>Add Answer</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+          <AnswerForm
+            modalFunctions={modalFunctions}
+            productName={productName}
+            question={question}
+            submitAnswer={submitAnswer}
+            showSetPhotoForm={showSetPhotoForm}
+            email={email}
+            body={body}
+            username={username}
+          />
         )}
     </div>
   );
