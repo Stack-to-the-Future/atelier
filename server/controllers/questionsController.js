@@ -80,7 +80,7 @@ module.exports = {
       url: `${baseUrl}/qa/questions/${id}/helpful`,
       headers,
     })
-      .then(() => res.statusStatus(204))
+      .then(() => res.sendStatus(204))
       .catch((err) => {
         console.log(err);
         res.sendStatus(500);
@@ -95,7 +95,7 @@ module.exports = {
       url: `${baseUrl}/qa/answers/${id}/helpful`,
       headers,
     })
-      .then(() => res.statusStatus(204))
+      .then(() => res.sendStatus(204))
       .catch((err) => {
         console.log(err);
         res.sendStatus(500);
@@ -110,7 +110,7 @@ module.exports = {
       url: `${baseUrl}/qa/questions/${id}/report`,
       headers,
     })
-      .then(() => res.statusStatus(204))
+      .then(() => res.sendStatus(204))
       .catch((err) => {
         console.log(err);
         res.sendStatus(500);
@@ -125,7 +125,7 @@ module.exports = {
       url: `${baseUrl}/qa/answers/${id}/report`,
       headers,
     })
-      .then(() => res.statusStatus(204))
+      .then(() => res.sendStatus(204))
       .catch((err) => {
         console.log(err);
         res.sendStatus(500);
