@@ -31,7 +31,7 @@ const Question = ({
     setModalStatus({ name: 'answer', data: `${question.question_id}` });
   };
 
-  const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers`;
+  const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers?count=1000`;
   useEffect(() => {
     axios.get(answersURL, headers)
       .then((response) => setAnswers(response.data.results))
@@ -54,7 +54,7 @@ const Question = ({
   const renderList = sellerFirst.slice(0, answerCount);
 
   return (
-    <div id="question" data-testid="question">
+    <div id="question" data-testid="quanda">
       {modalStatus.name === 'answer' && modalStatus.data === `${question.question_id}`
         ? (
           <AddAnswerModal
@@ -70,7 +70,7 @@ const Question = ({
         isHelpful={isHelpful}
         addAnswerClick={addAnswerClick}
       />
-      <div id="answer">
+      <div id="answer" data-testid="question-answer-container">
         { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
           {answers.length > 0

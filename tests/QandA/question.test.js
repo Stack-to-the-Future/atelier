@@ -15,14 +15,14 @@ const question = {
 const modalStatus = { name: '' };
 const productName = 'Morning joggers';
 
-describe('it should render Answer properly', () => {
+describe('it should render Question properly', () => {
   beforeEach(() => render(<Question
     question={question}
     modalStatus={modalStatus}
     productName={productName}
   />));
 
-  it('should render an Question', async () => {
+  it('should render a Question', async () => {
     const item = await screen.findByTestId('question');
     expect(item).toBeTruthy();
   });
@@ -40,8 +40,8 @@ describe('it should render Answer properly', () => {
 //     productName={productName}
 //   />));
 
-// it('should render the add answer modal', async () => {
-//   const modal = await screen.findByTestId('add-answer-modal');
-//   expect(modal).toBeTruthy();
-// });
+//   it('should render the add answer modal', async () => {
+//     const modal = await screen.findByTestId('add-answer-modal');
+//     expect(modal).toBeTruthy();
+//   });
 // });

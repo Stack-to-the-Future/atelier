@@ -65,7 +65,7 @@ const AddAnswer = ({
   };
 
   return (
-    <div data-testid="question">
+    <div data-testid="add-answer-modal">
       {showPhotoForm
         ? (
           <PhotoForm
