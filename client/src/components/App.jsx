@@ -83,14 +83,14 @@ const App = () => {
     getMainProduct(40346);
   }, []);
 
-  // make initial product API call here -- Ming can pass as prop
-  const url = `${process.env.URL}/products/${productInfo.id}`;
-  useEffect(() => {
-    axios
-      .get(url, options)
-      .then((response) => setProductInfo(response.data))
-      .catch((error) => console.log(error));
-  }, []);
+  // // make initial product API call here -- Ming can pass as prop
+  // const url = `${process.env.URL}/products/${productInfo.id}`;
+  // useEffect(() => {
+  //   axios
+  //     .get(url, options)
+  //     .then((response) => setProductInfo(response.data))
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   return (
     <div id="app">
