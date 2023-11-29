@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import * as axios from 'axios';
+// import * as axios from 'axios';
 // import axios from 'axios';
 import QuestionsList from '../../client/src/components/QandASubFolder/QuestionsList.jsx';
 
