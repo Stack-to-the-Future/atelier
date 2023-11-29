@@ -77,6 +77,10 @@ const App = () => {
   const handleModalStatus = (obj) => {
     setModalStatus(obj);
   };
+  //   // modal status
+  // const handleProductInfo = (obj) => {
+  //   setProductInfo(obj);
+  // };
 
   useEffect(() => {
     getProducts();
@@ -89,9 +93,7 @@ const App = () => {
       {modalStatus.name === 'compare' ? (
         <ComparingModal
           handleModalStatus={handleModalStatus}
-          products={products}
           compaired={compaired}
-          ratings={ratings}
           current={productInfo}
         />
       ) : (

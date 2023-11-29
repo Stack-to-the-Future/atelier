@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './RelPro.css';
 
-const ComparingModal = ({ compaired, handleModalStatus, current }) => {
+const ComparingModal = ({
+  compaired, handleModalStatus, current,
+}) => {
   const [compairedProductFeatures, setCompairedProductFeatures] = useState([]);
   const [combinedFeatures, setCombinedFeatures] = useState([]);
 
@@ -51,7 +53,6 @@ const ComparingModal = ({ compaired, handleModalStatus, current }) => {
                 {compaired.category}
               </td>
             </tr>
-
             <tr>
               <td>
                 $

@@ -5,7 +5,7 @@ import './RelPro.css';
 
 const RelatedProductsList = ({
   products, handleModalStatus, handleCompaired, setProductInfo, ratings,
-  relatedProductsId, handleProductInfo, getMainProduct, current,
+  relatedProductsId, getMainProduct, current,
 }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [toDisplay, setToDisplay] = useState([]);
@@ -60,7 +60,6 @@ const RelatedProductsList = ({
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
         setToDisplay={setToDisplay}
-        handleProductInfo={handleProductInfo}
         getMainProduct={getMainProduct}
         gallery={toDisplay}
         setProductInfo={setProductInfo}
