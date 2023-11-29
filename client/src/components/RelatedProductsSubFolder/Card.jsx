@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from '../shared/Stars.jsx';
 import './RelPro.css';
 
 const Card = ({
@@ -6,9 +7,6 @@ const Card = ({
   handleOutFitList, getMainProduct, icon, gallery,
 }) => {
   const handleButtonClick = () => {
-    // console.log('Button clicked!');
-    // console.log('Icon:', icon);
-    // console.log('Product:', product);
     if (icon === '*') {
       const temp = { name: 'compare', data: '' };
       handleModalStatus(temp);
@@ -45,8 +43,7 @@ const Card = ({
           $
           {product.default_price}
         </h4>
-        {/* {'Subject to change once I have drilled star reviews down here'} */}
-        <h4 className="prod-reviews">{ratings}</h4>
+        <h4 className="prod-reviews"><Stars ratings={ratings} /></h4>
       </button>
     </div>
 

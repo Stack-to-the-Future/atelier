@@ -56,7 +56,7 @@ const App = () => {
       headers: { Authorization: process.env.TOKEN },
     })
       .then((response) => setRatings(response.data.ratings))
-      .catch((err) => console.log(err));
+      .catch((err) => (err));
   };
 
   // Gets the main products features
@@ -65,7 +65,7 @@ const App = () => {
       .then((response) => {
         setProductInfo(response.data);
       })
-      .then(() => getRatings(id))
+      .then(() => getRatings())
       .catch((error) => console.log(error));
   };
 
@@ -80,16 +80,7 @@ const App = () => {
 
   useEffect(() => {
     getProducts();
-    getMainProduct(40346);
-  }, []);
-
-  // make initial product API call here -- Ming can pass as prop
-  const url = `${process.env.URL}/products/${productInfo.id}`;
-  useEffect(() => {
-    axios
-      .get(url, options)
-      .then((response) => setProductInfo(response.data))
-      .catch((error) => console.log(error));
+    getMainProduct(productInfo.id);
   }, []);
 
   return (
@@ -112,6 +103,7 @@ const App = () => {
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
         getMainProduct={getMainProduct}
+        ratings={ratings}
       />
       <QandA
         setModalStatus={setModalStatus}
