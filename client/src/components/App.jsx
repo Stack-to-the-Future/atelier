@@ -56,7 +56,7 @@ const App = () => {
       headers: { Authorization: process.env.TOKEN },
     })
       .then((response) => setRatings(response.data.ratings))
-      .catch((err) => console.log(err));
+      .catch((err) => (err));
   };
 
   // Gets the main products features
@@ -103,6 +103,7 @@ const App = () => {
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
         getMainProduct={getMainProduct}
+        ratings={ratings}
       />
       <QandA
         setModalStatus={setModalStatus}

@@ -30,9 +30,7 @@ const OutfitList = ({
   // Set icon onMount
   useEffect(() => {
     setRemove('X');
-    // addOutfit();
   }, []);
-
   return (
     <div id="outFit-prod-list">
       <button className="outFit-button" type="button" onClick={() => { addOutfit(); }}>
