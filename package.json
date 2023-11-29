@@ -8,8 +8,7 @@
     "coverage": "npx jest --env=jsdom --coverage",
     "build": "npx webpack",
     "lint": "eslint . --ignore-path .eslintignore --ext .jsx --ext .js",
-    "start": "npx webpack-dev-server",
-    "client-server": "nodemon ./server/index.js"
+    "start": "npx webpack && nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
