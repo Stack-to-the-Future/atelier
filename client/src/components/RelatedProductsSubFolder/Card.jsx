@@ -4,7 +4,7 @@ import Stars from '../shared/Stars.jsx';
 import './RelPro.css';
 
 const Card = ({
-  product, handleCompaired, handleModalStatus, handleProductInfo,
+  product, handleCompaired, handleModalStatus,
   handleOutFitList, getMainProduct, icon, gallery,
 }) => {
   const [singleProductRatings, setSingleProductRatings] = useState({});
@@ -20,14 +20,15 @@ const Card = ({
       const temp = { name: 'compare', data: '' };
       handleModalStatus(temp);
       handleCompaired(product);
-      handleProductInfo({ ...product, reviews: singleProductRatings });
     } else {
       const deleted = gallery.filter((obj) => obj.id !== product.id);
       handleOutFitList([...deleted]);
     }
   };
 
-  useEffect(() => { fetchProductCardRatings(); }, []);
+  useEffect(() => {
+    fetchProductCardRatings();
+  }, []);
 
   return (
     <div

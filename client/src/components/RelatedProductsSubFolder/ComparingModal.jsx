@@ -53,7 +53,6 @@ const ComparingModal = ({
                 {compaired.category}
               </td>
             </tr>
-
             <tr>
               <td>
                 $
