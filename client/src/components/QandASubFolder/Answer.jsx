@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { convertDate } from '../../lib/helpers.js';
 import './QandA.css';
 
 const Answer = ({ answer }) => {
@@ -7,16 +8,6 @@ const Answer = ({ answer }) => {
   const [helpful, setHelpful] = useState(false);
 
   const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
-
-  const convertDate = () => {
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const d = new Date(answer.date);
-    const month = months[d.getMonth()];
-    const day = d.getDate();
-    const year = d.getFullYear();
-    const date = `${month} ${day + 1}, ${year}`;
-    return date;
-  };
 
   const reportURL = `${process.env.URL}/qa/answers/${answer.answer_id}/report`;
   const onReportClick = (e) => {
@@ -61,7 +52,7 @@ const Answer = ({ answer }) => {
         {answer.answerer_name === 'Seller' ? <b>Seller</b> : answer.answerer_name}
         ,
         {' '}
-        {convertDate()}
+        {convertDate(answer.date)}
         {' '}
         |
         Helpful?
