@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import productAPIFunctions from '../lib/productAPIFunctions.js';
 import RelatedProductsList from './RelatedProductsSubFolder/RelatedProductsList.jsx';
 import OutfitList from './RelatedProductsSubFolder/OutfitList.jsx';
 import './RelatedProductsSubFolder/RelPro.css';
@@ -8,11 +8,10 @@ const RelatedProducts = ({
   products, current, handleModalStatus, handleCompaired, getMainProduct, ratings,
 }) => {
   const [relatedProductsId, setRelatedProductsId] = useState([]);
-  const options = { headers: { Authorization: process.env.TOKEN } };
-  // Get related ID's
+
   useEffect(() => {
     if (current) {
-      axios.get(`${process.env.URL}/products/${current.id}/related`, options)
+      productAPIFunctions.getRelatedProducts(current.id)
         .then((response) => {
           const arr = response.data;
           setRelatedProductsId(arr);

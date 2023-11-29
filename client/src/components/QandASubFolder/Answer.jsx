@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import { convertDate } from '../../lib/helpers.js';
 import './QandA.css';
 
@@ -7,28 +7,24 @@ const Answer = ({ answer }) => {
   const [report, setReport] = useState(false);
   const [helpful, setHelpful] = useState(false);
 
-  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
-
-  const reportURL = `${process.env.URL}/qa/answers/${answer.answer_id}/report`;
   const onReportClick = (e) => {
     e.preventDefault();
     if (report) {
       return;
     }
     setReport(true);
-    axios.put(reportURL, {}, headers)
+    questionsAPIFunctions.reportAnswer(answer.answer_id)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
 
-  const helpfulURL = `${process.env.URL}/qa/answers/${answer.answer_id}/helpful`;
   const onHelpfulClick = (e) => {
     e.preventDefault();
     if (helpful) {
       return;
     }
     setHelpful(true);
-    axios.put(helpfulURL, {}, headers)
+    questionsAPIFunctions.addAnswerHelpful(answer.answer_id)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
@@ -36,7 +32,7 @@ const Answer = ({ answer }) => {
   return (
     <div data-testid="answer">
       <span className="answer-body">
-        { answer.body ? (
+        {answer.body ? (
           <p>
             {' '}
             {answer.body}

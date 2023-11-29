@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Overview from './Overview.jsx';
 import RelatedProducts from './RelatedProducts.jsx';
 import QandA from './QandA.jsx';
-// import RatingsAndReviews from './RatingsAndReviews.jsx';
 import ComparingModal from './RelatedProductsSubFolder/ComparingModal.jsx';
+import productAPIFunctions from '../lib/productAPIFunctions.js';
 import './App.css';
 
 const App = () => {
@@ -40,30 +39,22 @@ const App = () => {
   const [compaired, setCompaired] = useState({});
   const [modalStatus, setModalStatus] = useState({ name: '', data: '' });
 
-  // Gets all the available products
   const getProducts = () => {
-    axios({
-      method: 'GET',
-      url: '/products',
-    })
+    productAPIFunctions.getProducts()
       .then((data) => {
         const all = data.data;
         setProducts([...all]);
       }).catch((error) => { console.error('Error getting products:', error); });
   };
+
   const getRatings = () => {
-    axios({
-      method: 'GET',
-      url: `${process.env.URL}/reviews/meta/?product_id=${productInfo.id}`,
-      headers: { Authorization: process.env.TOKEN },
-    })
+    productAPIFunctions.getRatings(productInfo.id)
       .then((response) => setRatings(response.data.ratings))
       .catch((err) => (err));
   };
 
-  // Gets the main products features
-  const getMainProduct = (id) => {
-    axios.get(`${process.env.URL}/products/${id}`, options)
+  const getMainProduct = () => {
+    productAPIFunctions.getProduct(productInfo.id)
       .then((response) => {
         setProductInfo(response.data);
       })
@@ -71,18 +62,16 @@ const App = () => {
       .catch((error) => console.log(error));
   };
 
-  // compare
   const handleCompaired = (obj) => {
     setCompaired(obj);
   };
-  // modal status
   const handleModalStatus = (obj) => {
     setModalStatus(obj);
   };
 
   useEffect(() => {
     getProducts();
-    getMainProduct(productInfo.id);
+    getMainProduct();
   }, []);
 
   return (
@@ -113,7 +102,6 @@ const App = () => {
         productName={productInfo.name}
         productId={productInfo.id}
       />
-      {/* <RatingsAndReviews /> */}
     </div>
   );
 };

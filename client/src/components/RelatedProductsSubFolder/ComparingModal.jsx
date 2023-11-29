@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import productAPIFunctions from '../../lib/productAPIFunctions';
 import './RelPro.css';
 
 const ComparingModal = ({ compaired, handleModalStatus, current }) => {
   const [compairedProductFeatures, setCompairedProductFeatures] = useState([]);
   const [combinedFeatures, setCombinedFeatures] = useState([]);
 
-  // On Mount
   useEffect(() => {
     const getProductsFeatures = () => {
-      const options = { headers: { Authorization: process.env.TOKEN } };
-      axios.get(`${process.env.URL}/products/${compaired.id}`, options)
+      productAPIFunctions.getProduct(compaired.id)
         .then((response) => {
           const { features } = response.data;
           const temp = features;
@@ -21,7 +19,6 @@ const ComparingModal = ({ compaired, handleModalStatus, current }) => {
     getProductsFeatures();
   }, []);
 
-  // combine both products features arrays
   const combination = [current, ...compairedProductFeatures];
   const filteredCombination = combination.filter((prod, idx) => combination.indexOf(prod) === idx);
 
@@ -68,9 +65,9 @@ const ComparingModal = ({ compaired, handleModalStatus, current }) => {
               const cTemp = compairedProductFeatures.filter((x) => (x.feature === detail.feature));
               return (
                 <tr key={`${detail.value} ${compaired.id} ${compaired.price}`}>
-                  <td className="table-modal">{mTemp[0] ? mTemp[0].value : '-' }</td>
+                  <td className="table-modal">{mTemp[0] ? mTemp[0].value : '-'}</td>
                   <td className="table-modal">{detail.feature}</td>
-                  <td className="table-modal">{cTemp[0] ? cTemp[0].value : '-' }</td>
+                  <td className="table-modal">{cTemp[0] ? cTemp[0].value : '-'}</td>
                 </tr>
               );
             })}
