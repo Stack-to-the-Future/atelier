@@ -77,10 +77,6 @@ const App = () => {
   const handleModalStatus = (obj) => {
     setModalStatus(obj);
   };
-  //   // modal status
-  // const handleProductInfo = (obj) => {
-  //   setProductInfo(obj);
-  // };
 
   useEffect(() => {
     getProducts();
