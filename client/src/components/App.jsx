@@ -53,9 +53,13 @@ const App = () => {
       .catch((err) => (err));
   };
 
-  const getMainProduct = () => {
-    productAPIFunctions.getProduct(productInfo.id)
+  const getMainProduct = (id) => {
+    if (!id) {
+      return;
+    }
+    productAPIFunctions.getProduct(id)
       .then((response) => {
+        console.log('setting');
         setProductInfo(response.data);
       })
       .then(() => getRatings())
@@ -75,7 +79,7 @@ const App = () => {
 
   useEffect(() => {
     getProducts();
-    getMainProduct();
+    getMainProduct(productInfo.id);
   }, []);
 
   return (
