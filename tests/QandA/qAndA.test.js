@@ -8,7 +8,7 @@ const modalStatus = { name: '' };
 const productName = 'joggers';
 const productId = 378483;
 
-describe('it should render Add Question Modal', () => {
+describe('it should render the main Questions and Answers component', () => {
   beforeEach(() => render(<QandA
     setModalStatus={setModalStatus}
     productName={productName}

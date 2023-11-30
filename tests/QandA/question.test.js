@@ -32,16 +32,3 @@ describe('it should render Question properly', () => {
     expect(button).toBeTruthy();
   });
 });
-
-// describe('it should render Question properly', () => {
-//   beforeEach(() => render(<Question
-//     question={question}
-//     modalStatus={{ name: 'answer' }}
-//     productName={productName}
-//   />));
-
-//   it('should render the add answer modal', async () => {
-//     const modal = await screen.findByTestId('add-answer-modal');
-//     expect(modal).toBeTruthy();
-//   });
-// });

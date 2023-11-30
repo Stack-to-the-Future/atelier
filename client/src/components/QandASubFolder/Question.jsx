@@ -54,7 +54,7 @@ const Question = ({
   const renderList = sellerFirst.slice(0, answerCount);
 
   return (
-    <div id="question" data-testid="quanda">
+    <div id="question" data-testid="question">
       {modalStatus.name === 'answer' && modalStatus.data === `${question.question_id}`
         ? (
           <AddAnswerModal
