@@ -52,7 +52,6 @@ const mockData = {
       updated_at: '2021-08-13T14:38:44.509Z',
     },
   ],
-
   icon: '*',
   ratings: {
     1: '25',
@@ -66,9 +65,18 @@ const mockData = {
 describe('Carousel component', () => {
   it('should render Carousel.jsx', async () => {
     await act(async () => {
-      render(<Carousel mockData={mockData} />);
+      render(<Carousel
+        handleModalStatus={mockData.handleModalStatus}
+        handleCompaired={mockData.handleCompaired}
+        setToDisplay={mockData.setToDisplay}
+        getMainProduct={mockData.getMainProduct}
+        gallery={mockData.gallery}
+        setProductInfo={mockData.setProductInfo}
+        icon={mockData.star}
+        ratings={mockData.ratings}
+      />);
     });
-    const carousel = await screen.findByTestId('rlp-1');
+    const carousel = await screen.findByTestId('carouTest');
     expect(carousel).toBeInTheDocument();
   });
 });

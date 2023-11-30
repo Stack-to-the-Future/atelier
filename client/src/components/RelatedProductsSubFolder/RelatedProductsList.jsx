@@ -48,7 +48,7 @@ const RelatedProductsList = ({
   }, [relatedProducts]);
 
   return (
-    <div data-testid="carouTest" id="rel-prod-list">
+    <div data-testid="relProId" id="rel-prod-list">
       <Carousel
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}

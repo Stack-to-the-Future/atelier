@@ -20,7 +20,7 @@ const RelatedProducts = ({
         .catch((err) => console.error(err));
     }
   }, [current]);
-
+  console.log(current); // delete this *****************************
   return (
     <div id="relpro">
       <p id="rel-prod-title">RELATED PRODUCTS</p>

@@ -31,7 +31,7 @@ const OutfitList = ({
   }, []);
 
   return (
-    <div id="outFit-prod-list">
+    <div data-testid="outFitId" id="outFit-prod-list">
       <button className="outFit-button" type="button" onClick={() => { addOutfit(); }}>
         ➕
         {' '}
