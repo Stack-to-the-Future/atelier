@@ -2,11 +2,13 @@
 #rel-prod-title {
   width: 100%;
   height: 3%;
+  font-weight: bold;
 }
 
 #outFit-prod-title {
   width: 100%;
   height: 3%;
+  font-weight: bold;
 }
 
 #rel-prod-list {
@@ -62,7 +64,6 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
-
 }
 
 .outFit-card {

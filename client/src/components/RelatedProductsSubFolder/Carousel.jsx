@@ -13,6 +13,7 @@ const Carousel = ({
     const newIndex = index + direction;
     setIndex(newIndex);
   };
+  console.log(gallery);
 
   return (
     <div className="rel-prod-carousel">
