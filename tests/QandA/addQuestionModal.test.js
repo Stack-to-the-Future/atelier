@@ -26,7 +26,7 @@ describe('it should render Add Question Modal', () => {
   });
 
   it('submits the form on submit button click', async () => {
-    const submitButton = screen.getByRole('button', { name: 'Add Question'});
+    const submitButton = screen.getByRole('button', { name: 'Add Question' });
     fireEvent.click(submitButton);
     expect(submitButton).toBeInTheDocument();
   });
