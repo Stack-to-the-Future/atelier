@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Answer from './Answer.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
@@ -29,15 +29,17 @@ const Question = ({
     setModalStatus({ name: 'answer', data: `${question.question_id}` });
   };
 
-  useEffect(() => {
-    const params = {
-      count: 1000,
-      page: 1,
-    };
-    questionsAPIFunctions.getQuestionAnswers(question.question_id, params)
-      .then((response) => setAnswers(response.data.results))
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(() => {
+  //   const params = {
+  //     count: 1000,
+  //     page: 1,
+  //   };
+  //   questionsAPIFunctions.getQuestionAnswers(question.question_id, params)
+  //     .then((response) => setAnswers(response.data.results))
+  //     .catch((err) => console.error(err));
+  // }, []);
+
+  // console.log(question.answers);
 
   const onShowMoreAnswers = (e) => {
     e.preventDefault();
@@ -49,10 +51,30 @@ const Question = ({
     setAnswerCount(0);
   };
 
-  const workingAnswers = answers.slice();
+  const answerArray = [];
+  // console.log(question.answers);
+  const answersObj = question.answers;
+  // question.answers.forEach((answer) => answerArray.push(answer));
+  for (const answer in answersObj) {
+    answerArray.push(answersObj[answer]);
+  }
+  // console.log(answerArray);
+  // const workingAnswers = question.answers.slice();
+  // console.log('workinganswers, ', workingAnswers);
+  const sortedByHelpfulness = answerArray.sort((a, b) => {
+    if (a.helpfulness > b.helpfulness) {
+      return 1;
+    }
+    if (b.helpfulness > a.helpfulness) {
+      return -1;
+    }
+    return 0;
+  });
+  // console.log('sorted: ', sortedByHelpfulness);
   const sellerFirst = [];
-  workingAnswers.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
+  sortedByHelpfulness.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
   const renderList = sellerFirst.slice(0, answerCount);
+  // console.log('renderList', renderList);
 
   return (
     <div id="question" data-testid="question">
@@ -74,10 +96,10 @@ const Question = ({
       <div id="answer" data-testid="question-answer-container">
         { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
-          {answers.length > 0
+          {renderList.length > 0
             ? renderList.map((answer) => (
               <Answer
-                key={answer.answer_id}
+                key={answer.id}
                 answer={answer}
                 setModalStatus={setModalStatus}
                 modalStatus={modalStatus}

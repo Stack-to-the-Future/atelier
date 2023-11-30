@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
@@ -8,7 +9,7 @@ const QuestionsList = ({
   searchTerm, setModalStatus, modalStatus, productName, productId,
 }) => {
   const [questions, setQuestions] = useState([]);
-  const [numOfQuestions, setNumOfQuestions] = useState(2);
+  const [numOfQuestions, setNumOfQuestions] = useState(4);
 
   const onAddQuestionClick = (e) => {
     e.preventDefault();
@@ -37,6 +38,7 @@ const QuestionsList = ({
 
   return (
     <div data-testid="question-list-container">
+
       {modalStatus.name === 'question'
         && (
           <AddQuestionModal
@@ -46,7 +48,14 @@ const QuestionsList = ({
           />
         )}
       <div className="questionlist">
-        {questions.length > 0
+        <InfiniteScroll
+          dataLength={numOfQuestions}
+          next={() => setNumOfQuestions(numOfQuestions + 4)}
+          hasMore={numOfQuestions < questions.length}
+          loader={<p>loading more questions...</p>}
+          endMessage={<p>No more questions for this product</p>}
+        >
+          {questions.length > 0
           && filteredQuestions.map((q) => (
             <Question
               key={q.question_id}
@@ -56,6 +65,7 @@ const QuestionsList = ({
               productName={productName}
             />
           ))}
+        </InfiniteScroll>
       </div>
       <div>
         <span>

@@ -24,7 +24,7 @@ const Answer = ({ answer }) => {
       return;
     }
     setHelpful(true);
-    questionsAPIFunctions.addAnswerHelpful(answer.answer_id)
+    questionsAPIFunctions.addAnswerHelpful(answer.id)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
@@ -40,7 +40,7 @@ const Answer = ({ answer }) => {
         ) : ''}
       </span>
       <span className="answer-photos">
-        {answer.photos.map((photo) => <img className="answer-photo" src={photo.url} data-testid="answer-photo" alt="answer" key={photo.id} />)}
+        {answer.photos.map((photo, index) => <img className="answer-photo" src={photo} data-testid="answer-photo" alt="answer" key={index} />)}
       </span>
       <div className="answer-footer">
         by
