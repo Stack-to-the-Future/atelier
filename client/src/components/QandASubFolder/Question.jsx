@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Answer from './Answer.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
@@ -10,7 +10,6 @@ const Question = ({
   question, setModalStatus, modalStatus, productName,
 }) => {
   const [isHelpful, setIsHelpful] = useState(false);
-  const [answers, setAnswers] = useState([]);
   const [answerCount, setAnswerCount] = useState(2);
 
   const helpfulClick = (e) => {
@@ -29,15 +28,17 @@ const Question = ({
     setModalStatus({ name: 'answer', data: `${question.question_id}` });
   };
 
-  useEffect(() => {
-    const params = {
-      count: 1000,
-      page: 1,
-    };
-    questionsAPIFunctions.getQuestionAnswers(question.question_id, params)
-      .then((response) => setAnswers(response.data.results))
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(() => {
+  //   const params = {
+  //     count: 1000,
+  //     page: 1,
+  //   };
+  //   questionsAPIFunctions.getQuestionAnswers(question.question_id, params)
+  //     .then((response) => setAnswers(response.data.results))
+  //     .catch((err) => console.error(err));
+  // }, []);
+
+  // console.log(question.answers);
 
   const onShowMoreAnswers = (e) => {
     e.preventDefault();
@@ -49,9 +50,21 @@ const Question = ({
     setAnswerCount(0);
   };
 
-  const workingAnswers = answers.slice();
+  const answerArray = [];
+  const answersObj = question.answers;
+  const answerKeys = Object.keys(answersObj);
+  answerKeys.forEach((key) => answerArray.push(answersObj[key]));
+  const sortedByHelpfulness = answerArray.sort((a, b) => {
+    if (b.helpfulness > a.helpfulness) {
+      return 1;
+    }
+    if (a.helpfulness > b.helpfulness) {
+      return -1;
+    }
+    return 0;
+  });
   const sellerFirst = [];
-  workingAnswers.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
+  sortedByHelpfulness.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
   const renderList = sellerFirst.slice(0, answerCount);
 
   return (
@@ -72,25 +85,24 @@ const Question = ({
         addAnswerClick={addAnswerClick}
       />
       <div id="answer" data-testid="question-answer-container">
-        { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
+        { answerCount === 0 || renderList.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
-          {answers.length > 0
-            ? renderList.map((answer) => (
+          {renderList.length > 0
+            && renderList.map((answer) => (
               <Answer
-                key={answer.answer_id}
+                key={answer.id}
                 answer={answer}
                 setModalStatus={setModalStatus}
                 modalStatus={modalStatus}
               />
-            ))
-            : ''}
+            ))}
         </span>
       </div>
       <div data-testid="question-footer">
-        {answers.length > 0 ? (
+        {sellerFirst.length !== 0 ? (
           <QuestionFooter
             answerCount={answerCount}
-            answers={answers}
+            answers={sellerFirst}
             onShowMoreAnswers={onShowMoreAnswers}
             onCollapseAnswers={onCollapseAnswers}
           />
