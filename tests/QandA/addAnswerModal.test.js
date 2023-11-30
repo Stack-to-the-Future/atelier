@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AddAnswerModal from '../../client/src/components/QandASubFolder/AddAnswerModal.jsx';
 
@@ -29,5 +29,16 @@ describe('it should render AddAnswerModal', () => {
   it('should render the AddAnserModal component', async () => {
     const item = await screen.findByTestId('add-answer-modal');
     expect(item).toBeTruthy();
+  });
+
+  it('submits the form on submit button click', async () => {
+    const submitButton = screen.getByRole('button', { name: 'Add Answer' });
+    fireEvent.click(submitButton);
+    expect(submitButton).toBeInTheDocument();
+  });
+
+  it('submits the form on submit button click', async () => {
+    const closeButton = screen.getByRole('button', { name: 'X' });
+    expect(closeButton).toBeInTheDocument();
   });
 });

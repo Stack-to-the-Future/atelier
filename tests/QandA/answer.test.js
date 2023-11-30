@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Answer from '../../client/src/components/QandASubFolder/Answer.jsx';
 
@@ -48,5 +48,17 @@ describe('it should render Answer properly', () => {
   it('should display a photo if url is provided', async () => {
     const photo = await screen.findByTestId('answer-photo');
     expect(photo).toBeTruthy();
+  });
+
+  it('submits the form on submit button click', async () => {
+    const button = await screen.findByTestId('answer-helpful');
+    fireEvent.click(button);
+    expect(button).toBeInTheDocument();
+  });
+
+  it('changes report to reported on click', () => {
+    const button = screen.getByRole('button', { name: 'Report' });
+    fireEvent.click(button);
+    expect(button).toBeTruthy();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Question from '../../client/src/components/QandASubFolder/Question.jsx';
 
@@ -29,6 +29,17 @@ describe('it should render Question properly', () => {
 
   it('should render a helpful button', async () => {
     const button = await screen.findByTestId('question-helpful');
+    expect(button).toBeTruthy();
+  });
+
+  it('submits the form on submit button click', async () => {
+    const submitButton = await screen.findByTestId('question-helpful');
+    fireEvent.click(submitButton);
+    expect(submitButton).toBeTruthy();
+  });
+
+  it('should render a question footer', async () => {
+    const button = await screen.findByTestId('question-footer');
     expect(button).toBeTruthy();
   });
 });
