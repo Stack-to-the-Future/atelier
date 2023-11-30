@@ -40,7 +40,7 @@ const Answer = ({ answer }) => {
         ) : ''}
       </span>
       <span className="answer-photos">
-        {answer.photos.map((photo) => <img className="answer-photo" src={photo.url} alt="answer" key={photo.id} />)}
+        {answer.photos.map((photo) => <img className="answer-photo" src={photo.url} data-testid="answer-photo" alt="answer" key={photo.id} />)}
       </span>
       <div className="answer-footer">
         by

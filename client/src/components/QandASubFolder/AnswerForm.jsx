@@ -4,7 +4,7 @@ import './Modal.css';
 const AnswerForm = ({
   modalFunctions, productName, question, submitAnswer, showSetPhotoForm, email, body, username,
 }) => (
-  <div id="modal" data-testid="add-answer-modal">
+  <div id="modal">
     <div className="overlay">
       <div className="modal-content">
         <div>
