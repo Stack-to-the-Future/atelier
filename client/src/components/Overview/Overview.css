@@ -28,9 +28,12 @@
 
 #overview-search-input {
   width: 50%;
-  background-color: #525252;
+  background-color: #C5C5C5;
   text-align: center;
+  border-radius: 2rem;
   border-bottom: 1px solid white;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 /* ------------------------------------ ANNOUNCEMENTS------------------------------------------- */
