@@ -10,7 +10,6 @@ const Question = ({
   question, setModalStatus, modalStatus, productName,
 }) => {
   const [isHelpful, setIsHelpful] = useState(false);
-  const [answers, setAnswers] = useState([]);
   const [answerCount, setAnswerCount] = useState(2);
 
   const helpfulClick = (e) => {
@@ -52,30 +51,22 @@ const Question = ({
   };
 
   const answerArray = [];
-  // console.log(question.answers);
   const answersObj = question.answers;
-  // question.answers.forEach((answer) => answerArray.push(answer));
-  for (const answer in answersObj) {
-    answerArray.push(answersObj[answer]);
-  }
-  // console.log(answerArray);
-  // const workingAnswers = question.answers.slice();
-  // console.log('workinganswers, ', workingAnswers);
+  const answerKeys = Object.keys(answersObj);
+  answerKeys.forEach((key) => answerArray.push(answersObj[key]));
   const sortedByHelpfulness = answerArray.sort((a, b) => {
-    if (a.helpfulness > b.helpfulness) {
+    if (b.helpfulness > a.helpfulness) {
       return 1;
     }
-    if (b.helpfulness > a.helpfulness) {
+    if (a.helpfulness > b.helpfulness) {
       return -1;
     }
     return 0;
   });
-
   const sellerFirst = [];
   sortedByHelpfulness.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
   const renderList = sellerFirst.slice(0, answerCount);
 
-  console.log(renderList);
   return (
     <div id="question" data-testid="question">
       {modalStatus.name === 'answer' && modalStatus.data === `${question.question_id}`
@@ -94,22 +85,21 @@ const Question = ({
         addAnswerClick={addAnswerClick}
       />
       <div id="answer" data-testid="question-answer-container">
-        { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
+        { answerCount === 0 || renderList.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
-          {sellerFirst.length > 0
-            ? renderList.map((answer) => (
+          {renderList.length > 0
+            && renderList.map((answer) => (
               <Answer
                 key={answer.id}
                 answer={answer}
                 setModalStatus={setModalStatus}
                 modalStatus={modalStatus}
               />
-            ))
-            : ''}
+            ))}
         </span>
       </div>
       <div data-testid="question-footer">
-        {renderList !== 0 ? (
+        {sellerFirst.length !== 0 ? (
           <QuestionFooter
             answerCount={answerCount}
             answers={sellerFirst}

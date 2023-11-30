@@ -27,10 +27,10 @@ const QuestionsList = ({
       .catch((err) => console.error(err));
   }, [productId]);
 
-  const onLoadMoreQuestions = (e) => {
-    e.preventDefault();
-    setNumOfQuestions(numOfQuestions + 2);
-  };
+  // const onLoadMoreQuestions = (e) => {
+  //   e.preventDefault();
+  //   setNumOfQuestions(numOfQuestions + 2);
+  // };
 
   const renderedQuestions = questions.slice(0, numOfQuestions);
   const filterFunc = (term, q) => q.question_body.toLowerCase().includes(term.toLowerCase());
@@ -70,8 +70,6 @@ const QuestionsList = ({
       </div>
       <div>
         <span>
-          {numOfQuestions < questions.length
-            && <button type="button" className="list-bottom-buttons" data-testid="more-questions-button" onClick={onLoadMoreQuestions}>MORE ANSWERED QUESTIONS</button>}
           <button type="button" className="list-bottom-buttons" data-testid="add-question-button" onClick={onAddQuestionClick}>ADD A QUESTION +</button>
         </span>
       </div>

@@ -13,7 +13,7 @@ const Answer = ({ answer }) => {
       return;
     }
     setReport(true);
-    questionsAPIFunctions.reportAnswer(answer.answer_id)
+    questionsAPIFunctions.reportAnswer(answer.id)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
@@ -40,7 +40,7 @@ const Answer = ({ answer }) => {
         ) : ''}
       </span>
       <span className="answer-photos">
-        {answer.photos.map((photo, index) => <img className="answer-photo" src={photo} data-testid="answer-photo" alt="answer" key={index} />)}
+        {answer.photos.map((photo) => <img className="answer-photo" src={photo} data-testid="answer-photo" alt="answer" key={photo} />)}
       </span>
       <div className="answer-footer">
         by
