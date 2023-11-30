@@ -10,12 +10,17 @@ const Search = () => (
       <FontAwesomeIcon data-testid="search-logo" icon={faHandSpock} />
     </div>
     <div id="overview-search-searchbar">
-      <input
-        data-testid="search-input"
-        id="overview-search-input"
-        placeholder=""
-      />
-      <FontAwesomeIcon data-testid="search-icon" icon={faMagnifyingGlass} />
+      <label htmlFor="overview-search-input">
+        Search:
+        <input
+          type="text"
+          name="search"
+          data-testid="search-input"
+          id="overview-search-input"
+          placeholder=""
+        />
+        <FontAwesomeIcon data-testid="search-icon" icon={faMagnifyingGlass} />
+      </label>
     </div>
   </div>
 );
