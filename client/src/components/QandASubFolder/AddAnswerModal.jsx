@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import PhotoForm from './PhotoForm.jsx';
 import AnswerForm from './AnswerForm.jsx';
 import './Modal.css';
@@ -13,8 +13,6 @@ const AddAnswer = ({
   const [photo, setPhoto] = useState('');
   const [photos, setPhotos] = useState([]);
   const [showPhotoForm, showSetPhotoForm] = useState(false);
-
-  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
 
   const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
@@ -35,7 +33,7 @@ const AddAnswer = ({
       email,
       photos,
     };
-    axios.post(`${process.env.URL}/qa/questions/${questionId}/answers`, answerData, headers)
+    questionsAPIFunctions.addAnswer(questionId, answerData)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
     setModalStatus({ name: '', data: '' });

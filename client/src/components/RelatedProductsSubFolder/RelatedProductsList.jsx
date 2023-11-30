@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import productAPIFunctions from '../../lib/productAPIFunctions.js';
 import Carousel from './Carousel.jsx';
 import './RelPro.css';
 
@@ -11,25 +11,18 @@ const RelatedProductsList = ({
   const [toDisplay, setToDisplay] = useState([]);
   const [star, setStar] = useState('');
 
-  // Set icon onMount
   useEffect(() => { setStar('*'); }, []);
-  // gathering related Products
+
   useEffect(() => {
     const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
     setRelatedProducts(getRelatedProducts());
   }, [relatedProductsId]);
 
-  const options = { Authorization: process.env.TOKEN };
-  // // Getting all related Products photos
   useEffect(() => {
     const getPhotos = () => {
       const promises = relatedProducts.map((product) => {
         if (!product.photo) {
-          return axios({
-            method: 'GET',
-            url: `${process.env.URL}/products/${product.id}/styles`,
-            headers: options,
-          })
+          return productAPIFunctions.getStyles(product.id)
             .then((response) => {
               const { data } = response;
               return { ...product, photo: data.results[0].photos[0].thumbnail_url };
@@ -45,13 +38,13 @@ const RelatedProductsList = ({
           console.error('Error fetching data:', error);
         });
     };
+    const getToDisplay = () => products.filter((p) => relatedProductsId.includes(p.id));
 
     getPhotos();
+    setToDisplay(getToDisplay());
   }, [relatedProducts]);
 
   useEffect(() => {
-    const getToDisplay = () => products.filter((p) => relatedProductsId.includes(p.id));
-    setToDisplay(getToDisplay());
   }, [relatedProducts]);
 
   return (
