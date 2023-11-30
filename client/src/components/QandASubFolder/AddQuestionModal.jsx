@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import questionsAPIFunctions from '../../lib/questionsAPIFunctions';
 import './Modal.css';
 
 const AddQuestion = ({ setModalStatus, productName, productId }) => {
-  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
   const [body, setBody] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -28,7 +27,7 @@ const AddQuestion = ({ setModalStatus, productName, productId }) => {
       email,
       product_id: productId,
     };
-    axios.post(`${process.env.URL}/qa/questions`, data, headers)
+    questionsAPIFunctions.addQuestion(data)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
     setModalStatus({ name: '' });

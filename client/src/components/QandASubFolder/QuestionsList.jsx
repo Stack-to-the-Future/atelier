@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
 import './QandA.css';
@@ -10,8 +10,6 @@ const QuestionsList = ({
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
 
-  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
-
   const onAddQuestionClick = (e) => {
     e.preventDefault();
     setModalStatus({ name: 'question' });
@@ -19,7 +17,11 @@ const QuestionsList = ({
 
   const questionCount = 1000;
   useEffect(() => {
-    axios.get(`${process.env.URL}/qa/questions/?count=${questionCount}&product_id=${productId}`, headers)
+    const params = {
+      count: questionCount,
+      product_id: productId,
+    };
+    questionsAPIFunctions.getQuestions(params)
       .then((response) => setQuestions(response.data.results))
       .catch((err) => console.error(err));
   }, [productId]);

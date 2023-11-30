@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Search from './Overview/Search.jsx';
 import Announcement from './Overview/Announcement.jsx';
 import ImageGallery from './Overview/ImageGallery.jsx';
 import ProductInformation from './Overview/ProductInformation.jsx';
+import productAPIFunctions from '../lib/productAPIFunctions.js';
 import './App.css';
 
 const Overview = ({ product, ratings }) => {
@@ -11,14 +11,7 @@ const Overview = ({ product, ratings }) => {
   const [currentStyle, setCurrentStyle] = useState(0);
 
   const getStyles = () => {
-    const url = `${process.env.URL}/products/${product.id}/styles`;
-    axios({
-      method: 'GET',
-      url,
-      headers: {
-        Authorization: process.env.TOKEN,
-      },
-    })
+    productAPIFunctions.getStyles(product.id)
       .then((response) => {
         setStyles([...response.data.results]);
       })
