@@ -59,7 +59,6 @@ const App = () => {
     }
     productAPIFunctions.getProduct(id)
       .then((response) => {
-        console.log('setting');
         setProductInfo(response.data);
       })
       .then(() => getRatings())
