@@ -31,7 +31,7 @@ const OutfitList = ({
   }, []);
 
   return (
-    <div id="outFit-prod-list">
+    <div data-testid="outFitId" id="outFit-prod-list">
       <button className="outFit-button" type="button" onClick={() => { addOutfit(); }}>
         ➕
         {' '}
@@ -39,7 +39,7 @@ const OutfitList = ({
         {' '}
         Add an Outfit
       </button>
-      <div className="outFit-prod-carousel">
+      <div data-testid="outFitListId" className="outFit-prod-carousel">
         <Carousel
           handleModalStatus={handleModalStatus}
           handleCompaired={handleCompaired}

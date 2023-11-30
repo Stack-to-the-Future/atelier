@@ -15,7 +15,7 @@ const Carousel = ({
   };
 
   return (
-    <div className="rel-prod-carousel">
+    <div data-testid="carouTest" className="rel-prod-carousel">
       {index > 0 ? (
         <button type="button" onClick={() => scroll(-1)}>
           <h4>◀︎ BACK</h4>

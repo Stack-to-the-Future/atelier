@@ -33,6 +33,7 @@ const Card = ({
   return (
     <div
       className="all-cards"
+      data-testid="cardTest"
     >
       { (icon === '*')
         ? <button className="card-button" type="button" onClick={() => { handleButtonClick(); }}>⭐️</button>

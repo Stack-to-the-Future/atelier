@@ -5,7 +5,7 @@ import './RelPro.css';
 
 const RelatedProductsList = ({
   products, handleModalStatus, handleCompaired, setProductInfo, ratings,
-  relatedProductsId, getMainProduct, current,
+  relatedProductsId, getMainProduct,
 }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [toDisplay, setToDisplay] = useState([]);
@@ -16,7 +16,7 @@ const RelatedProductsList = ({
   useEffect(() => {
     const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
     setRelatedProducts(getRelatedProducts());
-  }, [current]);
+  }, [relatedProductsId]);
 
   useEffect(() => {
     const getPhotos = () => {
@@ -48,7 +48,7 @@ const RelatedProductsList = ({
   }, [relatedProducts]);
 
   return (
-    <div id="rel-prod-list">
+    <div data-testid="relProId" id="rel-prod-list">
       <Carousel
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
