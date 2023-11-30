@@ -3,7 +3,7 @@ const webpack = require('webpack');
 require('dotenv').config({ path: './.env' });
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './client/src/index.jsx',
   output: {
     path: path.resolve(__dirname, './client/dist'),
