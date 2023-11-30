@@ -1,14 +1,23 @@
-on: pull_request
-
 name: Test
+on: pull_request
 
 jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
+
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
+    
+    - name: Install dependencies
     - run: npm install
-    - run: npm run dev-start
+
+    - name: Run server in background
+    - run: npm run dev-start & 
+
+    - name: Wait for server to start 
+    - run: sleep 10
+
+    - name: Run tests
     - run: npm run test
