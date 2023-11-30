@@ -22,7 +22,7 @@ const ProductInformation = ({
     }
     setCurrentSku('');
     setSkus(styles[currentStyle].skus);
-  }, [currentStyle]);
+  }, [currentStyle, styles]);
 
   return (
     <div id="overview-productinfo-main">
