@@ -14,6 +14,7 @@ const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => {
       {index > 0 ? (
         <button
           type="button"
+          aria-label="Scroll Carousel Up"
           onClick={() => handleClick(-1)}
           className="overview-gallery-style vert-btn"
         >
@@ -24,7 +25,8 @@ const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => {
       )}
       {photos.slice(index, index + size).map((photo, idx) => (
         <button
-          className={`overview-gallery-style ${idx + index === photoIdx ? 'overview-gallery-selected' : ''
+          className={`overview-gallery-style ${idx + index === photoIdx
+            ? 'overview-gallery-selected' : ''
           }`}
           type="button"
           key={`${photo.url}`}
@@ -40,6 +42,7 @@ const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => {
       {index < photos.length - size ? (
         <button
           type="button"
+          aria-label="Scroll Carousel Down"
           onClick={() => handleClick(1)}
           className="overview-gallery-style vert-btn"
         >

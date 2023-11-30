@@ -23,7 +23,7 @@ const RelatedProducts = ({
 
   return (
     <div id="relpro">
-      <h5 id="rel-prod-title">RELATED PRODUCTS</h5>
+      <p id="rel-prod-title">RELATED PRODUCTS</p>
       <RelatedProductsList
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
@@ -34,7 +34,7 @@ const RelatedProducts = ({
         ratings={ratings}
       />
       <br />
-      <h5 id="outFit-prod-title">YOUR OUTFIT</h5>
+      <p id="outFit-prod-title">YOUR OUTFIT</p>
       <OutfitList
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}

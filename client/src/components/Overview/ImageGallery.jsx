@@ -22,6 +22,7 @@ const ImageGallery = ({ photos }) => {
       <button
         data-testid="gallery-button-left"
         type="button"
+        aria-label="Gallery Scroll Left"
         className="overview-gallery-btn left-btn"
         onClick={() => handleChangeImage(-1)}
       >
@@ -35,6 +36,7 @@ const ImageGallery = ({ photos }) => {
       <button
         data-testid="gallery-button-right"
         type="button"
+        aria-label="Gallery Scroll Right"
         className="overview-gallery-btn right-btn"
         onClick={() => handleChangeImage(1)}
       >

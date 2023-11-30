@@ -38,6 +38,7 @@ const AddToCart = ({ skus, currentSku, changeCurrentSku }) => {
   return (
     <div data-testid="cart-main" className="overview-cart-main">
       <select
+        aria-label="Size"
         data-testid="cart-select-size"
         id="overview-size-select"
         className="overview-size-select"
@@ -57,6 +58,7 @@ const AddToCart = ({ skus, currentSku, changeCurrentSku }) => {
 
       {(currentSku !== '') && (
         <select
+          aria-label="Quantity"
           data-testid="cart-select-quant"
           className="overview-quant-select"
           defaultValue="1"
@@ -76,6 +78,7 @@ const AddToCart = ({ skus, currentSku, changeCurrentSku }) => {
       {currentSku !== ''
         && (skus[currentSku].quantity ? (
           <button
+            aria-label="Add to Cart"
             data-testid="cart-add-button"
             type="button"
             className="overview-add-button"
@@ -87,6 +90,7 @@ const AddToCart = ({ skus, currentSku, changeCurrentSku }) => {
           </button>
         ) : (
           <button
+            aria-label="Add to Cart"
             data-testid="cart-fake-button"
             type="button"
             className="overview-add-button"
