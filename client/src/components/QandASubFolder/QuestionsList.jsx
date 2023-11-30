@@ -37,7 +37,7 @@ const QuestionsList = ({
   const filteredQuestions = renderedQuestions.filter((q) => filterFunc(searchTerm, q));
 
   return (
-    <div data-testid="question-list-container">
+    <div id="scrollable" data-testid="question-list-container">
 
       {modalStatus.name === 'question'
         && (
@@ -47,13 +47,14 @@ const QuestionsList = ({
             productId={productId}
           />
         )}
-      <div className="questionlist">
+      <div id="scrollableDiv" className="questionlist">
         <InfiniteScroll
           dataLength={numOfQuestions}
           next={() => setNumOfQuestions(numOfQuestions + 4)}
           hasMore={numOfQuestions < questions.length}
           loader={<p>loading more questions...</p>}
           endMessage={<p>No more questions for this product</p>}
+          scrollableTarget="scrollableDiv"
         >
           {questions.length > 0
           && filteredQuestions.map((q) => (

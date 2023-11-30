@@ -70,12 +70,12 @@ const Question = ({
     }
     return 0;
   });
-  // console.log('sorted: ', sortedByHelpfulness);
+
   const sellerFirst = [];
   sortedByHelpfulness.forEach((answer) => (answer.answerer_name === 'Seller' ? sellerFirst.unshift(answer) : sellerFirst.push(answer)));
   const renderList = sellerFirst.slice(0, answerCount);
-  // console.log('renderList', renderList);
 
+  console.log(renderList);
   return (
     <div id="question" data-testid="question">
       {modalStatus.name === 'answer' && modalStatus.data === `${question.question_id}`
@@ -96,7 +96,7 @@ const Question = ({
       <div id="answer" data-testid="question-answer-container">
         { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
-          {renderList.length > 0
+          {sellerFirst.length > 0
             ? renderList.map((answer) => (
               <Answer
                 key={answer.id}
@@ -109,10 +109,10 @@ const Question = ({
         </span>
       </div>
       <div data-testid="question-footer">
-        {answers.length > 0 ? (
+        {renderList !== 0 ? (
           <QuestionFooter
             answerCount={answerCount}
-            answers={answers}
+            answers={sellerFirst}
             onShowMoreAnswers={onShowMoreAnswers}
             onCollapseAnswers={onCollapseAnswers}
           />
