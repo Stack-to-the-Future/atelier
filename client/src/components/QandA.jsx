@@ -18,7 +18,7 @@ const QandA = ({
   };
 
   return (
-    <div id="quanda">
+    <div id="quanda" data-testid="quanda">
       <h3 className="quanda-header">
         QUESTIONS & ANSWERS
       </h3>

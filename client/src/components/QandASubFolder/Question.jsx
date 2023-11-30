@@ -71,8 +71,8 @@ const Question = ({
         isHelpful={isHelpful}
         addAnswerClick={addAnswerClick}
       />
-      <div id="answer">
-        {answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
+      <div id="answer" data-testid="question-answer-container">
+        { answerCount === 0 || answers.length === 0 ? '' : <span className="a-tag"><b>A:</b></span>}
         <span id="A">
           {answers.length > 0
             ? renderList.map((answer) => (
@@ -86,14 +86,16 @@ const Question = ({
             : ''}
         </span>
       </div>
-      {answers.length > 0 ? (
-        <QuestionFooter
-          answerCount={answerCount}
-          answers={answers}
-          onShowMoreAnswers={onShowMoreAnswers}
-          onCollapseAnswers={onCollapseAnswers}
-        />
-      ) : ''}
+      <div data-testid="question-footer">
+        {answers.length > 0 ? (
+          <QuestionFooter
+            answerCount={answerCount}
+            answers={answers}
+            onShowMoreAnswers={onShowMoreAnswers}
+            onCollapseAnswers={onCollapseAnswers}
+          />
+        ) : ''}
+      </div>
     </div>
   );
 };

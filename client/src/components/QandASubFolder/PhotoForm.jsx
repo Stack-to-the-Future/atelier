@@ -4,11 +4,11 @@ import './Modal.css';
 const PhotoForm = ({
   showSetPhotoForm, modalFunctions, photos, photo,
 }) => (
-  <div id="modal">
+  <div id="modal" data-testid="photo-form">
     <div className="overlay">
       <div className="modal-content">
         <div>
-          <button className="modal-close" type="button" onClick={() => showSetPhotoForm(false)}>X</button>
+          <button className="modal-close" type="button" data-testid="close-photo-form" onClick={() => showSetPhotoForm(false)}>X</button>
         </div>
         <div className="main-content">
           <span className="answer-photos">
