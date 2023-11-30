@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { act } from 'react-dom/test-utils';
-import Carousel from '../../client/src/components/RelatedProductsSubFolder/Carousel.jsx';
+import Card from '../../client/src/components/RelatedProductsSubFolder/Card.jsx';
 
 const mockData = {
   handleModalStatus: jest.fn(),
@@ -11,6 +11,23 @@ const mockData = {
   getMainProduct: jest.fn(),
   setProductInfo: jest.fn(),
   handleOutFitList: jest.fn(),
+  key: '40344',
+  product:
+[
+  {
+    id: 40344,
+    campus: 'hr-rfp',
+    name: 'Camo Onesie',
+    slogan: 'Blend in to your crowd',
+    description:
+      `The So Fatigues will wake you up and fit you in.
+This high energy camo will have you blending in to even the wildest surroundings.`,
+    category: 'Jackets',
+    default_price: '140.00',
+    created_at: '2021-08-13T14:38:44.509Z',
+    updated_at: '2021-08-13T14:38:44.509Z',
+  },
+],
   gallery:
   [
     {
@@ -63,69 +80,22 @@ const mockData = {
   },
 };
 
-describe('Carousel component', () => {
-  it('should render Carousel.jsx in RelatedProductsList', async () => {
+describe('single card component', () => {
+  it('should render one card in Carousel', async () => {
     await act(async () => {
-      render(<Carousel
-        handleModalStatus={mockData.handleModalStatus}
-        handleCompaired={mockData.handleCompaired}
-        setToDisplay={mockData.setToDisplay}
-        getMainProduct={mockData.getMainProduct}
+      render(<Card
+        key={mockData.key}
+        product={mockData.product}
         gallery={mockData.gallery}
-        setProductInfo={mockData.setProductInfo}
-        icon={mockData.star}
         ratings={mockData.ratings}
-      />);
-    });
-    const carousel = await screen.findByTestId('carouTest');
-    expect(carousel).toBeInTheDocument();
-  });
-
-  it('should render Carousel.jsx in OutFitList', async () => {
-    await act(async () => {
-      render(<Carousel
+        icon={mockData.icon}
         handleModalStatus={mockData.handleModalStatus}
         handleCompaired={mockData.handleCompaired}
         handleOutFitList={mockData.handleOutFitList}
         getMainProduct={mockData.getMainProduct}
-        gallery={mockData.gallery}
-        ratings={mockData.ratings}
-        icon={mockData.star}
       />);
     });
-    const carousel = await screen.findByTestId('carouTest');
-    expect(carousel).toBeInTheDocument();
-  });
-
-  it('should not render the Back button in Carousel', async () => {
-    await act(async () => {
-      render(<Carousel
-        handleModalStatus={mockData.handleModalStatus}
-        handleCompaired={mockData.handleCompaired}
-        handleOutFitList={mockData.handleOutFitList}
-        getMainProduct={mockData.getMainProduct}
-        gallery={mockData.gallery}
-        ratings={mockData.ratings}
-        icon={mockData.star}
-      />);
-    });
-    const carousel = await screen.queryByText(/back/i);
-    expect(carousel).not.toBeInTheDocument();
-  });
-
-  it('should not render the Next button in Carousel', async () => {
-    await act(async () => {
-      render(<Carousel
-        handleModalStatus={mockData.handleModalStatus}
-        handleCompaired={mockData.handleCompaired}
-        handleOutFitList={mockData.handleOutFitList}
-        getMainProduct={mockData.getMainProduct}
-        gallery={mockData.gallery}
-        ratings={mockData.ratings}
-        icon={mockData.star}
-      />);
-    });
-    const carousel = await screen.queryByText(/next/i);
-    expect(carousel).not.toBeInTheDocument();
+    const card = await screen.findByTestId('cardTest');
+    expect(card).toBeInTheDocument();
   });
 });

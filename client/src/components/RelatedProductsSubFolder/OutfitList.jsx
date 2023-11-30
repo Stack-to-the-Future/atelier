@@ -39,7 +39,7 @@ const OutfitList = ({
         {' '}
         Add an Outfit
       </button>
-      <div className="outFit-prod-carousel">
+      <div data-testid="outFitListId" className="outFit-prod-carousel">
         <Carousel
           handleModalStatus={handleModalStatus}
           handleCompaired={handleCompaired}
