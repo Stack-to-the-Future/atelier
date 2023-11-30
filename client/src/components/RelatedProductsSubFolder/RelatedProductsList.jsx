@@ -5,7 +5,7 @@ import './RelPro.css';
 
 const RelatedProductsList = ({
   products, handleModalStatus, handleCompaired, setProductInfo, ratings,
-  relatedProductsId, getMainProduct, current,
+  relatedProductsId, getMainProduct,
 }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [toDisplay, setToDisplay] = useState([]);
@@ -17,7 +17,7 @@ const RelatedProductsList = ({
   useEffect(() => {
     const getRelatedProducts = () => products.filter((p) => relatedProductsId.includes(p.id));
     setRelatedProducts(getRelatedProducts());
-  }, [current]);
+  }, [relatedProductsId]);
 
   const options = { Authorization: process.env.TOKEN };
   // // Getting all related Products photos
