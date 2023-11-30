@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Answer from './Answer.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import QuestionHeader from './QuestionHeader.jsx';
@@ -13,15 +13,13 @@ const Question = ({
   const [answers, setAnswers] = useState([]);
   const [answerCount, setAnswerCount] = useState(2);
 
-  const headers = { headers: { Authorization: `${process.env.TOKEN}` } };
-  const helpURL = `${process.env.URL}/qa/questions/${question.question_id}/helpful`;
   const helpfulClick = (e) => {
     e.preventDefault();
     if (isHelpful) {
       return;
     }
     setIsHelpful(!isHelpful);
-    axios.put(helpURL, {}, headers)
+    questionsAPIFunctions.addQuestionHelpful(question.question_id)
       .then((response) => console.log('help: ', response.status))
       .catch((err) => console.error(err));
   };
@@ -31,9 +29,12 @@ const Question = ({
     setModalStatus({ name: 'answer', data: `${question.question_id}` });
   };
 
-  const answersURL = `${process.env.URL}/qa/questions/${question.question_id}/answers?count=1000`;
   useEffect(() => {
-    axios.get(answersURL, headers)
+    const params = {
+      count: 1000,
+      page: 1,
+    };
+    questionsAPIFunctions.getQuestionAnswers(question.question_id, params)
       .then((response) => setAnswers(response.data.results))
       .catch((err) => console.error(err));
   }, []);
@@ -85,7 +86,7 @@ const Question = ({
             : ''}
         </span>
       </div>
-      { answers.length > 0 ? (
+      {answers.length > 0 ? (
         <QuestionFooter
           answerCount={answerCount}
           answers={answers}
