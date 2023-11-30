@@ -6,18 +6,20 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-    
-    - name: Install dependencies
-    - run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
 
-    - name: Run server in background
-    - run: npm run dev-start & 
+      - name: Install dependencies
+        run: npm install
 
-    - name: Wait for server to start 
-    - run: sleep 10
+      - name: Run server in background
+        run: npm run dev-start &
 
-    - name: Run tests
-    - run: npm run test
+      - name: Wait for server to start
+        run: sleep 10
+
+      - name: Run tests
+        run: npm run test
