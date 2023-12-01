@@ -45,6 +45,7 @@ const QuestionsList = ({
   useEffect(() => {
     questionsAPIFunctions.getQuestions(params)
       .then((response) => setQuestions(response.data.results))
+      .then(() => setNumOfQuestions(2))
       .catch((err) => console.error(err));
   }, [productId]);
 
