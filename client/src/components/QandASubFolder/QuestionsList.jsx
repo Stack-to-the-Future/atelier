@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
@@ -9,36 +8,49 @@ const QuestionsList = ({
   searchTerm, setModalStatus, modalStatus, productName, productId,
 }) => {
   const [questions, setQuestions] = useState([]);
-  const [numOfQuestions, setNumOfQuestions] = useState(4);
+  const [numOfQuestions, setNumOfQuestions] = useState(2);
+
+  const questionCount = 1000;
+  const params = {
+    count: questionCount,
+    product_id: productId,
+  };
+
+  const renderedQuestions = questions.slice(0, numOfQuestions);
+  const filterFunc = (term, q) => q.question_body.toLowerCase().includes(term.toLowerCase());
+  const filteredQuestions = renderedQuestions.filter((q) => filterFunc(searchTerm, q));
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollTop, clientHeight, scrollHeight } = document.getElementById('scrollable');
+      if (scrollTop + clientHeight >= scrollHeight - 120) {
+        setTimeout(() => {
+          setNumOfQuestions(numOfQuestions + 2);
+        }, 300);
+      }
+    };
+    const target = document.getElementById('scrollableDiv');
+    target.addEventListener('scroll', handleScroll);
+    // document.getElementById('scrollableDiv').addEventListener('scroll', handleScroll);
+    return () => {
+      target.removeEventListener('scroll', handleScroll);
+    };
+  }, [filteredQuestions]);
 
   const onAddQuestionClick = (e) => {
     e.preventDefault();
     setModalStatus({ name: 'question' });
   };
 
-  const questionCount = 1000;
   useEffect(() => {
-    const params = {
-      count: questionCount,
-      product_id: productId,
-    };
     questionsAPIFunctions.getQuestions(params)
       .then((response) => setQuestions(response.data.results))
+      .then(() => setNumOfQuestions(2))
       .catch((err) => console.error(err));
   }, [productId]);
 
-  // const onLoadMoreQuestions = (e) => {
-  //   e.preventDefault();
-  //   setNumOfQuestions(numOfQuestions + 2);
-  // };
-
-  const renderedQuestions = questions.slice(0, numOfQuestions);
-  const filterFunc = (term, q) => q.question_body.toLowerCase().includes(term.toLowerCase());
-  const filteredQuestions = renderedQuestions.filter((q) => filterFunc(searchTerm, q));
-
   return (
     <div id="scrollable" data-testid="question-list-container">
-
       {modalStatus.name === 'question'
         && (
           <AddQuestionModal
@@ -48,15 +60,7 @@ const QuestionsList = ({
           />
         )}
       <div id="scrollableDiv" className="questionlist">
-        <InfiniteScroll
-          dataLength={numOfQuestions}
-          next={() => setNumOfQuestions(numOfQuestions + 4)}
-          hasMore={numOfQuestions < questions.length}
-          loader={<p>loading more questions...</p>}
-          endMessage={<p>No more questions for this product</p>}
-          scrollableTarget="scrollableDiv"
-        >
-          {questions.length > 0
+        {questions.length > 0
           && filteredQuestions.map((q) => (
             <Question
               key={q.question_id}
@@ -66,7 +70,6 @@ const QuestionsList = ({
               productName={productName}
             />
           ))}
-        </InfiniteScroll>
       </div>
       <div>
         <span>
