@@ -29,15 +29,24 @@
 }
 
 .modal-header{
-  padding-bottom: 1rem;
   padding-top: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
 }
 
 .modal-label{
-  font-weight: 200;
+  font-weight: bold;
+  font-size: 1.2rem;
   font-size: .8rem;
+}
+
+.sub-text{
+  font-weight: 300;
+}
+
+.sub-header{
+  margin-bottom: .5rem;
+  margin-top: .5rem;
 }
 
 .modal-input{
@@ -46,6 +55,10 @@
   border: solid;
   border-color: black;
   border-width: 1px;
+}
+
+.field-container{
+  margin-top: .5rem;
 }
 
 .modal-answer {
