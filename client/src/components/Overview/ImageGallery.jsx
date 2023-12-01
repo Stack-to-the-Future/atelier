@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import VerticalCarousel from './VerticalCarousel.jsx';
 import './Overview.css';
 
-const ImageGallery = ({ photos }) => {
-  const [photoIdx, setPhotoIdx] = useState(0);
-
+const ImageGallery = ({
+  photos, changeModalStatus, photoIdx, changePhotoIdx,
+}) => {
   const handleChangeImage = (direction) => {
     const newIdx = (photoIdx + direction + photos.length) % photos.length;
-    setPhotoIdx(newIdx);
+    changePhotoIdx(newIdx);
   };
 
   return (
@@ -17,7 +17,7 @@ const ImageGallery = ({ photos }) => {
       <VerticalCarousel
         photos={photos}
         photoIdx={photoIdx}
-        setPhotoIdx={setPhotoIdx}
+        changePhotoIdx={changePhotoIdx}
       />
       <button
         data-testid="gallery-button-left"
@@ -29,7 +29,16 @@ const ImageGallery = ({ photos }) => {
         <FontAwesomeIcon icon={faArrowLeft} className="icon" />
       </button>
       {photos.length ? (
-        <img id="overview-gallery-img" data-testid="gallery-main-image" src={photos[photoIdx].url} alt="Main Product" />
+        <img
+          role="presentation"
+          onKeyDown={() => changeModalStatus(true)}
+          id="overview-gallery-img"
+          data-testid="gallery-main-image"
+          src={photos[photoIdx].url}
+          onClick={() => { changeModalStatus(true); }}
+          alt="Main Product"
+        />
+
       ) : (
         ''
       )}
