@@ -3,21 +3,19 @@
 <br />
 <div align="center">
   <a href="https://github.com/Stack-to-the-Future/atelier">
-    <!-- TODO: Create an LOGO for Atelier -->
+    [![Lint](https://github.com/Stack-to-the-Future/atelier/actions/workflows/run-linter.yml/badge.svg)](https://github.com/Stack-to-the-Future/atelier/actions/workflows/run-linter.yml)
+    [![Test](https://github.com/Stack-to-the-Future/atelier/actions/workflows/run-tests.yml/badge.svg?branch=redconOne-patch-1)](https://github.com/Stack-to-the-Future/atelier/actions/workflows/run-tests.yml)
     <!-- <img src="" alt="finance tracker logo" width="50" height="50" /> -->
   </a>
   <h3 align="center">
     Atelier
   </h3>
   <p align="center">
-        Product Description Goes HERE
+    
     <br />
     <a href="https://github.com/Stack-to-the-Future/atelier"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <!-- TODO: After deployed add link HERE   -->
     <!-- <a href="">View Live</a> -->
-    |
     <a href="https://github.com/Stack-to-the-Future/atelier/issues">Report Bug</a>
     |
     <a href="https://github.com/Stack-to-the-Future/atelier/issues">Request Feature</a>
@@ -73,8 +71,7 @@
 ## About
 
 <div align="center">
-    <!-- TODO: Add landing page image -->
-  <img src="" alt="project landing page image" width="700px" />
+  <img src="./assets/atelier.gif" alt="project landing page image" width="700px" />
 </div>
 
 <br />
