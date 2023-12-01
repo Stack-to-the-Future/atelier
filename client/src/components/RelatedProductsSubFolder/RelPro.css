@@ -140,8 +140,8 @@
   left: 37%;
   height: fit-content;
   width: fit-content;
-  background-color: rgb(247, 244, 238);
-  border: 0.5px solid rgb(0, 0, 0);
+  background-color: rgb(253, 252, 251);
+  border: 2.5px solid rgb(218, 205, 181);
   text-align: left;
   overflow: auto;
 }
@@ -149,12 +149,12 @@
 
 .table-modal {
   text-align: center;
-  border:0.5px solid rgb(0, 0, 0);
 }
 
 .close-modal {
   text-align: right;
   margin-left: auto;
+  margin-right: 2%;
   background-color: rgba(242, 155, 151, 0.91);
   border:0.5px solid rgb(0, 0, 0);
 }
