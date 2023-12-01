@@ -3,7 +3,7 @@ import './Overview.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => {
+const VerticalCarousel = ({ photos, photoIdx, changePhotoIdx }) => {
   const [index, setIndex] = useState(0);
   const size = 3;
 
@@ -30,7 +30,7 @@ const VerticalCarousel = ({ photos, photoIdx, setPhotoIdx }) => {
           }`}
           type="button"
           key={`${photo.url}`}
-          onClick={() => setPhotoIdx(idx + index)}
+          onClick={() => changePhotoIdx(idx + index)}
         >
           <img
             className="overview-gallery-image"

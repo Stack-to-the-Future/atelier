@@ -12,7 +12,6 @@ const Overview = ({ product, ratings }) => {
   const [currentStyle, setCurrentStyle] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [photoIdx, setPhotoIdx] = useState(0);
-  console.log(showModal);
 
   const getStyles = () => {
     productAPIFunctions.getStyles(product.id)
@@ -35,7 +34,12 @@ const Overview = ({ product, ratings }) => {
       <div data-testid="overview-gallery-container" id="overview-central">
         {/* eslint-disable-next-line no-nested-ternary */}
         {styles.length ? (
-          showModal ? <ImageGalleryModal photo={styles[currentStyle].photos[photoIdx].url} />
+          showModal ? (
+            <ImageGalleryModal
+              changeModalStatus={(status) => setShowModal(status)}
+              photo={styles[currentStyle].photos[photoIdx].url}
+            />
+          )
             : (
               <ImageGallery
                 changeModalStatus={(status) => setShowModal(status)}
