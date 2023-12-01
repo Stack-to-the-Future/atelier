@@ -29,9 +29,11 @@ const QuestionsList = ({
         }, 300);
       }
     };
-    document.getElementById('scrollableDiv').addEventListener('scroll', handleScroll);
+    const target = document.getElementById('scrollableDiv');
+    target.addEventListener('scroll', handleScroll);
+    // document.getElementById('scrollableDiv').addEventListener('scroll', handleScroll);
     return () => {
-      document.getElementById('scrollableDiv').removeEventListener('scroll', handleScroll);
+      target.removeEventListener('scroll', handleScroll);
     };
   }, [filteredQuestions]);
 
