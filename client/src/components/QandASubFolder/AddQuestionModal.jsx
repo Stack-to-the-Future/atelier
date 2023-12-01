@@ -57,35 +57,45 @@ const AddQuestion = ({ setModalStatus, productName, productId }) => {
           <div>
             <button className="modal-close" type="button" onClick={modalFunctions.close}>X</button>
           </div>
-          <h3 className="modal-header">
-            Ask Your Question
-          </h3>
-          <h4 className="sub-header">
-            About the
-            {' '}
-            {productName}
-          </h4>
-          <form onSubmit={submitQuestion}>
-            <label htmlFor="question-productName" className="modal-label">
-              About the (Need to insert the name of product)
-              <div>
-                <textarea type="text" className="modal-answer" placeholder="Enter your question here" maxLength="1000" value={body} onChange={modalFunctions.bodyChange} />
+          <div className="main-content">
+            <h3 className="modal-header">
+              Ask Your Question
+            </h3>
+            <h4 className="sub-header">
+              About the
+              {' '}
+              {productName}
+            </h4>
+            <form onSubmit={submitQuestion}>
+              <div className="field-container">
+                <label htmlFor="question-productName" className="modal-label">
+                  Your Question (mandatory)*
+                  <div>
+                    <textarea type="text" className="modal-answer" placeholder="Enter your question here" maxLength="1000" value={body} onChange={modalFunctions.bodyChange} />
+                  </div>
+                </label>
               </div>
-            </label>
-            <div>
-              <input type="text" className="modal-input" placeholder="Example: jackson11!" maxLength="60" value={username} onChange={modalFunctions.usernameChange} />
-              <p htmlFor="question-username" className="modal-label">
-                For privacy reasons, do not use your full name or email address
-              </p>
-            </div>
-            <div>
-              <input type="text" className="modal-input" placeholder="Why did you like the product or not?" maxLength="60" value={email} onChange={modalFunctions.emailChange} />
-              <p htmlFor="question-email" className="modal-label">
-                For authentication reasons you will not be emailed
-              </p>
-            </div>
-            <button className="submission" type="button" onClick={submitQuestion}>Add Question</button>
-          </form>
+              <div className="field-container">
+                <label htmlFor="question-productName" className="modal-label">
+                  What is your nickname (mandatory)*
+                  <input type="text" className="modal-input" placeholder="Example: jackson11!" maxLength="60" value={username} onChange={modalFunctions.usernameChange} />
+                  <p htmlFor="question-username" className="sub-text">
+                    For privacy reasons, do not use your full name or email address
+                  </p>
+                </label>
+              </div>
+              <div className="field-container">
+                <label htmlFor="question-productName" className="modal-label">
+                  What is your email (mandatory)*
+                  <input type="text" className="modal-input" placeholder="Example: jackson@hotmail.com" maxLength="60" value={email} onChange={modalFunctions.emailChange} />
+                  <p htmlFor="question-email" className="sub-text">
+                    For authentication reasons you will not be emailed
+                  </p>
+                </label>
+              </div>
+              <button className="submission" type="button" onClick={submitQuestion}>Add Question</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
