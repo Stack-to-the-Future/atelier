@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import InfiniteScroll from 'react-infinite-scroll-component';
 import questionsAPIFunctions from '../../lib/questionsAPIFunctions.js';
 import Question from './Question.jsx';
 import AddQuestionModal from './AddQuestionModal.jsx';
@@ -10,10 +9,6 @@ const QuestionsList = ({
 }) => {
   const [questions, setQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestions] = useState(2);
-  // const [items, setItems] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [index, setIndex] = useState(2);
-  // console.log(questions);
 
   const questionCount = 1000;
   const params = {
@@ -31,7 +26,7 @@ const QuestionsList = ({
       if (scrollTop + clientHeight >= scrollHeight - 120) {
         setTimeout(() => {
           setNumOfQuestions(numOfQuestions + 2);
-        }, 200);
+        }, 300);
       }
     };
     document.getElementById('scrollableDiv').addEventListener('scroll', handleScroll);
@@ -50,11 +45,6 @@ const QuestionsList = ({
       .then((response) => setQuestions(response.data.results))
       .catch((err) => console.error(err));
   }, [productId]);
-
-  // const onLoadMoreQuestions = (e) => {
-  //   e.preventDefault();
-  //   setNumOfQuestions(numOfQuestions + 2);
-  // };
 
   return (
     <div id="scrollable" data-testid="question-list-container">
