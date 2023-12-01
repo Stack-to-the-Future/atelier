@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import productAPIFunctions from '../../lib/productAPIFunctions';
 import Stars from '../shared/Stars.jsx';
 import './RelPro.css';
 
@@ -8,10 +8,8 @@ const Card = ({
   handleOutFitList, getMainProduct, icon, gallery,
 }) => {
   const [singleProductRatings, setSingleProductRatings] = useState({});
-  // Get each products ratings
-  const options = { headers: { Authorization: process.env.TOKEN } };
   const fetchProductCardRatings = () => {
-    axios.get(`${process.env.URL}/reviews/meta?product_id=${product.id}`, options)
+    productAPIFunctions.getRatings(product.id)
       .then((data) => { setSingleProductRatings(data.data.ratings); })
       .catch((err) => console.error(err));
   };
