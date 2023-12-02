@@ -8,7 +8,6 @@ const RelatedProducts = ({
   products, current, handleModalStatus, handleCompaired,
   getMainProduct, ratings, handleProducts,
 }) => {
-  // const [newProductsId, setNewProductsId] = useState([]);
   const [relatedProductsId, setRelatedProductsId] = useState([
     40348,
     40352,
