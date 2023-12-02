@@ -44,9 +44,6 @@ const RelatedProductsList = ({
     setToDisplay(getToDisplay());
   }, [relatedProducts]);
 
-  useEffect(() => {
-  }, [relatedProducts]);
-
   return (
     <div data-testid="relProId" id="rel-prod-list">
       <Carousel
