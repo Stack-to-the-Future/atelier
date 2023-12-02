@@ -65,6 +65,14 @@ const App = () => {
       .catch((error) => console.log(error));
   };
 
+  const handleProducts = (arr) => {
+    setProducts((prod) => {
+      const temp = arr.filter((prd) => !prod.find((p) => p.id === prd.id));
+      return [...prod, ...temp];
+    });
+    // setProducts([...products, ...arr]);
+  };
+
   const handleCompaired = (obj) => {
     setCompaired(obj);
   };
@@ -95,6 +103,7 @@ const App = () => {
         handleModalStatus={handleModalStatus}
         handleCompaired={handleCompaired}
         getMainProduct={getMainProduct}
+        handleProducts={handleProducts}
         ratings={ratings}
       />
       <QandA

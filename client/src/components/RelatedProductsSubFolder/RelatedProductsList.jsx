@@ -44,8 +44,7 @@ const RelatedProductsList = ({
     setToDisplay(getToDisplay());
   }, [relatedProducts]);
 
-  useEffect(() => {
-  }, [relatedProducts]);
+  // console.log(relatedProducts);
 
   return (
     <div data-testid="relProId" id="rel-prod-list">

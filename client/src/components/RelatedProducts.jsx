@@ -6,9 +6,41 @@ import './RelatedProductsSubFolder/RelPro.css';
 
 const RelatedProducts = ({
   products, current, handleModalStatus, handleCompaired,
-  getMainProduct, ratings,
+  getMainProduct, ratings, handleProducts,
 }) => {
-  const [relatedProductsId, setRelatedProductsId] = useState([]);
+  // const [newProductsId, setNewProductsId] = useState([]);
+  const [relatedProductsId, setRelatedProductsId] = useState([
+    40348,
+    40352,
+    40350,
+    40345,
+    40344,
+  ]);
+
+  const addMissingProducts = () => {
+    const missingProds = products.map((prod) => prod.id);
+    const newProductsId = relatedProductsId.filter((i) => {
+      console.log('related..', relatedProductsId, 'missing...', missingProds, 'i::', i);
+      return !missingProds.includes(i);
+    });
+
+    const promises = newProductsId.map((id) => {
+      if (!missingProds.includes(id)) {
+        return productAPIFunctions.getProduct(id)
+          .then((data) => {
+            const temp = data.data;
+            return temp;
+          });
+      }
+      return Promise.resolve(id);
+    });
+
+    Promise.all(promises)
+      .then((results) => {
+        handleProducts(results);
+      })
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
     if (current) {
@@ -20,6 +52,12 @@ const RelatedProducts = ({
         .catch((err) => console.error(err));
     }
   }, [current]);
+
+  useEffect(() => {
+    addMissingProducts();
+  }, [relatedProductsId]);
+
+  console.log('prods..', products);
   return (
     <div id="relpro">
       <p id="rel-prod-title">RELATED PRODUCTS</p>
