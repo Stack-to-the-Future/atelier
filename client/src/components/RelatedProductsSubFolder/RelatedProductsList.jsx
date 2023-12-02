@@ -44,8 +44,6 @@ const RelatedProductsList = ({
     setToDisplay(getToDisplay());
   }, [relatedProducts]);
 
-  // console.log(relatedProducts);
-
   return (
     <div data-testid="relProId" id="rel-prod-list">
       <Carousel

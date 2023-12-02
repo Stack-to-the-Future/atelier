@@ -18,10 +18,7 @@ const RelatedProducts = ({
 
   const addMissingProducts = () => {
     const missingProds = products.map((prod) => prod.id);
-    const newProductsId = relatedProductsId.filter((i) => {
-      console.log('related..', relatedProductsId, 'missing...', missingProds, 'i::', i);
-      return !missingProds.includes(i);
-    });
+    const newProductsId = relatedProductsId.filter((i) => !missingProds.includes(i));
 
     const promises = newProductsId.map((id) => {
       if (!missingProds.includes(id)) {
@@ -56,7 +53,6 @@ const RelatedProducts = ({
     addMissingProducts();
   }, [relatedProductsId]);
 
-  console.log('prods..', products);
   return (
     <div id="relpro">
       <p id="rel-prod-title">RELATED PRODUCTS</p>
